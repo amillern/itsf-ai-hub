@@ -3,7 +3,7 @@ FROM node:20-alpine AS builder
 WORKDIR /app
 
 ENV ASTRO_TELEMETRY_DISABLED=1
-ARG PUBLIC_SITE_URL=https://ai-hub-webpage-572664673489.europe-west1.run.app
+ARG PUBLIC_SITE_URL=https://ai.itsmartflex.com
 ENV PUBLIC_SITE_URL=$PUBLIC_SITE_URL
 
 COPY package*.json ./

@@ -77,7 +77,7 @@ The **AI Unit** is a dedicated engineering team focused on Artificial Intelligen
 ## 4. Contact Information
 
 - **Company**: IT SmartFlex
-- **AI Hub Web Service**: https://ai-hub-webpage-358601432150.europe-west1.run.app
+- **AI Hub Production Web Service**: https://ai.itsmartflex.com
 - **LinkedIn**: https://ua.linkedin.com/company/it-smartflex
 - **Instagram**: https://www.instagram.com/itsmartflex/
 - **Email**: contact_us@itsmartflex.com

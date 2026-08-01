@@ -4,10 +4,10 @@
 
 ## Main Resources
 
-- [AI Hub Home](https://ai-hub-webpage-358601432150.europe-west1.run.app/): Overview of IT SmartFlex AI capabilities, enterprise AI products, and practical application scenarios.
-- [AI Solutions Catalog](https://ai-hub-webpage-358601432150.europe-west1.run.app/catalog/): Catalog of Business Cases and Use Cases implemented by the IT SmartFlex AI Unit.
-- [Case Studies Overview](https://ai-hub-webpage-358601432150.europe-west1.run.app/cases/): All 6 real-world enterprise case studies with metrics, technical architecture, and business outcomes.
-- [Full LLM Context](https://ai-hub-webpage-358601432150.europe-west1.run.app/llms-full.txt): Complete detailed text file containing technical specifications, AI product architectures, and case studies for LLM retrieval.
+- [AI Hub Home](https://ai.itsmartflex.com/): Overview of IT SmartFlex AI capabilities, enterprise AI products, and practical application scenarios.
+- [AI Solutions Catalog](https://ai.itsmartflex.com/catalog/): Catalog of Business Cases and Use Cases implemented by the IT SmartFlex AI Unit.
+- [Case Studies Overview](https://ai.itsmartflex.com/cases/): All 6 real-world enterprise case studies with metrics, technical architecture, and business outcomes.
+- [Full LLM Context](https://ai.itsmartflex.com/llms-full.txt): Complete detailed text file containing technical specifications, AI product architectures, and case studies for LLM retrieval.
 
 ## Core Case Studies Showcase
 
