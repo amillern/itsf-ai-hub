@@ -1,21 +1,22 @@
 # IT SmartFlex - AI Hub & Enterprise AI Solutions
 
-> IT SmartFlex is a technology company specializing in software engineering, digital transformation, Generative AI, AI Agents, Enterprise Knowledge Bases, Voice AI, and Intelligent Automation.
+> IT SmartFlex AI Hub is an enterprise solution showcase demonstrating practical AI applications: Generative AI, RAG Knowledge Bases, Voice & Support AI Bots, Document Intelligence (Doc AI), Copilot Dev Productivity, Business Analytics, and Computer Vision Robotics.
 
 ## Main Resources
 
-- [Home / Hero Overview](https://itsmartflex.com/): Overview of IT SmartFlex AI capabilities, enterprise AI products, and practical application scenarios.
-- [AI Solutions Catalog](https://itsmartflex.com/catalog): Practical catalog of business cases and use cases implemented by the IT SmartFlex AI Unit.
-- [Case Details - Customer Support AI Assistant](https://itsmartflex.com/cases): In-depth case study of an automated 24/7 customer service AI assistant integrated with Microsoft Teams & HPSM ITSM.
-- [Full LLM Knowledge Base](https://itsmartflex.com/llms-full.txt): Complete, detailed text file containing all company technical specifications, AI product details, frameworks, cloud integrations, and case studies for LLM training and retrieval.
+- [AI Hub Home](https://ai-hub-webpage-358601432150.europe-west1.run.app/): Overview of IT SmartFlex AI capabilities, enterprise AI products, and practical application scenarios.
+- [AI Solutions Catalog](https://ai-hub-webpage-358601432150.europe-west1.run.app/catalog/): Catalog of Business Cases and Use Cases implemented by the IT SmartFlex AI Unit.
+- [Case Studies Overview](https://ai-hub-webpage-358601432150.europe-west1.run.app/cases/): All 6 real-world enterprise case studies with metrics, technical architecture, and business outcomes.
+- [Full LLM Context](https://ai-hub-webpage-358601432150.europe-west1.run.app/llms-full.txt): Complete detailed text file containing technical specifications, AI product architectures, and case studies for LLM retrieval.
 
-## Core AI Expertise
+## Core Case Studies Showcase
 
-- **Generative AI & Agentic AI**: Large Language Models (LLMs), Small Language Models (SLMs), Retrieval-Augmented Generation (RAG), Multi-Agent architectures (LangChain, LangGraph, Semantic Kernel).
-- **Conversational & Support Automation**: Microsoft Teams Bots, omnichannel virtual assistants, automated complaint handling, ITSM incident creation (ZayaBot, Patriot Bot).
-- **Enterprise Knowledge Management**: RAG-based semantic search across Confluence, SharePoint, Notion, and corporate codebases.
-- **Voice AI & Telemarketing Analytics**: Real-time speech-to-text, text-to-speech, VoIP/SIP voice bots, automated call transcriptions, quality assessment, and sales analytics.
-- **Intelligent Process Automation**: DocAI document intelligence, contract entity extraction, workflow orchestration, and QA automation.
+1. **Customer Support AI Bot**: 24/7 AI-powered support bot with automated incident escalation, multi-language speech-to-text, and SLA reduction down to < 15 sec.
+2. **Doc AI Document Intelligence**: Automated OCR, entity extraction, and compliance checking for legal contracts, invoices, and logistics documentation.
+3. **RAG Enterprise Knowledge Base**: Semantic vector search (Qdrant) across corporate Confluence, SharePoint, and technical documentation with source attribution.
+4. **Copilot Dev Productivity**: AI assistant for automated code review, unit test generation, and pull request analysis integrated into CI/CD pipelines.
+5. **Business Analytics & Predictive AI**: Automated BI dashboard generation, anomaly detection, and predictive infrastructure metrics.
+6. **Robotics & Computer Vision**: Edge AI computer vision for quality control, defect detection on production lines, and robotic automation.
 
 ## Contact & Enterprise Inquiry
 

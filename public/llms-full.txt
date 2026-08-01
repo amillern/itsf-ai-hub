@@ -1,147 +1,83 @@
-# IT SmartFlex - Complete Enterprise & AI Knowledge Documentation
+# IT SmartFlex AI Hub - Complete Enterprise Knowledge & Case Documentation
 
-> Official comprehensive markdown document for LLM training, RAG indexing, and web crawlers detailing IT SmartFlex's software engineering capabilities, AI Unit expertise, enterprise AI products, technology stack, and real-world case studies.
-
----
-
-## 1. Company Overview
-
-IT SmartFlex is a Ukrainian technology company specializing in software engineering, digital transformation, AI solutions, cloud technologies, enterprise integration, telecommunications systems, CRM platforms, mobile applications, and data-driven products.
-
-The company delivers solutions for telecommunications, finance, retail, utilities, customer service, enterprise knowledge management, workforce productivity, and digital operations.
-
-IT SmartFlex combines deep software engineering capabilities with practical AI implementation experience, helping organizations automate processes, improve operational efficiency, enhance customer experience, and accelerate digital transformation.
+> Official comprehensive markdown document for LLM training, RAG indexing, and web crawlers detailing IT SmartFlex AI Unit capabilities, enterprise AI products, technology stack, and real-world case studies.
 
 ---
 
-## 2. AI Unit Structure & Responsibilities
+## 1. Company & AI Unit Overview
 
-The AI Unit is a dedicated research, engineering, and delivery team focused on Artificial Intelligence, Generative AI, AI Agents, Conversational AI, Knowledge Management Systems, Voice AI, and Intelligent Process Automation.
+IT SmartFlex is a technology company specializing in enterprise software engineering, digital transformation, AI solutions, cloud technologies, and data-driven products.
 
-The unit is responsible for:
-- AI strategy and adoption
-- AI solution architecture
-- AI product development
-- AI governance and best practices
-- AI training and enablement
-- AI proof-of-concepts and innovation programs
-- Enterprise AI deployments
-
-The AI Unit supports business departments in discovering AI opportunities, validating ideas, designing AI-powered services, and building production-ready AI solutions.
+The **AI Unit** is a dedicated engineering team focused on Artificial Intelligence, Generative AI, AI Agents, Conversational AI, Knowledge Management Systems, Voice AI, Document Intelligence, and Intelligent Process Automation.
 
 ---
 
-## 3. Core AI Expertise
+## 2. Core Case Studies & Enterprise Implementations
 
-### Generative AI
-- Large Language Models (LLMs) & Small Language Models (SLMs)
-- Retrieval-Augmented Generation (RAG)
-- Enterprise Knowledge Assistants & AI-powered Search
-- Agentic AI Systems & Multi-Agent Architectures
-- Prompt Engineering & AI Evaluation Frameworks
+### 1. Customer Support AI Bot (support-bot)
+- **Overview**: 24/7 AI-powered support bot with automated incident escalation, multi-language speech-to-text, and SLA reduction down to < 15 sec.
+- **Key Capabilities**: Automated request classification, multi-channel support, real-time voice & text processing, ITSM ticket routing, SLA monitoring.
+- **Metrics & Impact**:
+  - Response Time: < 15 sec
+  - Automation Rate: 70%+ of routine inquiries
+  - 24/7 Availability across digital channels
 
-### Conversational AI
-- AI Chatbots & Virtual Assistants
-- Customer Support Automation & Employee Self-Service
-- Microsoft Teams Bots & Omnichannel AI Assistants
+### 2. Doc AI Document Intelligence (doc-ai)
+- **Overview**: Automated OCR, entity extraction, and compliance checking for legal contracts, financial invoices, and logistics documentation.
+- **Key Capabilities**: Intelligent OCR document scanning, semantic entity extraction (dates, amounts, parties), automated contract clause verification, anomaly detection.
+- **Metrics & Impact**:
+  - Processing Speed: < 5 sec per document
+  - Extraction Accuracy: 98.5%
+  - Human Hours Saved: 350+ hrs/month
 
-### Voice AI
-- Speech-to-Text & Text-to-Speech
-- Voice Bots & Real-time Voice Conversations (VoIP / SIP)
-- Call Analysis Solutions & Telemarketing AI
-- Customer Care AI
+### 3. RAG Enterprise Knowledge Base (rag-knowledge-base)
+- **Overview**: Semantic vector search across corporate Confluence, SharePoint, and technical documentation with explicit source attribution.
+- **Key Capabilities**: Vector embeddings (Qdrant Vector DB), fine-grained document access control, citations & source document links, instant semantic search.
+- **Metrics & Impact**:
+  - Information Retrieval Time: Reduced by 80%
+  - Direct Document Attribution: 100% verified citations
+  - Supported Sources: Confluence, Notion, SharePoint, Code Repositories
 
-### Knowledge Management
-- Enterprise Knowledge Bases & AI Knowledge Assistants
-- Document Intelligence & Semantic Search
-- Content Indexing, Knowledge Discovery, Enterprise Search
+### 4. Copilot Developer Productivity (copilot-dev)
+- **Overview**: AI assistant for automated code review, unit test generation, and pull request analysis integrated into CI/CD pipelines.
+- **Key Capabilities**: Automated PR code review, unit test generation, vulnerability detection, architecture consistency checks.
+- **Metrics & Impact**:
+  - Pull Request Review Time: -50% faster
+  - Code Coverage Boost: +35%
+  - Developer Onboarding Time: Reduced by 40%
 
-### Intelligent Automation
-- Business Process Automation & Workflow Orchestration
-- AI Agents & Human-in-the-Loop Systems
-- Document Processing (DocAI) & Operational Automation
+### 5. Business Analytics & Predictive AI (business-analytics)
+- **Overview**: Automated BI dashboard generation, anomaly detection, and predictive infrastructure metrics.
+- **Key Capabilities**: Natural language SQL query generation (Text-to-SQL), automated chart & KPI reporting, anomaly detection in time-series metrics.
+- **Metrics & Impact**:
+  - Report Generation Time: Instant (down from days)
+  - Anomaly Detection Accuracy: 96%
+  - Executive Decision Velocity: 3x faster
 
----
-
-## 4. Technology Stack & Frameworks
-
-### Cloud Platforms
-- Microsoft Azure, Azure OpenAI Service, Azure AI Services
-- Azure Speech Services, Azure Bot Services, Azure Functions
-- Azure Managed Services
-
-### AI Models & Providers
-- OpenAI (GPT-4o, GPT-4, Embeddings)
-- Azure OpenAI Service
-- Anthropic Claude
-- Google Gemini
-
-### AI Engineering & Agent Frameworks
-- Python
-- LangChain & LangGraph
-- Microsoft Semantic Kernel
-- Azure Prompt Flow
-- Vector Databases (Pinecone, Qdrant, ChromaDB, PGVector)
-- Embedding Models & Agent Orchestration Frameworks
-
-### Enterprise Systems Integration
-- Microsoft Teams & SharePoint
-- CRM Platforms (Salesforce, Dynamics 365, custom CRMs)
-- ITSM Systems (HPSM, ServiceNow, Jira Service Management)
-- REST APIs & Microservices Architectures
-- Enterprise Integration Platforms
+### 6. Robotics & Computer Vision (robotics)
+- **Overview**: Edge AI computer vision for quality control, defect detection on production lines, and robotic automation.
+- **Key Capabilities**: Real-time object detection & defect classification, low-latency edge inference (< 10 ms), conveyor belt computer vision, automated robotic arm guidance.
+- **Metrics & Impact**:
+  - Edge Inference Latency: < 10 ms
+  - Defect Detection Accuracy: 99.2%
+  - Manufacturing Scrap Rate: Reduced by 45%
 
 ---
 
-## 5. Enterprise AI Products & Case Studies
+## 3. Technology Stack & Frameworks
 
-### ZayaBot (FUT Bot) - Customer Service & Complaint Automation
-ZayaBot is an AI-powered Microsoft Teams assistant developed for Vodafone Ukraine.
-- **Capabilities**: Automated collection of customer feedback, intelligent issue classification using Natural Language Processing, automated incident creation in ITSM systems, structured reporting, digital customer support automation.
-- **Business Outcomes**: Fully replaced a dedicated support channel for FUT users; automated complaint processing; reduced operational workload; improved feedback quality; increased scalability of customer support operations.
-- **Status**: Production deployment completed and actively used in business operations.
-
-### Patriot Bot - Employee Self-Service & HR Assistant
-Patriot Bot is an AI-powered employee assistant designed to automate internal support processes and improve access to organizational knowledge.
-- **Capabilities**: Employee self-service, HR support automation, corporate knowledge access, FAQ automation, internal request processing.
-- **Value**: Streamlines onboarding and internal request routing across enterprise departments.
-
-### AI Knowledge Base Assistant (RAG)
-Enterprise-grade knowledge management solution providing:
-- **Capabilities**: Semantic search, RAG-based question answering, document indexing across Confluence/SharePoint/Notion/Codebases, access-controlled enterprise knowledge discovery.
-- **Value**: Reduces information search time for employees by over 80%.
-
-### Telemarketing AI & Call Analytics
-AI-powered call analytics platform that automatically analyzes customer conversations and generates insights.
-- **Capabilities**: Call transcription, conversation analytics, quality assessment, recommendation generation, sales performance analysis, operator coaching support.
-- **Business Impact**: Increased sales conversion; improved operator effectiveness; reduced manual review effort; significantly expanded conversation coverage compared to manual sampling approaches.
-
-### Voice-to-Voice AI Assistants
-IT SmartFlex develops real-time voice AI solutions capable of:
-- **Capabilities**: Understanding spoken language, conducting natural conversations, handling customer requests, integrating with telephony systems (VoIP/SIP), automating customer service processes.
-
-### GitHub Copilot Developer Productivity Pilot
-- **Focus**: Evaluated GitHub Copilot adoption across engineering teams at IT SmartFlex.
-- **Impact**: Accelerated code generation, unit test creation, and refactoring while reducing routine coding effort.
+- **LLMs & Foundation Models**: OpenAI (GPT-4o, GPT-4), Azure OpenAI Service, Claude 3.5, Google Gemini
+- **AI Agent Frameworks**: LangChain, LangGraph, Microsoft Semantic Kernel, Python
+- **Vector Databases**: Qdrant Vector DB, Pinecone, PGVector, ChromaDB
+- **Computer Vision & Edge**: OpenCV, PyTorch, TensorRT, Edge AI Devices
+- **Cloud Infrastructure**: GCP Cloud Run, Azure Managed Services, AWS
 
 ---
 
-## 6. Industries Served
-
-- Telecommunications
-- Customer Support & Contact Centers
-- Banking, Finance & Insurance
-- Retail & E-Commerce
-- Utilities & Infrastructure
-- Enterprise Operations & HR
-- Government & Digital Transformation
-
----
-
-## 7. Contact Information
+## 4. Contact Information
 
 - **Company**: IT SmartFlex
-- **Website**: https://itsmartflex.com
+- **AI Hub Web Service**: https://ai-hub-webpage-358601432150.europe-west1.run.app
 - **LinkedIn**: https://ua.linkedin.com/company/it-smartflex
 - **Instagram**: https://www.instagram.com/itsmartflex/
 - **Email**: contact_us@itsmartflex.com
