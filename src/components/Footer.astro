@@ -1,97 +1,110 @@
 ---
+import { localizePath, useTranslations, type Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'uk' } = Astro.props;
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
 ---
 
-<footer class="mt-auto bg-[#161616] text-white py-10 sm:py-14 px-4 sm:px-12 transition-all border-t border-white/10 font-roboto">
-  <div class="max-w-7xl mx-auto space-y-8">
+<footer class="bg-[#161616] text-white pt-12 sm:pt-16 pb-8 border-t border-white/10 relative overflow-hidden">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 sm:space-y-12">
     
-    <!-- Top Row: Bright White Logo & Nav Links -->
-    <div class="flex flex-col sm:flex-row items-center justify-between gap-6">
-      <a href="/" class="flex items-center gap-2 group shrink-0">
-        <img 
-          src="/assets/logo.svg" 
-          alt="smartflex x AI Hub" 
-          width="216" 
-          height="52" 
-          loading="lazy" 
-          decoding="async" 
-          class="h-8 sm:h-9 w-auto brightness-0 invert transition-transform group-hover:scale-105" 
-        />
-      </a>
-
-      <nav class="flex items-center gap-6 text-sm font-semibold text-gray-300 font-fixel">
-        <a href="/" class="hover:text-white transition-colors">Головна</a>
-        <a href="/catalog/" class="hover:text-white transition-colors">AI-рішення</a>
-        <a href="/contacts/" class="hover:text-white transition-colors">Контакти</a>
-      </nav>
-    </div>
-
-    <!-- Divider 1 -->
-    <div class="border-t border-white/10 w-full"></div>
-
-    <!-- Middle Row: Descriptive Paragraphs & Round White Social Buttons -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <!-- Top Row: Logo, Navigation & Social Links -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 sm:gap-12 items-start">
       
-      <div class="lg:col-span-9 space-y-3 text-xs sm:text-sm text-gray-400 font-roboto leading-relaxed">
-        <p>
-          AI Hub IT SmartFlex - центр практичного застосування штучного інтелекту на основі досвіду компанії. AI Hub є частиною цифрової екосистеми IT SmartFlex та демонструє практичний досвід компанії у сфері штучного інтелекту.
+      <!-- Brand & Mission -->
+      <div class="lg:col-span-5 space-y-4">
+        <a href={lang === 'en' ? '/en/' : '/'} class="inline-block py-1">
+          <img 
+            src="/assets/logo-footer.svg" 
+            alt="smartflex x AI Hub" 
+            loading="lazy"
+            decoding="async"
+            class="h-8 sm:h-10 w-auto object-contain brightness-0 invert" 
+          />
+        </a>
+
+        <p class="text-gray-400 text-xs sm:text-sm leading-relaxed max-w-md font-roboto">
+          {lang === 'en' 
+            ? 'IT SmartFlex AI Unit delivers production-grade enterprise AI solutions, LLM multi-agent systems, RAG Knowledge bases, and intelligent process automation.'
+            : 'Екосистема практичних AI-рішень від IT SmartFlex AI Unit. Автоматизація рутинних операцій, RAG бази знань та інтелектуальні агенти для корпоративного бізнесу.'}
         </p>
-        <p class="text-gray-500 text-xs">
-          Матеріали сайту мають інформаційний характер і демонструють приклади та сценарії застосування технологій штучного інтелекту.
-        </p>
+
+        <div class="pt-2 flex items-center gap-3">
+          <a 
+            href="https://ua.linkedin.com/company/it-smartflex" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-red flex items-center justify-center transition-colors text-white"
+            aria-label="LinkedIn"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.74a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/>
+            </svg>
+          </a>
+
+          <a 
+            href="https://www.instagram.com/itsmartflex" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="w-9 h-9 rounded-full bg-white/10 hover:bg-brand-red flex items-center justify-center transition-colors text-white"
+            aria-label="Instagram"
+          >
+            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+            </svg>
+          </a>
+        </div>
       </div>
 
-      <div class="lg:col-span-3 flex items-center justify-start lg:justify-end gap-3.5">
-        <!-- Email Icon Button -->
-        <a
-          href="mailto:contact_us@itsmartflex.com"
-          title="Написати нам на пошту"
-          class="w-11 h-11 rounded-full bg-white text-[#161616] shadow-md flex items-center justify-center hover:bg-gray-200 hover:scale-105 transition-all"
-        >
-          <svg class="w-5 h-5 text-[#161616]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        </a>
+      <!-- Quick Navigation -->
+      <div class="lg:col-span-3 space-y-3 font-roboto">
+        <h4 class="text-xs font-bold font-fixel uppercase tracking-wider text-gray-300">
+          {lang === 'en' ? 'Navigation' : 'Навігація'}
+        </h4>
+        <ul class="space-y-2 text-xs text-gray-400">
+          <li><a href={lang === 'en' ? '/en/' : '/'} class="hover:text-white transition-colors">{t('nav.home')}</a></li>
+          <li><a href={lang === 'en' ? '/en/catalog/' : '/catalog/'} class="hover:text-white transition-colors">{t('nav.catalog')}</a></li>
+          <li><a href={lang === 'en' ? '/en/cases/' : '/cases/'} class="hover:text-white transition-colors">{t('nav.cases')}</a></li>
+          <li><a href={lang === 'en' ? '/en/contacts/' : '/contacts/'} class="hover:text-white transition-colors">{t('nav.contacts')}</a></li>
+        </ul>
+      </div>
 
-        <!-- LinkedIn Icon Button -->
-        <a
-          href="https://www.linkedin.com/company/it-smartflex"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="LinkedIn"
-          class="w-11 h-11 rounded-full bg-white text-[#161616] shadow-md flex items-center justify-center hover:bg-gray-200 hover:scale-105 transition-all"
-        >
-          <svg class="w-5 h-5 fill-current text-[#161616]" viewBox="0 0 24 24">
-            <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.6a1.49 1.49 0 0 0-1.49 1.49c0 .82.67 1.49 1.49 1.49a1.49 1.49 0 0 0 1.49-1.49c0-.82-.67-1.49-1.49-1.49Z" />
-          </svg>
-        </a>
-
-        <!-- Instagram Icon Button -->
-        <a
-          href="https://www.instagram.com/itsmartflex"
-          target="_blank"
-          rel="noopener noreferrer"
-          title="Instagram"
-          class="w-11 h-11 rounded-full bg-white text-[#161616] shadow-md flex items-center justify-center hover:bg-gray-200 hover:scale-105 transition-all"
-        >
-          <svg class="w-5 h-5 fill-none stroke-current text-[#161616]" stroke-width="2" viewBox="0 0 24 24">
-            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-          </svg>
-        </a>
+      <!-- Language Selector -->
+      <div class="lg:col-span-4 space-y-3 font-roboto">
+        <h4 class="text-xs font-bold font-fixel uppercase tracking-wider text-gray-300">
+          {lang === 'en' ? 'Language / Мова' : 'Мова / Language'}
+        </h4>
+        <div class="flex items-center gap-2">
+          {(['uk', 'en'] as const).map(l => (
+            <a
+              href={localizePath(currentPath, l)}
+              hreflang={l}
+              class:list={[
+                "px-3 py-1.5 text-xs font-bold font-fixel rounded-lg transition-colors border",
+                l === lang ? "bg-brand-red border-brand-red text-white" : "border-white/20 text-gray-400 hover:text-white hover:border-white/40"
+              ]}
+            >
+              {l === 'uk' ? 'Українська (UK)' : 'English (ENG)'}
+            </a>
+          ))}
+        </div>
       </div>
 
     </div>
 
-    <!-- Divider 2 -->
     <div class="border-t border-white/10 w-full"></div>
 
     <!-- Bottom Row: Copyright & Privacy Link -->
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-400 font-roboto">
-      <p>© 2026 IT SmartFlex. Всі права захищені.</p>
+      <p>{t('footer.rights')}</p>
       <div class="flex items-center gap-4">
-        <button type="button" onclick="if(typeof window.revokeCookieConsent === 'function'){ window.revokeCookieConsent(); }" class="hover:text-gray-200 transition-colors underline cursor-pointer">Налаштування cookie</button>
-        <a href="/privacy/" class="hover:text-gray-200 transition-colors underline">Політика конфіденційності</a>
+        <button type="button" onclick="if(typeof window.revokeCookieConsent === 'function'){ window.revokeCookieConsent(); }" class="hover:text-gray-200 transition-colors underline cursor-pointer">{t('cookie.settings')}</button>
+        <a href={lang === 'en' ? '/en/privacy/' : '/privacy/'} class="hover:text-gray-200 transition-colors underline">{t('cookie.privacy')}</a>
       </div>
     </div>
 

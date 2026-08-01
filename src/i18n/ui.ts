@@ -1,0 +1,171 @@
+export const languages = {
+  uk: 'Українська',
+  en: 'English',
+};
+
+export const defaultLang = 'uk';
+
+export const ui = {
+  uk: {
+    'nav.home': 'Головна',
+    'nav.catalog': 'Каталог AI-рішень',
+    'nav.cases': 'Кейси',
+    'nav.contacts': 'Контакти',
+
+    'hero.badge': 'IT SmartFlex AI Unit',
+    'hero.title': 'Екосистема практичних AI-рішень для вашого бізнесу',
+    'hero.subtitle': 'Автоматизуйте рутинні операції, прискорюйте прийняття рішень та покращуйте обслуговування клієнтів за допомогою готовіх AI-продуктів та індивідуальних розробок.',
+    'hero.btn.catalog': 'Перейти до каталогу',
+    'hero.btn.consult': 'Отримати консультацію',
+
+    'advantages.title': 'Чому AI Hub від IT SmartFlex?',
+    'advantages.sub': 'Ми поєднуємо глибоку інженерну експертизу з практичним досвідом впровадження ШІ у великі корпоративні системи.',
+    'advantages.1.title': 'Глибока інтеграція',
+    'advantages.1.desc': 'Впроваджуємо AI-моделі у вашу існуючу IT-інфраструктуру (ITSM, CRM, Teams, ERP) з дотриманням корпоративних стандартів безпеки.',
+    'advantages.2.title': 'Доведена вигода',
+    'advantages.2.desc': 'Кожне рішення орієнтоване на вимірюваний результат: скорочення часу обробки запитів, зменшення витрат або зростання конверсії.',
+    'advantages.3.title': 'Гнучка архітектура',
+    'advantages.3.desc': 'Використовуємо комбінацію мульти-агентних систем (LangChain/LangGraph), RAG та локальних LLM/SLM для оптимальної вартості й безпеки.',
+
+    'tasks.title': 'Оберіть задачу, яку хочете вирішити',
+    'tasks.sub': 'Натисніть на напрямок, щоб відкрити релевантні кейси та готові рішення в каталозі',
+
+    'cases.grid.title': 'Практичні кейси та продукти',
+    'cases.grid.sub': 'Готові рішення, розроблені та впроваджені нашою командою',
+    'cases.card.readmore': 'Детальніше про рішення',
+
+    'cta.banner.title': 'Маєте задачу, але не знаєте, чи допоможе AI?',
+    'cta.banner.sub': 'Обговоримо ваш сценарій та запропонуємо можливі підходи до автоматизації, підвищення продуктивності або покращення сервісу.',
+    'cta.banner.btn': 'Отримати консультацію',
+
+    'catalog.title': 'Каталог AI-рішень',
+    'catalog.sub': 'Ознайомтеся з нашими готовими бізнес-кейсами та технологічними сценаріями впровадження штучного інтелекту.',
+    'catalog.tab.all': 'Усі рішення',
+    'catalog.tab.business': 'Бізнес-кейси',
+    'catalog.tab.usecase': 'Use Cases',
+    'catalog.filter.btn': 'Фільтр за напрямками',
+    'catalog.filter.reset': 'Скинути всі фільтри',
+    'catalog.empty.title': 'За вашим запитом нічого не знайдено',
+    'catalog.empty.sub': 'Спробуйте скинути фільтри або обрати іншу категорію',
+
+    'case.back': 'Повернутися до каталогу',
+    'case.challenge': 'Бізнес виклик',
+    'case.solution': 'Рішення та архітектура',
+    'case.features': 'Ключові можливості',
+    'case.metrics': 'Цінність для бізнесу та метрики',
+    'case.scope': 'Сфера застосування',
+    'case.tech': 'Технологічний стек',
+    'case.cta.title': 'Хочете впровадити подібне рішення у вашій компанії?',
+    'case.cta.btn': 'Обговорити задачу',
+
+    'contacts.title': 'Зв\'язатися з нами',
+    'contacts.sub': 'Заповніть форму нижче, і наші AI-архітектори проконсультують вас щодо впровадження штучного інтелекту у ваш бізнес.',
+    'contacts.info.title': 'Контактна інформація',
+    'contacts.info.email': 'Email',
+    'contacts.info.location': 'Локація',
+    'contacts.info.address': 'м. Київ, Україна',
+
+    'form.firstName': 'Ім\'я',
+    'form.lastName': 'Прізвище',
+    'form.company': 'Компанія',
+    'form.email': 'Робочий Email',
+    'form.phone': 'Телефон',
+    'form.position': 'Посада',
+    'form.message': 'Опишіть вашу задачу або проект',
+    'form.submit': 'Обговорити задачу',
+    'form.submitting': 'Надсилання...',
+    'form.success': 'Дякуємо! Ваше повідомлення успішно надіслано. Ми зв\'яжемося з вами найближчим часом.',
+    'form.error': 'Помилка надсилання. Будь ласка, спробуйте ще раз або напишіть нам на пошту.',
+
+    'cookie.title': 'Ми використовуємо Cookie',
+    'cookie.text': 'Цей сайт використовує анонімізовані cookie для покращення користувацького досвіду та збору статистичних даних відповідно до політики конфіденційності.',
+    'cookie.accept': 'Прийняти всі',
+    'cookie.reject': 'Відхилити',
+    'cookie.settings': 'Налаштування cookie',
+    'cookie.privacy': 'Політика конфіденційності',
+
+    'footer.rights': '© 2026 IT SmartFlex. Всі права захищені.',
+  },
+  en: {
+    'nav.home': 'Home',
+    'nav.catalog': 'AI Solutions Catalog',
+    'nav.cases': 'Case Studies',
+    'nav.contacts': 'Contacts',
+
+    'hero.badge': 'IT SmartFlex AI Unit',
+    'hero.title': 'Ecosystem of Practical Enterprise AI Solutions',
+    'hero.subtitle': 'Automate routine operations, accelerate decision-making, and elevate customer service with production-ready AI products and custom engineering.',
+    'hero.btn.catalog': 'Explore AI Catalog',
+    'hero.btn.consult': 'Get Consultation',
+
+    'advantages.title': 'Why IT SmartFlex AI Hub?',
+    'advantages.sub': 'We combine deep software engineering expertise with hands-on experience deploying AI into large-scale corporate infrastructures.',
+    'advantages.1.title': 'Deep Integration',
+    'advantages.1.desc': 'We seamlessly integrate AI models into your existing IT infrastructure (ITSM, CRM, Teams, ERP) complying with enterprise security standards.',
+    'advantages.2.title': 'Measurable ROI',
+    'advantages.2.desc': 'Every solution is designed for tangible business outcomes: reduced processing SLA, lower operational expenses, or higher conversion rates.',
+    'advantages.3.title': 'Flexible Architecture',
+    'advantages.3.desc': 'We leverage multi-agent architectures (LangChain/LangGraph), RAG, and fine-tuned LLMs/SLMs for optimal performance, security, and cost efficiency.',
+
+    'tasks.title': 'Select the Business Challenge You Want to Solve',
+    'tasks.sub': 'Click a focus area to open relevant case studies and ready solutions in the catalog',
+
+    'cases.grid.title': 'Practical Case Studies & Products',
+    'cases.grid.sub': 'Production solutions designed, built, and deployed by our engineering team',
+    'cases.card.readmore': 'Learn More About Solution',
+
+    'cta.banner.title': 'Have a Business Task But Not Sure How AI Can Help?',
+    'cta.banner.sub': 'Let us discuss your scenario and propose practical approaches to automation, productivity gains, or service enhancement.',
+    'cta.banner.btn': 'Get Consultation',
+
+    'catalog.title': 'AI Solutions Catalog',
+    'catalog.sub': 'Explore our production-ready business cases and technical AI implementation scenarios.',
+    'catalog.tab.all': 'All Solutions',
+    'catalog.tab.business': 'Business Cases',
+    'catalog.tab.usecase': 'Use Cases',
+    'catalog.filter.btn': 'Filter by Category',
+    'catalog.filter.reset': 'Reset All Filters',
+    'catalog.empty.title': 'No Solutions Found for Your Query',
+    'catalog.empty.sub': 'Try clearing active filters or selecting another category',
+
+    'case.back': 'Back to AI Catalog',
+    'case.challenge': 'Business Challenge',
+    'case.solution': 'Solution & Architecture',
+    'case.features': 'Key Capabilities',
+    'case.metrics': 'Business Impact & Key Metrics',
+    'case.scope': 'Application Scope',
+    'case.tech': 'Technology Stack',
+    'case.cta.title': 'Looking to Implement a Similar Solution for Your Business?',
+    'case.cta.btn': 'Discuss Your Project',
+
+    'contacts.title': 'Get in Touch',
+    'contacts.sub': 'Fill out the form below, and our AI architects will advise you on adopting artificial intelligence for your business.',
+    'contacts.info.title': 'Contact Details',
+    'contacts.info.email': 'Email',
+    'contacts.info.location': 'Location',
+    'contacts.info.address': 'Kyiv, Ukraine',
+
+    'form.firstName': 'First Name',
+    'form.lastName': 'Last Name',
+    'form.company': 'Company',
+    'form.email': 'Work Email',
+    'form.phone': 'Phone Number',
+    'form.position': 'Job Title',
+    'form.message': 'Describe your business challenge or project',
+    'form.submit': 'Discuss Your Task',
+    'form.submitting': 'Sending...',
+    'form.success': 'Thank you! Your message has been sent successfully. Our team will get back to you shortly.',
+    'form.error': 'Failed to send message. Please try again or email us directly.',
+
+    'cookie.title': 'We Use Cookies',
+    'cookie.text': 'This website uses anonymized cookies to improve user experience and analyze traffic in accordance with our Privacy Policy.',
+    'cookie.accept': 'Accept All',
+    'cookie.reject': 'Reject',
+    'cookie.settings': 'Cookie Settings',
+    'cookie.privacy': 'Privacy Policy',
+
+    'footer.rights': '© 2026 IT SmartFlex. All rights reserved.',
+  },
+} as const;
+
+export type Lang = keyof typeof ui;

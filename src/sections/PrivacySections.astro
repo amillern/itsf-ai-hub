@@ -1,0 +1,71 @@
+---
+import { useTranslations, type Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'uk' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16 space-y-8 font-roboto">
+  
+  <div class="space-y-3 border-b border-gray-200 pb-8">
+    <h1 class="text-3xl sm:text-4xl font-fixel font-black text-text-main">
+      {lang === 'en' ? 'Privacy Policy' : 'Політика конфіденційності'}
+    </h1>
+    <p class="text-xs text-text-muted">
+      {lang === 'en' ? 'Effective Date: January 1, 2026' : 'Дата набрання чинності: 1 січня 2026 року'}
+    </p>
+  </div>
+
+  <div class="prose prose-gray max-w-none text-sm leading-relaxed space-y-6 text-text-main">
+    
+    <section class="space-y-2">
+      <h2 class="text-lg font-fixel font-bold text-text-main">
+        {lang === 'en' ? '1. General Provisions' : '1. Загальні положення'}
+      </h2>
+      <p class="text-text-muted">
+        {lang === 'en' 
+          ? 'IT SmartFlex is committed to protecting your privacy and personal data. This Privacy Policy explains how we collect, use, store, and process information obtained from users visiting our AI Hub web portal.'
+          : 'ТОВ «ІТ СмартФлекс» прагне захищати вашу конфіденційність та персональні дані. Ця Політика конфіденційності пояснює, як ми збираємо, використовуємо, зберігаємо та обробляємо інформацію, отриману від відвідувачів веб-порталу AI Hub.'}
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-lg font-fixel font-bold text-text-main">
+        {lang === 'en' ? '2. Information We Collect' : '2. Інформація, яку ми збираємо'}
+      </h2>
+      <p class="text-text-muted">
+        {lang === 'en'
+          ? 'We collect personal data that you voluntarily provide through contact forms (First Name, Last Name, Work Email, Phone, Company, Job Title, Message details). Additionally, we gather technical browser information and anonymized usage metrics.'
+          : 'Ми збираємо персональні дані, які ви добровільно надаєте через контактні форми (Ім\'я, Прізвище, Робочий Email, Телефон, Компанія, Посада, зміст звернення). Також збирається технічна інформація браузера та анонімізовані метрики відвідування.'}
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-lg font-fixel font-bold text-text-main">
+        {lang === 'en' ? '3. Analytics & Cookie Management' : '3. Сторонні аналітичні сервіси та файли Cookie'}
+      </h2>
+      <p class="text-text-muted">
+        {lang === 'en'
+          ? 'We utilize Google Analytics 4 (Consent Mode v2) and Amplitude SDK to measure aggregated traffic patterns and optimize user experience. No personal identifiers (PII) are shared with analytics platforms. You can accept, reject, or adjust your cookie preferences at any time.'
+          : 'Ми використовуємо Google Analytics 4 (GDPR Consent Mode v2) та Amplitude SDK для збору зведених статистичних даних та оптимізації роботи сайту. Персональні ідентифікатори не передаються в аналітичні сервіси. Ви можете прийняти, відхилити або змінити налаштування cookie в будь-який момент.'}
+      </p>
+    </section>
+
+    <section class="space-y-2">
+      <h2 class="text-lg font-fixel font-bold text-text-main">
+        {lang === 'en' ? '4. Contact Information' : '4. Контактні дані'}
+      </h2>
+      <p class="text-text-muted">
+        {lang === 'en'
+          ? 'If you have any questions regarding this Privacy Policy or wish to exercise your GDPR data rights, please contact us at contact_us@itsmartflex.com.'
+          : 'Якщо у вас є питання щодо цієї Політики конфіденційності або ви бажаєте скористатися своїми правами суб\'єкта даних, будь ласка, напишіть нам на пошту contact_us@itsmartflex.com.'}
+      </p>
+    </section>
+
+  </div>
+
+</div>

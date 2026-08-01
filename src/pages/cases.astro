@@ -1,79 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import FigmaStatusBadge from '../components/figma/FigmaStatusBadge.astro';
-import { caseStudies } from '../data/cases';
+import CasesListSections from '../sections/CasesListSections.astro';
 ---
 
-<Layout title="Case Studies | IT SmartFlex AI Hub" description="Практичні кейси застосування штучного інтелекту в IT SmartFlex.">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 space-y-8 sm:space-y-10">
-    
-    <!-- Breadcrumbs -->
-    <nav class="flex flex-wrap items-center text-xs text-[#515151] gap-1.5 sm:gap-2">
-      <a href="/" class="hover:text-brand-red font-medium">Головна</a>
-      <span>/</span>
-      <span class="text-text-main font-semibold">Case Studies</span>
-    </nav>
-
-    <!-- Main Header -->
-    <div class="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
-      <h1 class="text-3xl sm:text-5xl font-fixel font-extrabold text-text-main tracking-tight leading-tight">
-        Case Studies
-      </h1>
-      
-      <p class="text-sm sm:text-lg text-text-muted font-roboto leading-relaxed">
-        Реальні кейси впровадження AI-рішень для автоматизації, оптимізації процесів та підвищення продуктивності інженерних команд.
-      </p>
-    </div>
-
-    <!-- 6 Cases Grid -->
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-      {caseStudies.map((item) => (
-        <a 
-          href={`/cases/${item.slug}/`}
-          class="group bg-white rounded-3xl p-6 border border-gray-100 shadow-sm flex flex-col justify-between space-y-5 hover:-translate-y-2 hover:shadow-xl hover:border-brand-red/30 transition-all duration-300 cursor-pointer"
-        >
-          <div class="space-y-4">
-            <div class="rounded-2xl overflow-hidden bg-purple-900/10 h-48 border border-gray-100">
-              <img 
-                src={item.bannerImage} 
-                alt={item.title.uk} 
-                loading="lazy"
-                decoding="async"
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
-
-            <div class="flex items-center justify-between">
-              <FigmaStatusBadge variant="business">
-                {item.badge.uk}
-              </FigmaStatusBadge>
-            </div>
-
-            <h3 class="text-xl font-fixel font-bold text-text-main group-hover:text-brand-red transition-colors leading-snug">
-              {item.title.uk}
-            </h3>
-
-            <p class="text-xs sm:text-sm text-text-muted leading-relaxed font-roboto line-clamp-3">
-              {item.overview.uk}
-            </p>
-          </div>
-
-          <div class="pt-4 border-t border-gray-100 flex items-center justify-between">
-            <div class="flex flex-wrap gap-1.5">
-              {item.tags.slice(0, 2).map(tag => (
-                <span class="px-2.5 py-1 bg-gray-100 text-text-main rounded-full text-[10px] font-medium">
-                  {tag}
-                </span>
-              ))}
-            </div>
-            
-            <span class="text-xs font-bold text-brand-red group-hover:translate-x-1 transition-transform flex items-center gap-1">
-              Читати далі →
-            </span>
-          </div>
-        </a>
-      ))}
-    </div>
-
-  </div>
+<Layout 
+  title="Практичні AI-кейси | IT SmartFlex AI Hub"
+  description="Реальні кейси впровадження штучного інтелекту: підтримка 24/7, DocAI, RAG бази знань, Dev Copilot та прогнозна аналітика."
+  lang="uk"
+>
+  <CasesListSections lang="uk" />
 </Layout>

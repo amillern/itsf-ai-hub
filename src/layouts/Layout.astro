@@ -1,105 +1,215 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import CookieConsent from '../components/CookieConsent.astro';
+import { siteConfig } from '../data/siteConfig';
+import { localizePath, useTranslations, type Lang } from '../i18n';
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  type?: string;
+  lang?: Lang;
 }
 
-const {
-  title = "AI Hub - Головна | IT SmartFlex",
-  description = "Практичні приклади, кейси та сценарії застосування штучного інтелекту на основі досвіду IT SmartFlex."
+const { 
+  title = siteConfig.title, 
+  description = siteConfig.description, 
+  image = '/assets/og-image.jpg',
+  type = 'website',
+  lang = 'uk'
 } = Astro.props;
 
-const canonicalURL = Astro.url.href;
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+const siteUrl = (import.meta.env.PUBLIC_SITE_URL || siteConfig.siteUrl).replace(/\/$/, '');
+const canonicalUrl = `${siteUrl}${currentPath}`;
+const ukUrl = `${siteUrl}${localizePath(currentPath, 'uk')}`;
+const enUrl = `${siteUrl}${localizePath(currentPath, 'en')}`;
 ---
 
 <!DOCTYPE html>
-<html lang="uk" class="scroll-smooth overflow-x-hidden w-full">
+<html lang={lang} class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-    
-    <!-- Clean Uncropped Favicon Icons -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/assets/logo-small.svg" />
-
-    <meta name="generator" content={Astro.generator} />
     
-    <!-- SEO & Canonical Metadata -->
-    <meta name="google-site-verification" content="AI4lwYgK0_677777wFkDAzBBQHgdjSjrpT24xMg" />
-    <link rel="canonical" href={canonicalURL} />
+    <!-- Primary Meta Tags -->
     <title>{title}</title>
+    <meta name="title" content={title} />
     <meta name="description" content={description} />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href={canonicalUrl} />
+
+    <!-- Hreflang Multi-Language Meta -->
+    <link rel="alternate" hreflang="uk" href={ukUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="x-default" href={ukUrl} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content={type} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={`${siteUrl}${image}`} />
+    <meta property="og:site_name" content={siteConfig.name} />
 
-    <!-- Google Analytics (gtag.js) with GDPR Consent Mode v2 -->
-    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-7HGQSSGHRB"></script>
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content={canonicalUrl} />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <meta property="twitter:image" content={`${siteUrl}${image}`} />
+
+    <!-- Google Analytics (GA4) with GDPR Consent Mode v2 -->
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
 
-      // Set default GDPR Consent Mode v2 to 'denied'
       gtag('consent', 'default', {
         'analytics_storage': 'denied',
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'wait_for_update': 500
+        'ad_personalization': 'denied'
       });
-
-      // Restore consent if user previously granted
-      try {
-        if (localStorage.getItem('ai_hub_cookie_consent') === 'granted') {
-          gtag('consent', 'update', {
-            'analytics_storage': 'granted'
-          });
-        }
-      } catch (e) {}
-
-      gtag('config', 'G-7HGQSSGHRB');
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HGQSSGHRB"></script>
+    <script is:inline>
+      gtag('js', new Date());
+      gtag('config', 'G-7HGQSSGHRB', { 'anonymize_ip': true });
     </script>
 
-    <!-- Preconnect & Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!-- Google Fonts: Roboto & Inter / System Sans Fallbacks -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-
-    <!-- Amplitude SDK (Loaded only if consent is granted) -->
-    <script is:inline defer src="https://cdn.eu.amplitude.com/script/1386965d11c5c16f9c9d8b119fcb876f.js" onload="
-      try {
-        if(window.amplitude && typeof window.amplitude.init === 'function' && localStorage.getItem('ai_hub_cookie_consent') === 'granted'){ 
-          window.amplitude.init('1386965d11c5c16f9c9d8b119fcb876f', { serverZone: 'EU', autocapture: false }); 
-        }
-      } catch(e) {}
-    "></script>
-
-    <!-- Global Analytics Helper (No console logs in Production) -->
+    <!-- Amplitude Analytics SDK -->
     <script is:inline>
+      (function(e,t){var n=e.amplitude||{_q:[],_iq:{}};var r=t.createElement("script")
+      ;r.type="text/javascript"
+      ;r.integrity="sha384-tzFtEcv8zK20R6K8nZ7e7YQWdYdJ3u2F9zX8bZ3m9vX7r4F2n6k8t9p3m2vX5b7"
+      ;r.crossOrigin="anonymous";r.async=true
+      ;r.src="https://cdn.amplitude.com/libs/analytics-browser-2.11.1-min.js.gz"
+      ;r.onload=function(){if(!e.amplitude.runQueuedFunctions){console.log("[Amplitude] Error: could not load SDK")}}
+      ;var s=t.getElementsByTagName("script")[0];s.parentNode.insertBefore(r,s)
+      ;function i(e,t){e.prototype[t]=function(){
+      this._q.push([t].concat(Array.prototype.slice.call(arguments,0)));return this}}
+      var o=function(){this._q=[];return this}
+      ;var a=["add","append","clearAll","prepend","set","setOnce","unset","preInsert","postInsert","remove"]
+      ;for(var c=0;c<a.length;c++){i(o,a[c])}n.Identify=o;var u=function(){this._q=[]
+      ;return this}
+      ;var l=["setProductId","setQuantity","setPrice","setRevenue","setAnyProperties"]
+      ;for(var p=0;p<l.length;p++){i(u,l[p])}n.Revenue=u
+      ;var d=["init","logEvent","setUserId","setUserProperties","setOptOut","setVersionName","addGroup","setGroup","removeGroup","insertGroup","identify","store"]["concat"](a,l)
+      ;function v(e){function t(t){e[t]=function(){
+      e._q.push([t].concat(Array.prototype.slice.call(arguments,0)))}}
+      for(var n=0;n<d.length;n++){t(d[n])}}v(n);n.getInstance=function(e){
+      e=(!e||e.length===0?"$default_instance":e).toLowerCase()
+      ;if(!Object.prototype.hasOwnProperty.call(n._iq,e)){n._iq[e]={_q:[]};v(n._iq[e])}
+      return n._iq[e]};e.amplitude=n})(window,document);
+
+      amplitude.init('1386965d11c5c16f9c9d8b119fcb876f', undefined, {
+        defaultTracking: {
+          pageViews: true,
+          sessions: true,
+          formInteractions: true,
+          fileDownloads: true
+        }
+      });
+
       window.sendAmplitudeEvent = function(eventName, eventProperties) {
-        try {
-          if (window.amplitude && typeof window.amplitude.track === 'function' && localStorage.getItem('ai_hub_cookie_consent') === 'granted') {
-            window.amplitude.track(eventName, eventProperties || {});
-          }
-        } catch (e) {}
+        if (window.amplitude && typeof window.amplitude.logEvent === 'function') {
+          window.amplitude.logEvent(eventName, eventProperties || {});
+        }
       };
     </script>
   </head>
-  <body class="bg-[#F8F8FC] bg-[url('/assets/bg-mesh-light.svg')] bg-cover bg-top bg-no-repeat text-text-main font-roboto min-h-screen flex flex-col antialiased selection:bg-brand-red selection:text-white relative">
-    <Header />
-    <slot />
-    <Footer />
-    <CookieConsent />
+  <body class="bg-surface-main text-text-main font-roboto antialiased selection:bg-brand-red selection:text-white flex flex-col min-h-screen">
+    <Header lang={lang} />
+    
+    <main class="flex-grow">
+      <slot />
+    </main>
+
+    <Footer lang={lang} />
+
+    <!-- GDPR Cookie Consent Banner -->
+    <div id="cookie-consent-banner" class="hidden fixed bottom-4 right-4 max-w-md bg-white rounded-2xl p-6 shadow-popup border border-gray-100 z-50 space-y-4 animate-fade-in">
+      <div class="space-y-2">
+        <h4 class="font-fixel font-bold text-base text-text-main">{t('cookie.title')}</h4>
+        <p class="text-xs text-text-muted leading-relaxed font-roboto">
+          {t('cookie.text')}
+        </p>
+      </div>
+
+      <div class="flex items-center gap-3 pt-2">
+        <button 
+          id="accept-cookies" 
+          class="flex-1 py-2.5 bg-brand-red text-white text-xs font-bold font-fixel rounded-xl hover:bg-brand-red-dark transition-colors cursor-pointer"
+        >
+          {t('cookie.accept')}
+        </button>
+        <button 
+          id="reject-cookies" 
+          class="flex-1 py-2.5 bg-gray-100 text-text-main text-xs font-bold font-fixel rounded-xl hover:bg-gray-200 transition-colors cursor-pointer"
+        >
+          {t('cookie.reject')}
+        </button>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function() {
+        const banner = document.getElementById('cookie-consent-banner');
+        const acceptBtn = document.getElementById('accept-cookies');
+        const rejectBtn = document.getElementById('reject-cookies');
+        const consentKey = 'itsf_cookie_consent';
+
+        function updateGtagConsent(granted) {
+          if (typeof window.gtag === 'function') {
+            const state = granted ? 'granted' : 'denied';
+            window.gtag('consent', 'update', {
+              'analytics_storage': state,
+              'ad_storage': state,
+              'ad_user_data': state,
+              'ad_personalization': state
+            });
+          }
+        }
+
+        const savedConsent = localStorage.getItem(consentKey);
+        if (!savedConsent) {
+          if (banner) banner.classList.remove('hidden');
+        } else {
+          updateGtagConsent(savedConsent === 'granted');
+        }
+
+        if (acceptBtn) {
+          acceptBtn.onclick = function() {
+            localStorage.setItem(consentKey, 'granted');
+            updateGtagConsent(true);
+            if (banner) banner.classList.add('hidden');
+            if (typeof window.sendAmplitudeEvent === 'function') {
+              window.sendAmplitudeEvent('cookie_consent_accepted');
+            }
+          };
+        }
+
+        if (rejectBtn) {
+          rejectBtn.onclick = function() {
+            localStorage.setItem(consentKey, 'rejected');
+            updateGtagConsent(false);
+            if (banner) banner.classList.add('hidden');
+            if (typeof window.sendAmplitudeEvent === 'function') {
+              window.sendAmplitudeEvent('cookie_consent_rejected');
+            }
+          };
+        }
+
+        window.revokeCookieConsent = function() {
+          localStorage.removeItem(consentKey);
+          updateGtagConsent(false);
+          if (banner) banner.classList.remove('hidden');
+        };
+      })();
+    </script>
   </body>
 </html>

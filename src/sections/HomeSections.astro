@@ -1,0 +1,341 @@
+---
+import SolutionCard from '../components/SolutionCard.astro';
+import { caseStudies } from '../data/cases';
+import { useTranslations, type Lang } from '../i18n';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'uk' } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<div class="space-y-16 sm:space-y-24 pb-16 sm:pb-24">
+  
+  <!-- Hero Section -->
+  <section class="relative pt-6 sm:pt-12 overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      
+      <div class="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 sm:py-2 rounded-full bg-brand-red-soft border border-brand-red/20 text-brand-red font-fixel font-semibold text-xs sm:text-sm mb-6 sm:mb-8 animate-fade-in shadow-xs">
+        <span class="w-2 h-2 rounded-full bg-brand-red animate-pulse"></span>
+        <span>{t('hero.badge')}</span>
+      </div>
+
+      <div class="max-w-4xl space-y-4 sm:space-y-6">
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-fixel font-black tracking-tight text-text-main leading-[1.1] sm:leading-[1.15]">
+          {t('hero.title')}
+        </h1>
+
+        <p class="text-text-muted text-base sm:text-xl leading-relaxed max-w-3xl font-roboto font-normal">
+          {t('hero.subtitle')}
+        </p>
+
+        <div class="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
+          <a
+            href={lang === 'en' ? '/en/catalog/' : '/catalog/'}
+            class="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-brand-red hover:bg-brand-red-dark text-white font-fixel font-bold text-sm sm:text-base rounded-full shadow-lg hover:shadow-[0_10px_30px_rgba(230,0,0,0.4)] hover:-translate-y-0.5 transition-all duration-300 active:scale-95 gap-2"
+          >
+            <span>{t('hero.btn.catalog')}</span>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+
+          <a
+            id="get-consultation-btn"
+            href="https://ua.linkedin.com/company/it-smartflex"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-white hover:bg-surface-variant text-text-main border border-surface-border font-fixel font-bold text-sm sm:text-base rounded-full shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-300 active:scale-95 gap-2"
+          >
+            <span>{t('hero.btn.consult')}</span>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Interactive Promo Showcase Carousel -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div id="promo-carousel" tabindex="0" aria-label="AI Products Showcase" class="bg-gradient-to-br from-[#0D0422] via-[#14082B] to-[#1A0B38] rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 lg:p-14 text-white relative overflow-hidden shadow-2xl border border-white/10 group/carousel focus:outline-none focus:ring-2 focus:ring-brand-red">
+      
+      <div class="absolute -right-20 -top-20 w-96 h-96 bg-brand-red/20 rounded-full blur-[100px] pointer-events-none group-hover/carousel:scale-125 transition-transform duration-700"></div>
+
+      <!-- Slide Items -->
+      <div class="relative min-h-[320px] sm:min-h-[280px] flex flex-col justify-between">
+        {caseStudies.slice(0, 4).map((item, idx) => (
+          <div 
+            class:list={[
+              "promo-slide transition-all duration-500",
+              idx === 0 ? "block opacity-100" : "hidden opacity-0 absolute inset-0"
+            ]}
+            data-slide-index={idx}
+            data-slide-title={item.title[lang]}
+          >
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 text-brand-red-soft font-fixel font-semibold text-xs mb-4">
+              <span>{item.badge[lang]}</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-4xl lg:text-5xl font-fixel font-extrabold text-white tracking-tight leading-tight mb-4">
+              {item.title[lang]}
+            </h2>
+
+            <p class="text-gray-300 text-sm sm:text-lg leading-relaxed max-w-3xl font-roboto mb-6 font-normal">
+              {item.subtitle[lang]}
+            </p>
+
+            <a
+              href={lang === 'en' ? `/en/cases/${item.slug}/` : `/cases/${item.slug}/`}
+              class="inline-flex items-center text-sm sm:text-base font-bold text-white hover:text-brand-red transition-colors gap-2"
+            >
+              <span>{t('cases.card.readmore')}</span>
+              <svg class="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </a>
+          </div>
+        ))}
+      </div>
+
+      <!-- Carousel Navigation Dots -->
+      <div class="flex items-center gap-2 pt-6 sm:pt-8 border-t border-white/10 mt-6 relative z-10">
+        {caseStudies.slice(0, 4).map((_, idx) => (
+          <button
+            type="button"
+            class:list={[
+              "dot-btn h-2.5 rounded-full transition-all duration-300 cursor-pointer",
+              idx === 0 ? "bg-brand-red w-7" : "bg-white/40 w-3 hover:bg-white/70"
+            ]}
+            data-dot-index={idx}
+            aria-label={`Slide ${idx + 1}`}
+          ></button>
+        ))}
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Advantages Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto space-y-4 mb-12 sm:mb-16">
+      <h2 class="text-2xl sm:text-4xl font-fixel font-black tracking-tight text-text-main">
+        {t('advantages.title')}
+      </h2>
+      <p class="text-text-muted text-sm sm:text-base font-roboto">
+        {t('advantages.sub')}
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow space-y-4">
+        <div class="w-12 h-12 rounded-2xl bg-brand-red-soft text-brand-red flex items-center justify-center font-bold text-xl">
+          01
+        </div>
+        <h3 class="text-xl font-fixel font-bold text-text-main">{t('advantages.1.title')}</h3>
+        <p class="text-text-muted text-sm leading-relaxed font-roboto">{t('advantages.1.desc')}</p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow space-y-4">
+        <div class="w-12 h-12 rounded-2xl bg-brand-red-soft text-brand-red flex items-center justify-center font-bold text-xl">
+          02
+        </div>
+        <h3 class="text-xl font-fixel font-bold text-text-main">{t('advantages.2.title')}</h3>
+        <p class="text-text-muted text-sm leading-relaxed font-roboto">{t('advantages.2.desc')}</p>
+      </div>
+
+      <div class="bg-white rounded-3xl p-6 sm:p-8 border border-gray-100 shadow-sm hover:shadow-md transition-shadow space-y-4">
+        <div class="w-12 h-12 rounded-2xl bg-brand-red-soft text-brand-red flex items-center justify-center font-bold text-xl">
+          03
+        </div>
+        <h3 class="text-xl font-fixel font-bold text-text-main">{t('advantages.3.title')}</h3>
+        <p class="text-text-muted text-sm leading-relaxed font-roboto">{t('advantages.3.desc')}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Choose a Task Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 border border-gray-100 shadow-card space-y-8">
+      <div class="text-center max-w-2xl mx-auto space-y-3">
+        <h2 class="text-2xl sm:text-3xl font-fixel font-extrabold text-text-main">
+          {t('tasks.title')}
+        </h2>
+        <p class="text-text-muted text-xs sm:text-sm font-roboto">
+          {t('tasks.sub')}
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-2.5 sm:gap-3 justify-center">
+        {caseStudies.flatMap(c => c.tags[lang]).filter((v, i, a) => a.indexOf(v) === i).slice(0, 8).map(tag => (
+          <a
+            href={lang === 'en' ? `/en/catalog/?tag=${encodeURIComponent(tag)}` : `/catalog/?tag=${encodeURIComponent(tag)}`}
+            class="px-4 py-2.5 bg-gray-50 hover:bg-brand-red-soft border border-gray-200 hover:border-brand-red/30 text-text-main hover:text-brand-red font-fixel font-semibold text-xs sm:text-sm rounded-full transition-all duration-200 shadow-2xs hover:shadow-sm"
+          >
+            #{tag}
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Cases Grid -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8 sm:mb-12">
+      <div>
+        <h2 class="text-2xl sm:text-4xl font-fixel font-black tracking-tight text-text-main mb-2">
+          {t('cases.grid.title')}
+        </h2>
+        <p class="text-text-muted text-sm sm:text-base font-roboto">
+          {t('cases.grid.sub')}
+        </p>
+      </div>
+
+      <a
+        href={lang === 'en' ? '/en/catalog/' : '/catalog/'}
+        class="inline-flex items-center text-sm font-bold text-brand-red hover:text-brand-red-dark transition-colors gap-1.5"
+      >
+        <span>{t('hero.btn.catalog')}</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {caseStudies.map((item) => (
+        <SolutionCard caseStudy={item} lang={lang} />
+      ))}
+    </div>
+  </section>
+
+  <!-- CTA Banner Section -->
+  <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="bg-gradient-to-r from-[#002B99] via-[#0A115E] to-[#120440] rounded-[24px] sm:rounded-[32px] p-6 sm:p-10 lg:p-14 text-white relative overflow-hidden shadow-popup grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-center group/banner">
+      <div class="absolute -right-20 -bottom-20 w-96 h-96 bg-blue-500/20 rounded-full blur-[100px] pointer-events-none group-hover/banner:scale-125 transition-transform duration-700"></div>
+
+      <div class="lg:col-span-8 space-y-4 sm:space-y-6 relative z-10">
+        <h2 class="text-2xl sm:text-4xl lg:text-5xl font-fixel font-extrabold text-white tracking-tight leading-tight">
+          {t('cta.banner.title')}
+        </h2>
+
+        <p class="text-gray-200 text-xs sm:text-lg leading-relaxed max-w-2xl font-roboto">
+          {t('cta.banner.sub')}
+        </p>
+
+        <div class="pt-2">
+          <a 
+            id="get-consultation-btn-banner"
+            href="https://ua.linkedin.com/company/it-smartflex" 
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group/consult inline-flex items-center justify-center w-full sm:w-auto px-6 sm:px-8 py-3.5 sm:py-4 bg-brand-red hover:bg-brand-red-dark text-white font-fixel font-bold text-xs sm:text-base rounded-full shadow-lg hover:shadow-[0_10px_30px_rgba(230,0,0,0.4)] hover:-translate-y-0.5 transition-all duration-300 active:scale-95 gap-2"
+          >
+            <span>{t('cta.banner.btn')}</span>
+            <svg class="w-4 h-4 sm:w-5 sm:h-5 group-hover/consult:translate-x-1 group-hover/consult:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <div class="lg:col-span-4 flex justify-center lg:justify-end relative z-10">
+        <div class="text-6xl sm:text-8xl lg:text-9xl font-fixel font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-white via-blue-100 to-blue-300 drop-shadow-[0_0_35px_rgba(255,255,255,0.6)] select-none group-hover/banner:scale-105 transition-transform duration-500">
+          AI
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.promo-slide');
+  const dotBtns = document.querySelectorAll('.dot-btn');
+  const totalSlides = slides.length;
+  let autoSlideTimer: any;
+
+  function goToSlide(index: number, isManual = false) {
+    currentSlide = index;
+
+    slides.forEach((slide, idx) => {
+      if (idx === currentSlide) {
+        slide.classList.remove('hidden', 'opacity-0', 'absolute', 'inset-0');
+        slide.classList.add('block', 'opacity-100');
+
+        if (isManual && typeof (window as any).sendAmplitudeEvent === 'function') {
+          const slideTitle = slide.getAttribute('data-slide-title') || '';
+          (window as any).sendAmplitudeEvent('carousel_slide_change', {
+            slide_index: idx,
+            slide_title: slideTitle,
+            manual_click: true
+          });
+        }
+      } else {
+        slide.classList.remove('block', 'opacity-100');
+        slide.classList.add('hidden', 'opacity-0', 'absolute', 'inset-0');
+      }
+    });
+
+    dotBtns.forEach((dot, idx) => {
+      if (idx === currentSlide) {
+        dot.classList.remove('bg-white/40', 'w-3');
+        dot.classList.add('bg-brand-red', 'w-7');
+      } else {
+        dot.classList.remove('bg-brand-red', 'w-7');
+        dot.classList.add('bg-white/40', 'w-3');
+      }
+    });
+  }
+
+  function prevSlide() {
+    const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+    goToSlide(prev, true);
+  }
+
+  function nextSlide() {
+    const next = (currentSlide + 1) % totalSlides;
+    goToSlide(next, false);
+  }
+
+  dotBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      const target = e.currentTarget as HTMLElement;
+      const index = parseInt(target.getAttribute('data-dot-index') || '0', 10);
+      goToSlide(index, true);
+      resetAutoSlide();
+    });
+  });
+
+  const carouselEl = document.getElementById('promo-carousel');
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  if (carouselEl) {
+    carouselEl.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+    carouselEl.addEventListener('mouseleave', () => resetAutoSlide());
+
+    carouselEl.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+        resetAutoSlide();
+      } else if (e.key === 'ArrowRight') {
+        nextSlide();
+        resetAutoSlide();
+      }
+    });
+  }
+
+  function resetAutoSlide() {
+    clearInterval(autoSlideTimer);
+    if (!prefersReducedMotion) {
+      autoSlideTimer = setInterval(nextSlide, 5000);
+    }
+  }
+
+  resetAutoSlide();
+</script>
