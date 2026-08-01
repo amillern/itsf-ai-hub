@@ -1,0 +1,211 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import FigmaStatusBadge from '../../components/figma/FigmaStatusBadge.astro';
+import { caseStudies } from '../../data/cases';
+
+export function getStaticPaths() {
+  return caseStudies.map(c => ({
+    params: { slug: c.slug },
+    props: { caseStudy: c }
+  }));
+}
+
+const { caseStudy } = Astro.props;
+---
+
+<Layout title={`${caseStudy.title.uk} | IT SmartFlex AI Hub`} description={caseStudy.overview.uk}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 space-y-8 sm:space-y-10">
+    
+    <!-- Breadcrumbs -->
+    <nav class="flex flex-wrap items-center text-xs text-[#515151] gap-1.5 sm:gap-2">
+      <a href="/" class="hover:text-brand-red font-medium">Головна</a>
+      <span>/</span>
+      <a href="/catalog/" class="hover:text-brand-red font-medium">Каталог AI-рішень</a>
+      <span>/</span>
+      <span class="text-text-main font-semibold">{caseStudy.title.uk}</span>
+    </nav>
+
+    <!-- Main Grid matching Prototype Screenshot -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+      
+      <!-- Left Column: Case Meta, Title, Business Tasks & Applications -->
+      <div class="lg:col-span-5 space-y-6 sm:space-y-8">
+        
+        <!-- Top Badge -->
+        <div>
+          <FigmaStatusBadge variant="business">
+            {caseStudy.badge.uk}
+          </FigmaStatusBadge>
+        </div>
+
+        <!-- Short Name -->
+        <p class="text-sm sm:text-base font-semibold text-text-muted font-fixel">
+          {caseStudy.title.uk}
+        </p>
+
+        <!-- Full Title -->
+        <h1 class="text-2xl sm:text-4xl lg:text-5xl font-fixel font-extrabold text-text-main leading-tight tracking-tight">
+          {caseStudy.subtitle.uk}
+        </h1>
+
+        <!-- Section: Бізнес задача -->
+        <div class="space-y-3 pt-2">
+          <h3 class="text-base sm:text-lg font-fixel font-bold text-[#A10000]">
+            Бізнес задача:
+          </h3>
+
+          <div class="flex flex-wrap gap-2">
+            {caseStudy.tags.map(tag => (
+              <span class="px-3.5 sm:px-4 py-1.5 sm:py-2 bg-white border border-gray-300 text-text-main text-[11px] sm:text-xs font-semibold rounded-full shadow-2xs font-roboto">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <!-- Section: Сфера застосування -->
+        <div class="space-y-3 pt-2">
+          <h3 class="text-base sm:text-lg font-fixel font-bold text-[#A10000]">
+            Сфера застосування:
+          </h3>
+
+          <ul class="space-y-2.5 text-xs sm:text-sm font-semibold text-text-main font-roboto">
+            {caseStudy.keyFeatures.map(feat => (
+              <li class="flex items-center gap-2.5">
+                <svg class="w-4 h-4 text-brand-red shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>{feat.title.uk}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Top 3D Image Card & Complexity Ratings + Bottom Challenge/Solution Grid -->
+      <div class="lg:col-span-7 space-y-6 sm:space-y-8">
+        
+        <!-- Top Card: 3D Banner & Complexity Ratings -->
+        <div class="bg-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 border border-gray-100 shadow-card space-y-6">
+          
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+            
+            <!-- Left 3D Illustration -->
+            <div class="md:col-span-7 rounded-2xl overflow-hidden bg-purple-900/10 h-48 sm:h-56 border border-gray-100">
+              <img 
+                src={caseStudy.bannerImage} 
+                alt={caseStudy.title.uk} 
+                class="w-full h-full object-cover"
+              />
+            </div>
+
+            <!-- Right Complexity Star Ratings -->
+            <div class="md:col-span-5 space-y-4 sm:space-y-6">
+              
+              <!-- Complexity Without AI -->
+              <div class="space-y-1">
+                <h4 class="text-xs sm:text-sm font-fixel font-bold text-text-main">
+                  Складність без ШІ:
+                </h4>
+                <div class="flex items-center gap-1 text-amber-400 text-base sm:text-lg">
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span>★</span>
+                  <span class="text-gray-300">☆</span>
+                </div>
+              </div>
+
+              <!-- Complexity With AI -->
+              <div class="space-y-1">
+                <h4 class="text-xs sm:text-sm font-fixel font-bold text-text-main">
+                  Складність з ШІ:
+                </h4>
+                <div class="flex items-center gap-1 text-emerald-500 text-base sm:text-lg">
+                  <span>★</span>
+                  <span class="text-gray-300">☆</span>
+                  <span class="text-gray-300">☆</span>
+                  <span class="text-gray-300">☆</span>
+                  <span class="text-gray-300">☆</span>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+          <!-- Description Text Below Image -->
+          <p class="text-text-muted text-xs sm:text-base leading-relaxed font-roboto border-t border-gray-100 pt-6">
+            {caseStudy.overview.uk}
+          </p>
+
+        </div>
+
+        <!-- Bottom Card: 2x2 Grid -->
+        <div class="bg-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 border border-gray-100 shadow-card grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8">
+          
+          <!-- Item 1: Бізнес виклик -->
+          <div class="space-y-3">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center text-base sm:text-lg font-bold">
+              ❖
+            </div>
+            <h4 class="text-sm sm:text-base font-fixel font-bold text-text-main">
+              Бізнес виклик:
+            </h4>
+            <p class="text-xs sm:text-sm text-text-muted leading-relaxed font-roboto">
+              {caseStudy.challenge.uk}
+            </p>
+          </div>
+
+          <!-- Item 2: Рішення -->
+          <div class="space-y-3">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center text-base sm:text-lg font-bold">
+              ☩
+            </div>
+            <h4 class="text-sm sm:text-base font-fixel font-bold text-text-main">
+              Рішення:
+            </h4>
+            <p class="text-xs sm:text-sm text-text-muted leading-relaxed font-roboto">
+              {caseStudy.solution.uk}
+            </p>
+          </div>
+
+          <!-- Item 3: Цінність для бізнесу -->
+          <div class="space-y-3">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center text-base sm:text-lg font-bold">
+              🎯
+            </div>
+            <h4 class="text-sm sm:text-base font-fixel font-bold text-text-main">
+              Цінність для бізнесу:
+            </h4>
+            <p class="text-xs sm:text-sm text-text-muted leading-relaxed font-roboto">
+              {caseStudy.metrics.map(m => `${m.label.uk}: ${m.value}`).join('. ')}
+            </p>
+          </div>
+
+          <!-- Item 4: Технологічний стек -->
+          <div class="space-y-3">
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center text-base sm:text-lg font-bold">
+              📊
+            </div>
+            <h4 class="text-sm sm:text-base font-fixel font-bold text-text-main">
+              Технологічний стек:
+            </h4>
+            <div class="flex flex-wrap gap-1.5 pt-1">
+              {caseStudy.techStack.map(t => (
+                <span class="px-2.5 py-1 bg-gray-100 text-text-main rounded-md text-[11px] font-mono font-semibold">
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</Layout>

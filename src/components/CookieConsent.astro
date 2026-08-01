@@ -1,0 +1,105 @@
+---
+---
+
+<div 
+  id="cookie-consent-banner" 
+  class="hidden fixed bottom-4 left-4 right-4 sm:left-auto sm:right-6 sm:max-w-md z-50 bg-[#181818]/95 backdrop-blur-xl border border-white/20 rounded-2xl p-5 shadow-2xl text-white transition-all duration-300"
+>
+  <div class="space-y-3">
+    <div class="flex items-start justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="text-xl">🍪</span>
+        <h4 class="text-sm font-fixel font-bold text-white">Cookie та конфіденційність</h4>
+      </div>
+      <button 
+        id="cookie-close-btn" 
+        class="text-gray-400 hover:text-white text-xs p-1 rounded-md hover:bg-white/10 transition-colors"
+        aria-label="Закрити"
+      >
+        ✕
+      </button>
+    </div>
+
+    <p class="text-xs text-gray-300 font-roboto leading-relaxed">
+      Ми використовуємо аналітичні файли cookie для покращення вашого досвіду користування сайтом.
+    </p>
+
+    <div class="flex items-center justify-between gap-3 pt-1">
+      <a 
+        href="/privacy/" 
+        class="text-xs text-purple-300 hover:text-white underline font-roboto transition-colors"
+      >
+        Політика конфіденційності
+      </a>
+
+      <button 
+        id="cookie-accept-btn" 
+        class="px-5 py-2 bg-brand-red hover:bg-brand-red-dark text-white text-xs font-bold font-fixel rounded-full shadow-md hover:shadow-lg transition-all active:scale-95 cursor-pointer"
+      >
+        Прийняти всі
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline>
+  (function() {
+    function checkAndShowConsent() {
+      const banner = document.getElementById('cookie-consent-banner');
+      const acceptBtn = document.getElementById('cookie-accept-btn');
+      const closeBtn = document.getElementById('cookie-close-btn');
+
+      if (!banner) return;
+
+      const consent = localStorage.getItem('ai_hub_cookie_consent');
+
+      if (!consent) {
+        banner.classList.remove('hidden');
+      } else if (consent === 'granted') {
+        banner.classList.add('hidden');
+        if (typeof window.gtag === 'function') {
+          window.gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+          });
+        }
+      } else {
+        banner.classList.add('hidden');
+      }
+
+      function hideBanner() {
+        banner.classList.add('hidden');
+        banner.style.display = 'none';
+      }
+
+      if (acceptBtn) {
+        acceptBtn.onclick = function(e) {
+          e.preventDefault();
+          localStorage.setItem('ai_hub_cookie_consent', 'granted');
+          if (typeof window.gtag === 'function') {
+            window.gtag('consent', 'update', {
+              'analytics_storage': 'granted'
+            });
+          }
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('cookie_consent_granted', {});
+          }
+          hideBanner();
+        };
+      }
+
+      if (closeBtn) {
+        closeBtn.onclick = function(e) {
+          e.preventDefault();
+          localStorage.setItem('ai_hub_cookie_consent', 'dismissed');
+          hideBanner();
+        };
+      }
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', checkAndShowConsent);
+    } else {
+      checkAndShowConsent();
+    }
+  })();
+</script>

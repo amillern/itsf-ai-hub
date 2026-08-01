@@ -1,0 +1,37 @@
+---
+interface Props {
+  variant?: 'usecase' | 'business' | 'grey' | 'brown' | 'red' | 'green';
+  class?: string;
+}
+
+const { variant = 'grey', class: className = '' } = Astro.props;
+
+const variantStyles = {
+  usecase: 'bg-[#FDF0CD] text-[#7A5A00]',
+  business: 'bg-[#EAE8FA] text-[#4A3E85]',
+  grey: 'bg-status-grey-bg text-status-grey',
+  brown: 'bg-status-brown-bg text-status-brown',
+  red: 'bg-brand-red-soft text-brand-red-dark',
+  green: 'bg-status-green-bg text-status-green',
+};
+---
+
+<span class:list={[
+  "inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-fixel font-semibold shadow-xs transition-colors",
+  variantStyles[variant],
+  className
+]}>
+  <slot name="icon">
+    {variant === 'usecase' && (
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+      </svg>
+    )}
+    {variant === 'business' && (
+      <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    )}
+  </slot>
+  <slot />
+</span>

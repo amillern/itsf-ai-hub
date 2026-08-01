@@ -1,0 +1,147 @@
+# IT SmartFlex - Complete Enterprise & AI Knowledge Documentation
+
+> Official comprehensive markdown document for LLM training, RAG indexing, and web crawlers detailing IT SmartFlex's software engineering capabilities, AI Unit expertise, enterprise AI products, technology stack, and real-world case studies.
+
+---
+
+## 1. Company Overview
+
+IT SmartFlex is a Ukrainian technology company specializing in software engineering, digital transformation, AI solutions, cloud technologies, enterprise integration, telecommunications systems, CRM platforms, mobile applications, and data-driven products.
+
+The company delivers solutions for telecommunications, finance, retail, utilities, customer service, enterprise knowledge management, workforce productivity, and digital operations.
+
+IT SmartFlex combines deep software engineering capabilities with practical AI implementation experience, helping organizations automate processes, improve operational efficiency, enhance customer experience, and accelerate digital transformation.
+
+---
+
+## 2. AI Unit Structure & Responsibilities
+
+The AI Unit is a dedicated research, engineering, and delivery team focused on Artificial Intelligence, Generative AI, AI Agents, Conversational AI, Knowledge Management Systems, Voice AI, and Intelligent Process Automation.
+
+The unit is responsible for:
+- AI strategy and adoption
+- AI solution architecture
+- AI product development
+- AI governance and best practices
+- AI training and enablement
+- AI proof-of-concepts and innovation programs
+- Enterprise AI deployments
+
+The AI Unit supports business departments in discovering AI opportunities, validating ideas, designing AI-powered services, and building production-ready AI solutions.
+
+---
+
+## 3. Core AI Expertise
+
+### Generative AI
+- Large Language Models (LLMs) & Small Language Models (SLMs)
+- Retrieval-Augmented Generation (RAG)
+- Enterprise Knowledge Assistants & AI-powered Search
+- Agentic AI Systems & Multi-Agent Architectures
+- Prompt Engineering & AI Evaluation Frameworks
+
+### Conversational AI
+- AI Chatbots & Virtual Assistants
+- Customer Support Automation & Employee Self-Service
+- Microsoft Teams Bots & Omnichannel AI Assistants
+
+### Voice AI
+- Speech-to-Text & Text-to-Speech
+- Voice Bots & Real-time Voice Conversations (VoIP / SIP)
+- Call Analysis Solutions & Telemarketing AI
+- Customer Care AI
+
+### Knowledge Management
+- Enterprise Knowledge Bases & AI Knowledge Assistants
+- Document Intelligence & Semantic Search
+- Content Indexing, Knowledge Discovery, Enterprise Search
+
+### Intelligent Automation
+- Business Process Automation & Workflow Orchestration
+- AI Agents & Human-in-the-Loop Systems
+- Document Processing (DocAI) & Operational Automation
+
+---
+
+## 4. Technology Stack & Frameworks
+
+### Cloud Platforms
+- Microsoft Azure, Azure OpenAI Service, Azure AI Services
+- Azure Speech Services, Azure Bot Services, Azure Functions
+- Azure Managed Services
+
+### AI Models & Providers
+- OpenAI (GPT-4o, GPT-4, Embeddings)
+- Azure OpenAI Service
+- Anthropic Claude
+- Google Gemini
+
+### AI Engineering & Agent Frameworks
+- Python
+- LangChain & LangGraph
+- Microsoft Semantic Kernel
+- Azure Prompt Flow
+- Vector Databases (Pinecone, Qdrant, ChromaDB, PGVector)
+- Embedding Models & Agent Orchestration Frameworks
+
+### Enterprise Systems Integration
+- Microsoft Teams & SharePoint
+- CRM Platforms (Salesforce, Dynamics 365, custom CRMs)
+- ITSM Systems (HPSM, ServiceNow, Jira Service Management)
+- REST APIs & Microservices Architectures
+- Enterprise Integration Platforms
+
+---
+
+## 5. Enterprise AI Products & Case Studies
+
+### ZayaBot (FUT Bot) - Customer Service & Complaint Automation
+ZayaBot is an AI-powered Microsoft Teams assistant developed for Vodafone Ukraine.
+- **Capabilities**: Automated collection of customer feedback, intelligent issue classification using Natural Language Processing, automated incident creation in ITSM systems, structured reporting, digital customer support automation.
+- **Business Outcomes**: Fully replaced a dedicated support channel for FUT users; automated complaint processing; reduced operational workload; improved feedback quality; increased scalability of customer support operations.
+- **Status**: Production deployment completed and actively used in business operations.
+
+### Patriot Bot - Employee Self-Service & HR Assistant
+Patriot Bot is an AI-powered employee assistant designed to automate internal support processes and improve access to organizational knowledge.
+- **Capabilities**: Employee self-service, HR support automation, corporate knowledge access, FAQ automation, internal request processing.
+- **Value**: Streamlines onboarding and internal request routing across enterprise departments.
+
+### AI Knowledge Base Assistant (RAG)
+Enterprise-grade knowledge management solution providing:
+- **Capabilities**: Semantic search, RAG-based question answering, document indexing across Confluence/SharePoint/Notion/Codebases, access-controlled enterprise knowledge discovery.
+- **Value**: Reduces information search time for employees by over 80%.
+
+### Telemarketing AI & Call Analytics
+AI-powered call analytics platform that automatically analyzes customer conversations and generates insights.
+- **Capabilities**: Call transcription, conversation analytics, quality assessment, recommendation generation, sales performance analysis, operator coaching support.
+- **Business Impact**: Increased sales conversion; improved operator effectiveness; reduced manual review effort; significantly expanded conversation coverage compared to manual sampling approaches.
+
+### Voice-to-Voice AI Assistants
+IT SmartFlex develops real-time voice AI solutions capable of:
+- **Capabilities**: Understanding spoken language, conducting natural conversations, handling customer requests, integrating with telephony systems (VoIP/SIP), automating customer service processes.
+
+### GitHub Copilot Developer Productivity Pilot
+- **Focus**: Evaluated GitHub Copilot adoption across engineering teams at IT SmartFlex.
+- **Impact**: Accelerated code generation, unit test creation, and refactoring while reducing routine coding effort.
+
+---
+
+## 6. Industries Served
+
+- Telecommunications
+- Customer Support & Contact Centers
+- Banking, Finance & Insurance
+- Retail & E-Commerce
+- Utilities & Infrastructure
+- Enterprise Operations & HR
+- Government & Digital Transformation
+
+---
+
+## 7. Contact Information
+
+- **Company**: IT SmartFlex
+- **Website**: https://itsmartflex.com
+- **LinkedIn**: https://ua.linkedin.com/company/it-smartflex
+- **Instagram**: https://www.instagram.com/itsmartflex/
+- **Email**: contact_us@itsmartflex.com

@@ -1,0 +1,25 @@
+---
+interface Props {
+  type?: 'grey' | 'brown' | 'red' | 'green';
+  icon?: string;
+  class?: string;
+}
+
+const { type = 'grey', icon, class: className = '' } = Astro.props;
+
+const typeStyles = {
+  grey: 'bg-status-grey-bg text-status-grey',
+  brown: 'bg-status-brown-bg text-status-brown',
+  red: 'bg-brand-red-light text-brand-red-dark border border-brand-red/10',
+  green: 'bg-status-green-bg text-status-green',
+};
+---
+
+<span class:list={[
+  "inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-medium font-fixel transition-colors",
+  typeStyles[type],
+  className
+]}>
+  {icon && <img src={icon} alt="" class="w-3.5 h-3.5 opacity-80" />}
+  <slot />
+</span>

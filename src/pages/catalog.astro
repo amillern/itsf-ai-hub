@@ -1,0 +1,367 @@
+---
+import Layout from '../layouts/Layout.astro';
+import FigmaCardUseCases from '../components/figma/FigmaCardUseCases.astro';
+import FigmaCardBusinessCases from '../components/figma/FigmaCardBusinessCases.astro';
+import FigmaButton from '../components/figma/FigmaButton.astro';
+
+const catalogItems = [
+  {
+    id: "case-copilot",
+    slug: "copilot-dev",
+    title: "Підвищення продуктивності команд розробки",
+    type: "business",
+    typeLabel: "Case Studies",
+    badgeColor: "bg-[#EAE8FA] text-[#4A3E85]",
+    image: "/assets/cards/copilot-dev.jpg",
+    category: "Прискорення розробки ПЗ",
+    tags: ["Підвищення продуктивності", "Прискорення розробки ПЗ"],
+    description: "Пілотування ШІ-інструмента GitHub Copilot в IT SmartFlex з метою оцінки його реального впливу на швидкість розробки."
+  },
+  {
+    id: "case-customer-service",
+    slug: "support-bot",
+    title: "Автоматизація обробки звернень клієнтів",
+    type: "usecase",
+    typeLabel: "Use Case",
+    badgeColor: "bg-[#FDF0CD] text-[#7A5A00]",
+    image: "/assets/cards/support-bot.jpg",
+    category: "Клієнтський сервіс",
+    tags: ["Покращення клієнтського сервісу", "Автоматизація процесів"],
+    description: "ШІ-асистент для автоматичного розпізнавання, класифікації та відповіді на звернення клієнтів 24/7."
+  },
+  {
+    id: "case-code-automation",
+    slug: "business-analytics",
+    title: "Автоматизація тестування та генерація звітів",
+    type: "business",
+    typeLabel: "Case Studies",
+    badgeColor: "bg-[#EAE8FA] text-[#4A3E85]",
+    image: "/assets/cards/business-case-analytics.png",
+    category: "Прискорення розробки ПЗ",
+    tags: ["Скорочення часу виконання задач", "Оптимізація витрат"],
+    description: "Роботизована платформа для аналізу інфраструктурних метрик та створення автозвітів для менеджменту."
+  },
+  {
+    id: "case-document-ai",
+    slug: "doc-ai",
+    title: "Інтелектуальний аналіз документів та юридичних актів",
+    type: "business",
+    typeLabel: "Case Studies",
+    badgeColor: "bg-[#EAE8FA] text-[#4A3E85]",
+    image: "/assets/cards/doc-ai.jpg",
+    category: "Аналіз та пошук інформації",
+    tags: ["Аналіз та пошук інформації", "Оптимізація витрат"],
+    description: "DocAI система для автоматичного витягу сутностей з первинної документації та договорів."
+  },
+  {
+    id: "case-smart-rag",
+    slug: "rag-knowledge-base",
+    title: "Корпоративна база знань з ШІ-пошуком (RAG)",
+    type: "usecase",
+    typeLabel: "Use Case",
+    badgeColor: "bg-[#FDF0CD] text-[#7A5A00]",
+    image: "/assets/cards/rag-ai.jpg",
+    category: "Аналіз та пошук інформації",
+    tags: ["Аналіз та пошук інформації", "Підвищення якості комунікацій"],
+    description: "Внутрішня пошукова система для співробітників за регламентами, інструкціями та базою коду."
+  },
+  {
+    id: "case-sales-assistant",
+    slug: "robotics",
+    title: "ШІ в робототехніці та комп'ютерному баченні",
+    type: "business",
+    typeLabel: "Case Studies",
+    badgeColor: "bg-[#EAE8FA] text-[#4A3E85]",
+    image: "/assets/cards/use-case-robot.png",
+    category: "Автоматизація процесів",
+    tags: ["Автоматизація процесів", "Підвищення якості комунікацій"],
+    description: "Система комп'ютерного бачення для моніторингу виробничих ліній та управління автономними роботами."
+  }
+];
+
+// Cleaned list containing ONLY active tags that return non-empty search results
+const activeCatalogFilterTags = Array.from(
+  new Set(catalogItems.flatMap(item => item.tags))
+);
+---
+
+<Layout title="Каталог AI-рішень | IT SmartFlex">
+  
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 space-y-8 sm:space-y-10">
+    
+    <!-- Breadcrumbs -->
+    <nav class="flex flex-wrap items-center text-xs text-[#515151] gap-1.5 sm:gap-2">
+      <a href="/" class="hover:text-brand-red font-medium">Головна</a>
+      <span>/</span>
+      <span class="text-text-main font-semibold">Каталог AI-рішень</span>
+    </nav>
+
+    <!-- Main Header -->
+    <div class="text-center max-w-3xl mx-auto space-y-3 sm:space-y-4">
+      <h1 class="text-3xl sm:text-5xl font-fixel font-extrabold text-text-main tracking-tight leading-tight">
+        AI-рішення для бізнесу та команд
+      </h1>
+      
+      <p class="text-sm sm:text-lg text-text-muted font-roboto leading-relaxed">
+        Практичні кейси та сценарії застосування штучного інтелекту на основі досвіду команди IT SmartFlex.
+      </p>
+    </div>
+
+    <!-- Floating Type Tabs Bar mobile optimized -->
+    <div class="flex justify-center w-full overflow-x-auto no-scrollbar py-1">
+      <div class="bg-white shadow-pill border border-gray-100 p-1.5 rounded-full inline-flex items-center gap-1 sm:gap-1.5 z-20 shrink-0">
+        
+        <button 
+          data-type-tab="all" 
+          class="type-tab-btn active px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-fixel font-semibold flex items-center gap-1.5 bg-brand-red-soft text-text-main transition-all shadow-xs"
+        >
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-main" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+          <span>Усі</span>
+        </button>
+
+        <button 
+          data-type-tab="business" 
+          class="type-tab-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-fixel font-medium text-text-muted hover:bg-gray-100/80 flex items-center gap-1.5 transition-all"
+        >
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+          <span>Case Studies</span>
+        </button>
+
+        <button 
+          data-type-tab="usecase" 
+          class="type-tab-btn px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-fixel font-medium text-text-muted hover:bg-gray-100/80 flex items-center gap-1.5 transition-all"
+        >
+          <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          <span>Use Case</span>
+        </button>
+
+      </div>
+    </div>
+
+    <!-- Filter Control Bar -->
+    <div class="space-y-4">
+      <div class="flex flex-wrap items-center gap-3">
+        
+        <div class="relative w-full sm:w-auto">
+          <button 
+            id="filter-dropdown-toggle" 
+            type="button"
+            class="w-full sm:w-auto px-5 py-2.5 bg-white rounded-full border border-gray-200 shadow-sm font-fixel text-sm font-semibold text-text-main flex items-center justify-between sm:justify-start gap-2 hover:bg-gray-50 transition-all active:scale-95 cursor-pointer"
+          >
+            <span>Фільтр</span>
+            <svg class="w-4 h-4 text-text-muted transition-transform duration-200" id="filter-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <div 
+            id="filter-popover" 
+            class="hidden absolute left-0 top-12 w-[calc(100vw-2rem)] sm:w-80 bg-white/95 backdrop-blur-md rounded-2xl p-4 shadow-popup border border-gray-100 z-40 space-y-3"
+          >
+            <div class="flex items-center justify-between border-b border-gray-100 pb-2">
+              <span class="text-xs font-bold text-text-main uppercase tracking-wider">Вибір за бізнес-задачею</span>
+              <button id="clear-all-filters-btn" class="text-xs text-brand-red hover:underline font-medium cursor-pointer">Очистити всі</button>
+            </div>
+
+            <div class="space-y-2 max-h-64 overflow-y-auto">
+              {activeCatalogFilterTags.map(tag => (
+                <label class="flex items-center gap-2.5 text-xs text-text-main font-medium cursor-pointer hover:bg-gray-50 p-1.5 rounded-lg transition-colors">
+                  <input 
+                    type="checkbox" 
+                    value={tag} 
+                    class="filter-checkbox w-4 h-4 rounded text-brand-red focus:ring-brand-red border-gray-300"
+                  />
+                  <span>{tag}</span>
+                </label>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div id="active-chips-container" class="flex flex-wrap gap-2 items-center">
+          <!-- Active tag chips dynamically rendered here -->
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div id="cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {catalogItems.map(item => (
+        item.type === 'usecase' ? (
+          <FigmaCardUseCases 
+            title={item.title}
+            description={item.description}
+            image={item.image}
+            tags={item.tags}
+            slug={item.slug}
+            itemData={item}
+          />
+        ) : (
+          <FigmaCardBusinessCases 
+            title={item.title}
+            description={item.description}
+            image={item.image}
+            tags={item.tags}
+            slug={item.slug}
+            itemData={item}
+          />
+        )
+      ))}
+    </div>
+
+    <!-- Empty State -->
+    <div id="empty-state" class="hidden text-center py-16 sm:py-20 bg-white/60 backdrop-blur-md rounded-3xl border border-dashed border-gray-200 space-y-3 px-4">
+      <p class="text-lg sm:text-xl font-fixel font-bold text-text-main">Жодного рішення не знайдено</p>
+      <p class="text-xs sm:text-sm text-text-muted">Спробуйте обрати інші категорії або скинути фільтри.</p>
+      <FigmaButton id="reset-filters-btn" variant="primary">
+        Скинути всі фільтри
+      </FigmaButton>
+    </div>
+
+  </div>
+
+  <!-- Bulletproof Interactive Filter Logic -->
+  <script is:inline>
+    function initCatalogFilter() {
+      var activeType = 'all';
+      var selectedTags = [];
+
+      var typeBtns = document.querySelectorAll('.type-tab-btn');
+      var togglePopoverBtn = document.getElementById('filter-dropdown-toggle');
+      var filterPopover = document.getElementById('filter-popover');
+      var filterChevron = document.getElementById('filter-chevron');
+      var checkboxes = document.querySelectorAll('.filter-checkbox');
+      var activeChipsContainer = document.getElementById('active-chips-container');
+      var cards = document.querySelectorAll('.catalog-item-card');
+      var emptyState = document.getElementById('empty-state');
+      var clearAllBtn = document.getElementById('clear-all-filters-btn');
+      var resetFiltersBtn = document.getElementById('reset-filters-btn');
+
+      function updateUI() {
+        checkboxes.forEach(function(cb) {
+          cb.checked = selectedTags.indexOf(cb.value) !== -1;
+        });
+
+        if (activeChipsContainer) {
+          activeChipsContainer.innerHTML = '';
+          selectedTags.forEach(function(tag) {
+            var chip = document.createElement('span');
+            chip.className = 'active-chip inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs font-medium text-text-main shadow-xs transition-all';
+            chip.innerHTML = '<span>' + tag + '</span><button class="remove-chip-btn w-4 h-4 rounded-full flex items-center justify-center text-gray-400 hover:text-brand-red hover:bg-gray-100 transition-colors">✕</button>';
+            activeChipsContainer.appendChild(chip);
+
+            var removeBtn = chip.querySelector('.remove-chip-btn');
+            if (removeBtn) {
+              removeBtn.addEventListener('click', function(e) {
+                e.stopPropagation();
+                selectedTags = selectedTags.filter(function(t) { return t !== tag; });
+                updateUI();
+              });
+            }
+          });
+        }
+
+        var visibleCount = 0;
+        cards.forEach(function(card) {
+          var type = card.getAttribute('data-type');
+          var tagsAttr = card.getAttribute('data-tags') || '';
+          var itemTags = tagsAttr.split('|||').filter(Boolean);
+
+          var matchesType = activeType === 'all' || type === activeType;
+          var matchesTags = selectedTags.length === 0 || selectedTags.some(function(t) { return itemTags.indexOf(t) !== -1; });
+
+          if (matchesType && matchesTags) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (emptyState) {
+          if (visibleCount === 0) emptyState.classList.remove('hidden');
+          else emptyState.classList.add('hidden');
+        }
+      }
+
+      typeBtns.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+          typeBtns.forEach(function(b) {
+            b.classList.remove('bg-brand-red-soft', 'font-semibold');
+            b.classList.add('text-text-muted', 'font-medium');
+          });
+          var target = e.currentTarget;
+          target.classList.remove('text-text-muted', 'font-medium');
+          target.classList.add('bg-brand-red-soft', 'font-semibold');
+
+          activeType = target.getAttribute('data-type-tab') || 'all';
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('catalog_tab_select', { tab_type: activeType });
+          }
+          updateUI();
+        });
+      });
+
+      if (togglePopoverBtn) {
+        togglePopoverBtn.addEventListener('click', function() {
+          var isHidden = filterPopover ? filterPopover.classList.toggle('hidden') : true;
+          if (filterChevron) filterChevron.classList.toggle('rotate-180', !isHidden);
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('catalog_filter_toggle', { is_open: !isHidden });
+          }
+        });
+      }
+
+      checkboxes.forEach(function(cb) {
+        cb.addEventListener('change', function() {
+          if (cb.checked) {
+            if (selectedTags.indexOf(cb.value) === -1) selectedTags.push(cb.value);
+          } else {
+            selectedTags = selectedTags.filter(function(t) { return t !== cb.value; });
+          }
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('catalog_filter_checkbox_change', {
+              tag_name: cb.value,
+              checked: cb.checked,
+              total_active_filters: selectedTags.length
+            });
+          }
+          updateUI();
+        });
+      });
+
+      if (clearAllBtn) {
+        clearAllBtn.addEventListener('click', function() {
+          selectedTags = [];
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('catalog_clear_filters', {});
+          }
+          updateUI();
+        });
+      }
+
+      if (resetFiltersBtn) {
+        resetFiltersBtn.addEventListener('click', function() {
+          selectedTags = [];
+          activeType = 'all';
+          updateUI();
+        });
+      }
+
+      updateUI();
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initCatalogFilter);
+    } else {
+      initCatalogFilter();
+    }
+  </script>
+</Layout>

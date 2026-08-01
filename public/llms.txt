@@ -1,0 +1,25 @@
+# IT SmartFlex - AI Hub & Enterprise AI Solutions
+
+> IT SmartFlex is a technology company specializing in software engineering, digital transformation, Generative AI, AI Agents, Enterprise Knowledge Bases, Voice AI, and Intelligent Automation.
+
+## Main Resources
+
+- [Home / Hero Overview](https://itsmartflex.com/): Overview of IT SmartFlex AI capabilities, enterprise AI products, and practical application scenarios.
+- [AI Solutions Catalog](https://itsmartflex.com/catalog): Practical catalog of business cases and use cases implemented by the IT SmartFlex AI Unit.
+- [Case Details - Customer Support AI Assistant](https://itsmartflex.com/cases): In-depth case study of an automated 24/7 customer service AI assistant integrated with Microsoft Teams & HPSM ITSM.
+- [Full LLM Knowledge Base](https://itsmartflex.com/llms-full.txt): Complete, detailed text file containing all company technical specifications, AI product details, frameworks, cloud integrations, and case studies for LLM training and retrieval.
+
+## Core AI Expertise
+
+- **Generative AI & Agentic AI**: Large Language Models (LLMs), Small Language Models (SLMs), Retrieval-Augmented Generation (RAG), Multi-Agent architectures (LangChain, LangGraph, Semantic Kernel).
+- **Conversational & Support Automation**: Microsoft Teams Bots, omnichannel virtual assistants, automated complaint handling, ITSM incident creation (ZayaBot, Patriot Bot).
+- **Enterprise Knowledge Management**: RAG-based semantic search across Confluence, SharePoint, Notion, and corporate codebases.
+- **Voice AI & Telemarketing Analytics**: Real-time speech-to-text, text-to-speech, VoIP/SIP voice bots, automated call transcriptions, quality assessment, and sales analytics.
+- **Intelligent Process Automation**: DocAI document intelligence, contract entity extraction, workflow orchestration, and QA automation.
+
+## Contact & Enterprise Inquiry
+
+- **Company**: IT SmartFlex
+- **LinkedIn**: https://ua.linkedin.com/company/it-smartflex
+- **Instagram**: https://www.instagram.com/itsmartflex/
+- **Email**: contact_us@itsmartflex.com
