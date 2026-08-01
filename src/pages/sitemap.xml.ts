@@ -1,16 +1,8 @@
 import type { APIRoute } from 'astro';
 import { caseStudies } from '../data/cases';
 
-export const GET: APIRoute = async ({ request }) => {
-  let baseUrl = import.meta.env.PUBLIC_SITE_URL;
-
-  if (!baseUrl) {
-    const url = new URL(request.url);
-    baseUrl = url.origin;
-  }
-
-  // Remove trailing slash if present
-  baseUrl = baseUrl.replace(/\/$/, '');
+export const GET: APIRoute = async () => {
+  const baseUrl = (import.meta.env.PUBLIC_SITE_URL || 'https://ai-hub-webpage-358601432150.europe-west1.run.app').replace(/\/$/, '');
 
   const staticPages = [
     '',
