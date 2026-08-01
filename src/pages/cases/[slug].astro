@@ -3,60 +3,59 @@ import Layout from '../../layouts/Layout.astro';
 import FigmaStatusBadge from '../../components/figma/FigmaStatusBadge.astro';
 import { caseStudies } from '../../data/cases';
 
-export function getStaticPaths() {
-  return caseStudies.map(c => ({
-    params: { slug: c.slug },
-    props: { caseStudy: c }
+export async function getStaticPaths() {
+  return caseStudies.map(item => ({
+    params: { slug: item.slug },
+    props: { caseStudy: item }
   }));
 }
 
 const { caseStudy } = Astro.props;
 ---
 
-<Layout title={`${caseStudy.title.uk} | IT SmartFlex AI Hub`} description={caseStudy.overview.uk}>
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 space-y-8 sm:space-y-10">
+<Layout title={`${caseStudy.title.uk} | IT SmartFlex AI Hub`}>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 space-y-8 sm:space-y-12">
     
     <!-- Breadcrumbs -->
-    <nav class="flex flex-wrap items-center text-xs text-[#515151] gap-1.5 sm:gap-2">
+    <nav class="flex flex-wrap items-center text-xs text-[#515151] gap-1.5 sm:gap-2 font-roboto">
       <a href="/" class="hover:text-brand-red font-medium">Головна</a>
       <span>/</span>
-      <a href="/catalog/" class="hover:text-brand-red font-medium">Каталог AI-рішень</a>
+      <a href="/cases/" class="hover:text-brand-red font-medium">Case Studies</a>
       <span>/</span>
-      <span class="text-text-main font-semibold">{caseStudy.title.uk}</span>
+      <span class="text-text-main font-semibold truncate max-w-xs">{caseStudy.title.uk}</span>
     </nav>
 
-    <!-- Main Grid matching Prototype Screenshot -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+    <!-- Main Grid Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       
       <!-- Left Column: Case Meta, Title, Business Tasks & Applications -->
       <div class="lg:col-span-5 space-y-6 sm:space-y-8">
         
-        <!-- Top Badge -->
         <div>
           <FigmaStatusBadge variant="business">
             {caseStudy.badge.uk}
           </FigmaStatusBadge>
         </div>
 
-        <!-- Short Name -->
-        <p class="text-sm sm:text-base font-semibold text-text-muted font-fixel">
-          {caseStudy.title.uk}
-        </p>
+        <div class="space-y-2">
+          <h1 class="text-2xl sm:text-4xl lg:text-5xl font-fixel font-extrabold text-text-main leading-tight tracking-tight">
+            {caseStudy.title.uk}
+          </h1>
 
-        <!-- Full Title -->
-        <h1 class="text-2xl sm:text-4xl lg:text-5xl font-fixel font-extrabold text-text-main leading-tight tracking-tight">
-          {caseStudy.subtitle.uk}
-        </h1>
+          <p class="text-base sm:text-lg text-text-muted font-roboto leading-relaxed">
+            {caseStudy.subtitle.uk}
+          </p>
+        </div>
 
         <!-- Section: Бізнес задача -->
         <div class="space-y-3 pt-2">
-          <h3 class="text-base sm:text-lg font-fixel font-bold text-[#A10000]">
+          <h3 class="text-base sm:text-lg font-fixel font-bold text-brand-red-dark">
             Бізнес задача:
           </h3>
 
           <div class="flex flex-wrap gap-2">
             {caseStudy.tags.map(tag => (
-              <span class="px-3.5 sm:px-4 py-1.5 sm:py-2 bg-white border border-gray-300 text-text-main text-[11px] sm:text-xs font-semibold rounded-full shadow-2xs font-roboto">
+              <span class="px-3.5 sm:px-4 py-1.5 sm:py-2 bg-white border border-gray-300 text-text-main text-[11px] sm:text-xs font-semibold rounded-full shadow-sm font-roboto">
                 {tag}
               </span>
             ))}
@@ -65,81 +64,56 @@ const { caseStudy } = Astro.props;
 
         <!-- Section: Сфера застосування -->
         <div class="space-y-3 pt-2">
-          <h3 class="text-base sm:text-lg font-fixel font-bold text-[#A10000]">
+          <h3 class="text-base sm:text-lg font-fixel font-bold text-brand-red-dark">
             Сфера застосування:
           </h3>
 
-          <ul class="space-y-2.5 text-xs sm:text-sm font-semibold text-text-main font-roboto">
-            {caseStudy.keyFeatures.map(feat => (
-              <li class="flex items-center gap-2.5">
-                <svg class="w-4 h-4 text-brand-red shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" />
-                </svg>
-                <span>{feat.title.uk}</span>
-              </li>
-            ))}
-          </ul>
+          <p class="text-sm text-text-main font-semibold leading-relaxed font-roboto">
+            {caseStudy.scope.uk}
+          </p>
+        </div>
+
+        <!-- Complexity Comparison Box -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-white border border-gray-100 shadow-sm space-y-3">
+          <h4 class="text-xs font-bold text-text-muted uppercase tracking-wider">Складність впровадження</h4>
+          <div class="grid grid-cols-2 gap-3 text-xs sm:text-sm font-roboto">
+            <div class="p-3 rounded-xl bg-gray-50 border border-gray-200">
+              <span class="text-gray-500 block text-[11px]">Без ШІ</span>
+              <span class="font-bold text-rose-600">{caseStudy.difficultyWithout.uk}</span>
+            </div>
+            <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-200">
+              <span class="text-emerald-700 block text-[11px]">З ШІ</span>
+              <span class="font-bold text-emerald-800">{caseStudy.difficultyWith.uk}</span>
+            </div>
+          </div>
         </div>
 
       </div>
 
-      <!-- Right Column: Top 3D Image Card & Complexity Ratings + Bottom Challenge/Solution Grid -->
+      <!-- Right Column: Banner & Detailed Solution Cards -->
       <div class="lg:col-span-7 space-y-6 sm:space-y-8">
         
-        <!-- Top Card: 3D Banner & Complexity Ratings -->
-        <div class="bg-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 border border-gray-100 shadow-card space-y-6">
-          
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-            
-            <!-- Left 3D Illustration -->
-            <div class="md:col-span-7 rounded-2xl overflow-hidden bg-purple-900/10 h-48 sm:h-56 border border-gray-100">
-              <img 
-                src={caseStudy.bannerImage} 
-                alt={caseStudy.title.uk} 
-                class="w-full h-full object-cover"
-              />
-            </div>
+        <!-- Banner Image -->
+        <div class="rounded-[24px] sm:rounded-[32px] overflow-hidden border border-gray-100 shadow-card bg-surface-variant relative aspect-[16/9] group">
+          <img 
+            src={caseStudy.bannerImage} 
+            alt={caseStudy.title.uk}
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" 
+          />
+        </div>
 
-            <!-- Right Complexity Star Ratings -->
-            <div class="md:col-span-5 space-y-4 sm:space-y-6">
-              
-              <!-- Complexity Without AI -->
-              <div class="space-y-1">
-                <h4 class="text-xs sm:text-sm font-fixel font-bold text-text-main">
-                  Складність без ШІ:
-                </h4>
-                <div class="flex items-center gap-1 text-amber-400 text-base sm:text-lg">
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span class="text-gray-300">☆</span>
-                </div>
-              </div>
-
-              <!-- Complexity With AI -->
-              <div class="space-y-1">
-                <h4 class="text-xs sm:text-sm font-fixel font-bold text-text-main">
-                  Складність з ШІ:
-                </h4>
-                <div class="flex items-center gap-1 text-emerald-500 text-base sm:text-lg">
-                  <span>★</span>
-                  <span class="text-gray-300">☆</span>
-                  <span class="text-gray-300">☆</span>
-                  <span class="text-gray-300">☆</span>
-                  <span class="text-gray-300">☆</span>
-                </div>
-              </div>
-
-            </div>
-
+        <!-- Top Card: Огляд рішення -->
+        <div class="bg-white rounded-[24px] sm:rounded-[32px] p-6 sm:p-8 border border-gray-100 shadow-card space-y-4">
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-brand-red"></div>
+            <h3 class="text-lg sm:text-xl font-fixel font-bold text-text-main">
+              Огляд рішення
+            </h3>
           </div>
 
-          <!-- Description Text Below Image -->
-          <p class="text-text-muted text-xs sm:text-base leading-relaxed font-roboto border-t border-gray-100 pt-6">
+          <p class="text-sm sm:text-base text-text-muted leading-relaxed font-roboto">
             {caseStudy.overview.uk}
           </p>
-
         </div>
 
         <!-- Bottom Card: 2x2 Grid -->
@@ -147,8 +121,10 @@ const { caseStudy } = Astro.props;
           
           <!-- Item 1: Бізнес виклик -->
           <div class="space-y-3">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center text-base sm:text-lg font-bold">
-              ❖
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
             </div>
             <h4 class="text-sm sm:text-base font-fixel font-bold text-text-main">
               Бізнес виклик:
@@ -160,8 +136,10 @@ const { caseStudy } = Astro.props;
 
           <!-- Item 2: Рішення -->
           <div class="space-y-3">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center text-base sm:text-lg font-bold">
-              ☩
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
             </div>
             <h4 class="text-sm sm:text-base font-fixel font-bold text-text-main">
               Рішення:
@@ -173,8 +151,10 @@ const { caseStudy } = Astro.props;
 
           <!-- Item 3: Цінність для бізнесу -->
           <div class="space-y-3">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center text-base sm:text-lg font-bold">
-              🎯
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+              </svg>
             </div>
             <h4 class="text-sm sm:text-base font-fixel font-bold text-text-main">
               Цінність для бізнесу:
@@ -186,8 +166,10 @@ const { caseStudy } = Astro.props;
 
           <!-- Item 4: Технологічний стек -->
           <div class="space-y-3">
-            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center text-base sm:text-lg font-bold">
-              📊
+            <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-brand-red-soft text-brand-red flex items-center justify-center">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+              </svg>
             </div>
             <h4 class="text-sm sm:text-base font-fixel font-bold text-text-main">
               Технологічний стек:

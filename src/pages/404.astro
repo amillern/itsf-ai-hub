@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Сторінку не знайдено (404) | IT SmartFlex AI Hub">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center space-y-8">
+    <div class="space-y-4">
+      <span class="text-7xl sm:text-9xl font-fixel font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-brand-red via-purple-600 to-indigo-600">
+        404
+      </span>
+      <h1 class="text-2xl sm:text-4xl font-fixel font-extrabold text-text-main">
+        Сторінку не знайдено
+      </h1>
+      <p class="text-text-muted text-sm sm:text-base max-w-md mx-auto font-roboto">
+        Вибачте, запитувана сторінка не існує або була переміщена.
+      </p>
+    </div>
+
+    <div>
+      <a 
+        href="/" 
+        class="inline-flex items-center gap-2 px-8 py-3.5 bg-brand-red hover:bg-brand-red-dark text-white font-fixel font-bold text-sm rounded-full shadow-md hover:shadow-lg transition-all active:scale-95"
+      >
+        <span>Повернутися на головну</span>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+        </svg>
+      </a>
+    </div>
+  </div>
+</Layout>

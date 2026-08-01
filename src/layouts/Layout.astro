@@ -12,6 +12,8 @@ const {
   title = "AI Hub - Головна | IT SmartFlex",
   description = "Практичні приклади, кейси та сценарії застосування штучного інтелекту на основі досвіду IT SmartFlex."
 } = Astro.props;
+
+const canonicalURL = Astro.url.href;
 ---
 
 <!DOCTYPE html>
@@ -27,66 +29,74 @@ const {
 
     <meta name="generator" content={Astro.generator} />
     
-    <!-- SEO Metadata -->
-    <meta name="google-site-verification" content="google2647422844503ef8" />
+    <!-- SEO & Canonical Metadata -->
     <meta name="google-site-verification" content="AI4lwYgK0_677777wFkDAzBBQHgdjSjrpT24xMg" />
+    <link rel="canonical" href={canonicalURL} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
 
-    <!-- Google Analytics (gtag.js) with Default Consent Mode -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7HGQSSGHRB"></script>
+    <!-- Google Analytics (gtag.js) with GDPR Consent Mode v2 -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-7HGQSSGHRB"></script>
     <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      // Set default consent to 'denied' for GDPR compliance
+      // Set default GDPR Consent Mode v2 to 'denied'
       gtag('consent', 'default', {
-        'analytics_storage': 'denied'
+        'analytics_storage': 'denied',
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'wait_for_update': 500
       });
+
+      // Restore consent if user previously granted
+      try {
+        if (localStorage.getItem('ai_hub_cookie_consent') === 'granted') {
+          gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+          });
+        }
+      } catch (e) {}
 
       gtag('config', 'G-7HGQSSGHRB');
     </script>
 
-    <!-- Performance & Preconnect Optimizations -->
+    <!-- Preconnect & Fonts -->
     <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
     <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
-    <link rel="dns-prefetch" href="https://cdn.eu.amplitude.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Google Fonts: Fixel Text & Roboto -->
-    <link href="https://fonts.googleapis.com/css2?family=Fixel+Text:wght@400;500;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+    <!-- Google Fonts: Roboto & Inter / System Sans Fallbacks -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
 
-    <!-- Amplitude SDK with safe onload initialization -->
-    <script defer src="https://cdn.eu.amplitude.com/script/1386965d11c5c16f9c9d8b119fcb876f.js" onload="if(window.amplitude && typeof window.amplitude.init === 'function'){ window.amplitude.init('1386965d11c5c16f9c9d8b119fcb876f', { serverZone: 'EU', autocapture: true, fetchRemoteConfig: true }); }"></script>
+    <!-- Amplitude SDK (Loaded only if consent is granted) -->
+    <script is:inline defer src="https://cdn.eu.amplitude.com/script/1386965d11c5c16f9c9d8b119fcb876f.js" onload="
+      try {
+        if(window.amplitude && typeof window.amplitude.init === 'function' && localStorage.getItem('ai_hub_cookie_consent') === 'granted'){ 
+          window.amplitude.init('1386965d11c5c16f9c9d8b119fcb876f', { serverZone: 'EU', autocapture: false }); 
+        }
+      } catch(e) {}
+    "></script>
 
-    <!-- Independent Global Analytics Helper Function -->
+    <!-- Global Analytics Helper (No console logs in Production) -->
     <script is:inline>
       window.sendAmplitudeEvent = function(eventName, eventProperties) {
         try {
-          if (window.amplitude && typeof window.amplitude.track === 'function') {
+          if (window.amplitude && typeof window.amplitude.track === 'function' && localStorage.getItem('ai_hub_cookie_consent') === 'granted') {
             window.amplitude.track(eventName, eventProperties || {});
-            console.log('[Amplitude Event Tracked]:', eventName, eventProperties);
           }
-        } catch (e) {
-          /* no-op */
-        }
+        } catch (e) {}
       };
-
-      document.addEventListener('DOMContentLoaded', function() {
-        window.sendAmplitudeEvent('page_view', {
-          path: window.location.pathname,
-          title: document.title,
-          url: window.location.href
-        });
-      });
     </script>
   </head>
-  <body class="bg-[#F8F8FC] bg-[url('/assets/bg-mesh-light.jpg')] bg-cover bg-top bg-no-repeat bg-fixed text-text-main font-roboto min-h-screen flex flex-col antialiased selection:bg-brand-red selection:text-white relative">
+  <body class="bg-[#F8F8FC] bg-[url('/assets/bg-mesh-light.svg')] bg-cover bg-top bg-no-repeat text-text-main font-roboto min-h-screen flex flex-col antialiased selection:bg-brand-red selection:text-white relative">
     <Header />
     <slot />
     <Footer />

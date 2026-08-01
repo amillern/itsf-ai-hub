@@ -1,5 +1,7 @@
 export interface CaseStudy {
+  id?: string;
   slug: string;
+  type?: string;
   badge: { uk: string; en: string };
   title: { uk: string; en: string };
   subtitle: { uk: string; en: string };
@@ -7,6 +9,9 @@ export interface CaseStudy {
   overview: { uk: string; en: string };
   challenge: { uk: string; en: string };
   solution: { uk: string; en: string };
+  scope: { uk: string; en: string };
+  difficultyWithout: { uk: string; en: string };
+  difficultyWith: { uk: string; en: string };
   tags: string[];
   metrics: Array<{ label: { uk: string; en: string }; value: string }>;
   keyFeatures: Array<{ title: { uk: string; en: string }; desc: { uk: string; en: string } }>;
@@ -15,7 +20,9 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
+    id: "case-customer-service",
     slug: "support-bot",
+    type: "usecase",
     badge: { uk: "Опрацювання звернень", en: "Customer Support" },
     title: { 
       uk: "Автоматизація обробки звернень клієнтів за допомогою AI", 
@@ -26,6 +33,9 @@ export const caseStudies: CaseStudy[] = [
       en: "Smart 24/7 support assistant with automated request classification, routing, and instant answer drafts" 
     },
     bannerImage: "/assets/cards/support-bot.jpg",
+    scope: { uk: "Операційна діяльність та клієнтський сервіс", en: "Operations & Customer Care" },
+    difficultyWithout: { uk: "Висока (ручне сортування тикетів)", en: "High (manual ticket sorting)" },
+    difficultyWith: { uk: "Низька (автоматична обробка 65%)", en: "Low (65% automated handling)" },
     overview: {
       uk: "Впровадження інтелектуального чат-бота та AI-класифікатора для першої лінії підтримки дозволило автоматизувати понад 65% рутинних звернень клієнтів без залучення живих операторів.",
       en: "Implementing an intelligent chatbot and AI classifier for first-line support automated over 65% of routine customer requests without human agent intervention."
@@ -38,7 +48,7 @@ export const caseStudies: CaseStudy[] = [
       uk: "Розроблено мультимовний AI-асистент на базі LLM із синхронізацією з CRM, який розпізнає намір клієнта (Intent Recognition), формує відповіді на основі регламентів компанії та ескалює складні VIP-запити на фахівців.",
       en: "Developed an LLM-based multilingual AI assistant synced with CRM that detects customer intent, answers using company guidelines, and escalates complex VIP requests to specialists."
     },
-    tags: ["LLM", "NLP", "CRM Integration", "Automated Support"],
+    tags: ["Покращення клієнтського сервісу", "Автоматизація процесів"],
     metrics: [
       { label: { uk: "Автоматизація запитів", en: "Automated Requests" }, value: "65%" },
       { label: { uk: "Час відповіді клієнту", en: "Avg Response Time" }, value: "< 15 сек" },
@@ -62,10 +72,12 @@ export const caseStudies: CaseStudy[] = [
   },
 
   {
+    id: "case-document-ai",
     slug: "doc-ai",
+    type: "business",
     badge: { uk: "DocAI & OCR", en: "DocAI & OCR" },
     title: { 
-      uk: "Автоматизована обробка та аналіз документів (DocAI)", 
+      uk: "Інтелектуальний аналіз документів та юридичних актів (DocAI)", 
       en: "Automated Document Extraction & Analysis (DocAI)" 
     },
     subtitle: { 
@@ -73,6 +85,9 @@ export const caseStudies: CaseStudy[] = [
       en: "Instant processing of contracts, invoices, bills, and ID data with up to 99% extraction accuracy" 
     },
     bannerImage: "/assets/cards/doc-ai.jpg",
+    scope: { uk: "Юридичний відділ та бухгалтерія", en: "Legal & Finance" },
+    difficultyWithout: { uk: "Дуже висока (ручне вичитування)", en: "Very High (manual review)" },
+    difficultyWith: { uk: "Низька (автовитяг за секунди)", en: "Low (instant auto-extraction)" },
     overview: {
       uk: "DocAI дозволяє перетворити стоси паперових сканів та PDF-документів на структуровані дані у вашій ERP за лічені секунди.",
       en: "DocAI converts piles of paper scans and PDFs into structured JSON/ERP data in mere seconds."
@@ -85,7 +100,7 @@ export const caseStudies: CaseStudy[] = [
       uk: "Впроваджено інтелектуальний OCR-конвеєр з використанням мультимодальних моделей комп'ютерного бачення для автоматичної валідації печаток, підписів, реквізитів та табличних даних.",
       en: "Deployed an intelligent OCR pipeline utilizing multimodal vision models for automatic verification of stamps, signatures, banking details, and complex data tables."
     },
-    tags: ["DocAI", "OCR", "Vision Models", "ERP Integration"],
+    tags: ["Аналіз та пошук інформації", "Оптимізація витрат"],
     metrics: [
       { label: { uk: "Точність розпізнавання", en: "Extraction Accuracy" }, value: "99.1%" },
       { label: { uk: "Прискорення обробки", en: "Processing Speedup" }, value: "10x" },
@@ -105,7 +120,9 @@ export const caseStudies: CaseStudy[] = [
   },
 
   {
+    id: "case-smart-rag",
     slug: "rag-knowledge-base",
+    type: "usecase",
     badge: { uk: "Корпоративний RAG", en: "Corporate RAG" },
     title: { 
       uk: "Корпоративна база знань та AI-пошук (RAG)", 
@@ -116,6 +133,9 @@ export const caseStudies: CaseStudy[] = [
       en: "Secure semantic search and exact answers across internal company docs with source citations" 
     },
     bannerImage: "/assets/cards/rag-ai.jpg",
+    scope: { uk: "Внутрішній менеджмент та HR", en: "Internal Operations & HR" },
+    difficultyWithout: { uk: "Висока (тривалий пошук у базі)", en: "High (slow wiki search)" },
+    difficultyWith: { uk: "Низька (відповідь за 2 секунди)", en: "Low (instant answer in 2s)" },
     overview: {
       uk: "Система RAG дозволяє працівникам миттєво отримувати відповіді на внутрішні регламенти, технічні інструкції та баз знань без витоку конфіденційних даних.",
       en: "The RAG system enables employees to query company SOPs, technical guides, and internal wikis with zero data leakage risk."
@@ -128,7 +148,7 @@ export const caseStudies: CaseStudy[] = [
       uk: "Створено локальну векторизовану базу знань на основі RAG (Retrieval-Augmented Generation) з рольовою моделлю доступу (RBAC) та точними цитатами сторінок джерел.",
       en: "Built a vectorized RAG engine with Role-Based Access Control (RBAC) and exact page-level source citations."
     },
-    tags: ["RAG", "Vector DB", "Enterprise Search", "Security"],
+    tags: ["Аналіз та пошук інформації", "Підвищення якості комунікацій"],
     metrics: [
       { label: { uk: "Скорочення часу пошуку", en: "Search Time Reduction" }, value: "85%" },
       { label: { uk: "Безпека даних", en: "Data Security" }, value: "100% On-Prem / Hybrid" },
@@ -137,7 +157,7 @@ export const caseStudies: CaseStudy[] = [
     keyFeatures: [
       {
         title: { uk: "Точні посилання на джерела", en: "Exact Source Citation" },
-        desc: { uk: "Кожна відповідь містить клікабельне посилання на konkretний документ та абзац.", en: "Every generated answer links directly to the specific document paragraph." }
+        desc: { uk: "Кожна відповідь містить клікабельне посилання на конкретний документ та абзац.", en: "Every generated answer links directly to the specific document paragraph." }
       },
       {
         title: { uk: "Рольова модель доступу (RBAC)", en: "Role-Based Access Control" },
@@ -148,7 +168,9 @@ export const caseStudies: CaseStudy[] = [
   },
 
   {
+    id: "case-copilot",
     slug: "copilot-dev",
+    type: "business",
     badge: { uk: "Dev Productivity", en: "Dev Productivity" },
     title: { 
       uk: "Підвищення продуктивності команд розробки (Dev Copilot)", 
@@ -159,6 +181,9 @@ export const caseStudies: CaseStudy[] = [
       en: "AI tools for intelligent code completion, automated unit test generation, and pull request Code Reviews" 
     },
     bannerImage: "/assets/cards/copilot-dev.jpg",
+    scope: { uk: "Інженерія та розробка програмного забезпечення", en: "Software Engineering" },
+    difficultyWithout: { uk: "Висока (ручне написання автотестів)", en: "High (manual boilerplate/tests)" },
+    difficultyWith: { uk: "Низька (AI-автодоповнення й генерація)", en: "Low (AI-assisted generation)" },
     overview: {
       uk: "Впровадження Dev Copilot прискорило цикл розробки програмного забезпечення на 35% та підвищило покриття коду тестами без збільшення штату.",
       en: "Integrating Dev Copilot accelerated the software delivery lifecycle by 35% and increased unit test coverage effortlessly."
@@ -168,10 +193,10 @@ export const caseStudies: CaseStudy[] = [
       en: "Engineering teams spent substantial time drafting boilerplate code, writing unit tests, and manually reviewing pull requests."
     },
     solution: {
-      uk: "Налаштовано захищене середовище AI Copilot з генерацією тестів, автодоповненням коду та ботом автоматичного перевірки безпеки у GitLab/GitHub CI/CD.",
+      uk: "Налаштовано захищене середовище AI Copilot з генерацією тестів, автодоповненням коду та ботом автоматичної перевірки безпеки у GitLab/GitHub CI/CD.",
       en: "Configured a secure AI Copilot environment featuring automated test generation, code completion, and CI/CD security review bots."
     },
-    tags: ["DevOps", "AI Copilot", "Code Review", "CI/CD"],
+    tags: ["Підвищення продуктивності", "Прискорення розробки ПЗ"],
     metrics: [
       { label: { uk: "Прискорення кодингу", en: "Coding Velocity" }, value: "+35%" },
       { label: { uk: "Покриття тестами", en: "Test Coverage" }, value: "+45%" },
@@ -191,7 +216,9 @@ export const caseStudies: CaseStudy[] = [
   },
 
   {
+    id: "case-code-automation",
     slug: "business-analytics",
+    type: "business",
     badge: { uk: "Predictive Analytics", en: "Predictive Analytics" },
     title: { 
       uk: "Прогнозна бізнес-аналітика та AI BI Дашборди", 
@@ -202,6 +229,9 @@ export const caseStudies: CaseStudy[] = [
       en: "Big data processing, demand forecasting, and automated sales anomaly detection" 
     },
     bannerImage: "/assets/cards/business-case-analytics.png",
+    scope: { uk: "Фінанси, продажі та аналітика", en: "Finance, Sales & Business Intelligence" },
+    difficultyWithout: { uk: "Висока (ручне зведення в Excel)", en: "High (manual Excel pivot sheets)" },
+    difficultyWith: { uk: "Низька (автоматичні NLQ-дашборди)", en: "Low (automated NLQ dashboards)" },
     overview: {
       uk: "Платформа прогнозної аналітики трансформує сирі транзакційні дані у готові бізнес-інсайти та точні прогнози попиту.",
       en: "Predictive analytics platform converts raw transactional data into actionable business insights and demand forecasts."
@@ -211,10 +241,10 @@ export const caseStudies: CaseStudy[] = [
       en: "Difficulty consolidating fragmented sales channels and lack of accurate short-term inventory stock forecasting."
     },
     solution: {
-      uk: "Побудовано машинні моделі машинного навчання для спрогнозування попиту та інтерактивні BI-дашборди з природно-мовним інтерфейсом запитів (Natural Language Query).",
+      uk: "Побудовано моделі машинного навчання для спрогнозування попиту та інтерактивні BI-дашборди з природно-мовним інтерфейсом запитів (Natural Language Query).",
       en: "Built ML forecasting models alongside interactive BI dashboards featuring Natural Language Querying (NLQ)."
     },
-    tags: ["Machine Learning", "Big Data", "BI", "Forecasting"],
+    tags: ["Скорочення часу виконання задач", "Оптимізація витрат"],
     metrics: [
       { label: { uk: "Точність прогнозу попиту", en: "Demand Forecast Accuracy" }, value: "94.2%" },
       { label: { uk: "Скорочення надлишків", en: "Overstock Reduction" }, value: "28%" },
@@ -230,7 +260,9 @@ export const caseStudies: CaseStudy[] = [
   },
 
   {
+    id: "case-sales-assistant",
     slug: "robotics",
+    type: "business",
     badge: { uk: "Robotics & Vision", en: "Robotics & Vision" },
     title: { 
       uk: "AI у робототехніці та комп'ютерному баченні", 
@@ -241,23 +273,26 @@ export const caseStudies: CaseStudy[] = [
       en: "Robotic system navigation, object recognition, and real-time manufacturing quality control" 
     },
     bannerImage: "/assets/cards/use-case-robot.png",
+    scope: { uk: "Виробництво, складська логістика та детекція", en: "Manufacturing & Logistics" },
+    difficultyWithout: { uk: "Дуже висока (візуальні помилки людини)", en: "Very High (human visual fatigue)" },
+    difficultyWith: { uk: "Низька (Edge AI детекція за < 10мс)", en: "Low (Edge AI detection < 10ms)" },
     overview: {
       uk: "Комп'ютерне бачення та автономне керування робототехнікою забезпечують безперервний контроль якості та безпеку виробничих процесів.",
       en: "Computer vision and autonomous robotics control ensure continuous quality inspection and operational safety."
     },
     challenge: {
-      uk: "Високий відсоток шлюбу при візуальному контролі готової продукції людиною та потреба у безпечній навігації роверів на складі.",
+      uk: "Високий відсоток браку при візуальному контролі готової продукції людиною та потреба у безпечній навігації роверів на складі.",
       en: "High defect oversight during human visual product inspection and the need for safe warehouse rover navigation."
     },
     solution: {
       uk: "Розроблено edge-системи комп'ютерного бачення для миттєвої детекції дефектів на конвеєрі та AI-моделі для автономної орієнтації робототехнічних платформ.",
       en: "Engineered edge computer vision systems for real-time assembly line defect detection and autonomous robotic platform navigation."
     },
-    tags: ["Computer Vision", "Edge AI", "Robotics", "Quality Control"],
+    tags: ["Автоматизація процесів", "Підвищення якості комунікацій"],
     metrics: [
       { label: { uk: "Детекція дефектів", en: "Defect Detection Rate" }, value: "99.8%" },
       { label: { uk: "Затримка обробки (Edge)", en: "Edge Inference Latency" }, value: "< 10 мс" },
-      { label: { uk: "Зниження виробничого шлюбу", en: "Manufacturing Waste Cut" }, value: "40%" }
+      { label: { uk: "Зниження виробничого браку", en: "Manufacturing Waste Cut" }, value: "40%" }
     ],
     keyFeatures: [
       {

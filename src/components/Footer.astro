@@ -89,7 +89,10 @@
     <!-- Bottom Row: Copyright & Privacy Link -->
     <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-gray-500 font-roboto">
       <p>© 2026 IT SmartFlex. Всі права захищені.</p>
-      <a href="/privacy/" class="hover:text-gray-300 transition-colors underline">Політика конфіденційності</a>
+      <div class="flex items-center gap-4">
+        <button type="button" onclick="if(typeof window.revokeCookieConsent === 'function'){ window.revokeCookieConsent(); }" class="hover:text-gray-300 transition-colors underline cursor-pointer">Налаштування cookie</button>
+        <a href="/privacy/" class="hover:text-gray-300 transition-colors underline">Політика конфіденційності</a>
+      </div>
     </div>
 
   </div>

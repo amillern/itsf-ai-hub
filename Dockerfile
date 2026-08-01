@@ -15,6 +15,9 @@ RUN npm ci
 # Copy source code and config files
 COPY . .
 
+# Quality gate: Type check with astro check before building
+RUN npm run check
+
 # Build static output to /app/dist
 RUN npm run build
 

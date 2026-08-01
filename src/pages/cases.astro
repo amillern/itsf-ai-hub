@@ -35,24 +35,24 @@ import { caseStudies } from '../data/cases';
           <div class="space-y-4">
             <div class="rounded-2xl overflow-hidden bg-purple-900/10 h-48 border border-gray-100">
               <img 
-                src={item.image} 
-                alt={item.title} 
+                src={item.bannerImage} 
+                alt={item.title.uk} 
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
             </div>
 
             <div class="flex items-center justify-between">
               <FigmaStatusBadge variant="business">
-                {item.category}
+                {item.badge.uk}
               </FigmaStatusBadge>
             </div>
 
             <h3 class="text-xl font-fixel font-bold text-text-main group-hover:text-brand-red transition-colors leading-snug">
-              {item.title}
+              {item.title.uk}
             </h3>
 
             <p class="text-xs sm:text-sm text-text-muted leading-relaxed font-roboto line-clamp-3">
-              {item.overview}
+              {item.overview.uk}
             </p>
           </div>
 

@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   ai-hub-webpage:
     build:
@@ -8,5 +6,5 @@ services:
     container_name: ai-hub-webpage
     restart: always
     ports:
-      - "4321:80"
-      - "8080:80"
+      - "8080:8080"
+      - "4321:8080"

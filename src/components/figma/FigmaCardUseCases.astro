@@ -7,7 +7,6 @@ interface Props {
   image?: string;
   tags?: string[];
   slug?: string;
-  itemData?: any;
 }
 
 const {
@@ -15,8 +14,7 @@ const {
   description,
   image = "/assets/cards/support-bot.jpg",
   tags = [],
-  slug = "support-bot",
-  itemData
+  slug = "support-bot"
 } = Astro.props;
 
 const tagsString = Array.isArray(tags) ? tags.join('|||') : '';

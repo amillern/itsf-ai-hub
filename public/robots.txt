@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://ai-hub-webpage-358601432150.europe-west1.run.app/sitemap.xml

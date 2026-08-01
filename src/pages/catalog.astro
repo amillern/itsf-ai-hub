@@ -3,81 +3,19 @@ import Layout from '../layouts/Layout.astro';
 import FigmaCardUseCases from '../components/figma/FigmaCardUseCases.astro';
 import FigmaCardBusinessCases from '../components/figma/FigmaCardBusinessCases.astro';
 import FigmaButton from '../components/figma/FigmaButton.astro';
+import { caseStudies } from '../data/cases';
 
-const catalogItems = [
-  {
-    id: "case-copilot",
-    slug: "copilot-dev",
-    title: "Підвищення продуктивності команд розробки",
-    type: "business",
-    typeLabel: "Case Studies",
-    badgeColor: "bg-[#EAE8FA] text-[#4A3E85]",
-    image: "/assets/cards/copilot-dev.jpg",
-    category: "Прискорення розробки ПЗ",
-    tags: ["Підвищення продуктивності", "Прискорення розробки ПЗ"],
-    description: "Пілотування ШІ-інструмента GitHub Copilot в IT SmartFlex з метою оцінки його реального впливу на швидкість розробки."
-  },
-  {
-    id: "case-customer-service",
-    slug: "support-bot",
-    title: "Автоматизація обробки звернень клієнтів",
-    type: "usecase",
-    typeLabel: "Use Case",
-    badgeColor: "bg-[#FDF0CD] text-[#7A5A00]",
-    image: "/assets/cards/support-bot.jpg",
-    category: "Клієнтський сервіс",
-    tags: ["Покращення клієнтського сервісу", "Автоматизація процесів"],
-    description: "ШІ-асистент для автоматичного розпізнавання, класифікації та відповіді на звернення клієнтів 24/7."
-  },
-  {
-    id: "case-code-automation",
-    slug: "business-analytics",
-    title: "Автоматизація тестування та генерація звітів",
-    type: "business",
-    typeLabel: "Case Studies",
-    badgeColor: "bg-[#EAE8FA] text-[#4A3E85]",
-    image: "/assets/cards/business-case-analytics.png",
-    category: "Прискорення розробки ПЗ",
-    tags: ["Скорочення часу виконання задач", "Оптимізація витрат"],
-    description: "Роботизована платформа для аналізу інфраструктурних метрик та створення автозвітів для менеджменту."
-  },
-  {
-    id: "case-document-ai",
-    slug: "doc-ai",
-    title: "Інтелектуальний аналіз документів та юридичних актів",
-    type: "business",
-    typeLabel: "Case Studies",
-    badgeColor: "bg-[#EAE8FA] text-[#4A3E85]",
-    image: "/assets/cards/doc-ai.jpg",
-    category: "Аналіз та пошук інформації",
-    tags: ["Аналіз та пошук інформації", "Оптимізація витрат"],
-    description: "DocAI система для автоматичного витягу сутностей з первинної документації та договорів."
-  },
-  {
-    id: "case-smart-rag",
-    slug: "rag-knowledge-base",
-    title: "Корпоративна база знань з ШІ-пошуком (RAG)",
-    type: "usecase",
-    typeLabel: "Use Case",
-    badgeColor: "bg-[#FDF0CD] text-[#7A5A00]",
-    image: "/assets/cards/rag-ai.jpg",
-    category: "Аналіз та пошук інформації",
-    tags: ["Аналіз та пошук інформації", "Підвищення якості комунікацій"],
-    description: "Внутрішня пошукова система для співробітників за регламентами, інструкціями та базою коду."
-  },
-  {
-    id: "case-sales-assistant",
-    slug: "robotics",
-    title: "ШІ в робототехніці та комп'ютерному баченні",
-    type: "business",
-    typeLabel: "Case Studies",
-    badgeColor: "bg-[#EAE8FA] text-[#4A3E85]",
-    image: "/assets/cards/use-case-robot.png",
-    category: "Автоматизація процесів",
-    tags: ["Автоматизація процесів", "Підвищення якості комунікацій"],
-    description: "Система комп'ютерного бачення для моніторингу виробничих ліній та управління автономними роботами."
-  }
-];
+const catalogItems = caseStudies.map(item => ({
+  id: item.id,
+  slug: item.slug,
+  title: item.title.uk,
+  type: item.type,
+  typeLabel: item.type === 'usecase' ? 'Use Case' : 'Case Studies',
+  image: item.bannerImage,
+  category: item.badge.uk,
+  tags: item.tags,
+  description: item.overview.uk
+}));
 
 // Cleaned list containing ONLY active tags that return non-empty search results
 const activeCatalogFilterTags = Array.from(
@@ -113,7 +51,7 @@ const activeCatalogFilterTags = Array.from(
         
         <button 
           data-type-tab="all" 
-          class="type-tab-btn active px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-fixel font-semibold flex items-center gap-1.5 bg-brand-red-soft text-text-main transition-all shadow-xs"
+          class="type-tab-btn active px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs sm:text-sm font-fixel font-semibold flex items-center gap-1.5 bg-brand-red-soft text-text-main transition-all shadow-sm"
         >
           <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-text-main" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
@@ -201,7 +139,6 @@ const activeCatalogFilterTags = Array.from(
             image={item.image}
             tags={item.tags}
             slug={item.slug}
-            itemData={item}
           />
         ) : (
           <FigmaCardBusinessCases 
@@ -210,7 +147,6 @@ const activeCatalogFilterTags = Array.from(
             image={item.image}
             tags={item.tags}
             slug={item.slug}
-            itemData={item}
           />
         )
       ))}
@@ -228,140 +164,147 @@ const activeCatalogFilterTags = Array.from(
   </div>
 
   <!-- Bulletproof Interactive Filter Logic -->
-  <script is:inline>
-    function initCatalogFilter() {
-      var activeType = 'all';
-      var selectedTags = [];
+  <script>
+    let activeType = 'all';
+    let selectedTags: string[] = [];
 
-      var typeBtns = document.querySelectorAll('.type-tab-btn');
-      var togglePopoverBtn = document.getElementById('filter-dropdown-toggle');
-      var filterPopover = document.getElementById('filter-popover');
-      var filterChevron = document.getElementById('filter-chevron');
-      var checkboxes = document.querySelectorAll('.filter-checkbox');
-      var activeChipsContainer = document.getElementById('active-chips-container');
-      var cards = document.querySelectorAll('.catalog-item-card');
-      var emptyState = document.getElementById('empty-state');
-      var clearAllBtn = document.getElementById('clear-all-filters-btn');
-      var resetFiltersBtn = document.getElementById('reset-filters-btn');
+    const popover = document.getElementById('filter-popover');
+    const toggleBtn = document.getElementById('filter-dropdown-toggle');
+    const chevron = document.getElementById('filter-chevron');
+    const clearBtn = document.getElementById('clear-all-filters-btn');
+    const resetBtn = document.getElementById('reset-filters-btn');
+    const chipsContainer = document.getElementById('active-chips-container');
+    const emptyState = document.getElementById('empty-state');
+    const cardsGrid = document.getElementById('cards-grid');
 
-      function updateUI() {
-        checkboxes.forEach(function(cb) {
-          cb.checked = selectedTags.indexOf(cb.value) !== -1;
+    const tabBtns = document.querySelectorAll('.type-tab-btn');
+    const checkboxes = document.querySelectorAll('.filter-checkbox');
+    const cardElements = document.querySelectorAll('.catalog-item-card');
+
+    // Popover Toggle
+    toggleBtn?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      popover?.classList.toggle('hidden');
+      chevron?.classList.toggle('rotate-180');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (popover && !popover.contains(e.target as Node) && !toggleBtn?.contains(e.target as Node)) {
+        popover.classList.add('hidden');
+        chevron?.classList.remove('rotate-180');
+      }
+    });
+
+    // Type Tabs Filtering
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        activeType = target.getAttribute('data-type-tab') || 'all';
+
+        tabBtns.forEach(t => {
+          t.classList.remove('active', 'bg-brand-red-soft', 'text-text-main', 'shadow-sm');
+          t.classList.add('text-text-muted');
         });
 
-        if (activeChipsContainer) {
-          activeChipsContainer.innerHTML = '';
-          selectedTags.forEach(function(tag) {
-            var chip = document.createElement('span');
-            chip.className = 'active-chip inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white border border-gray-200 text-xs font-medium text-text-main shadow-xs transition-all';
-            chip.innerHTML = '<span>' + tag + '</span><button class="remove-chip-btn w-4 h-4 rounded-full flex items-center justify-center text-gray-400 hover:text-brand-red hover:bg-gray-100 transition-colors">✕</button>';
-            activeChipsContainer.appendChild(chip);
+        target.classList.add('active', 'bg-brand-red-soft', 'text-text-main', 'shadow-sm');
+        target.classList.remove('text-text-muted');
 
-            var removeBtn = chip.querySelector('.remove-chip-btn');
-            if (removeBtn) {
-              removeBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                selectedTags = selectedTags.filter(function(t) { return t !== tag; });
-                updateUI();
-              });
-            }
-          });
+        applyFilters();
+
+        if (typeof (window as any).sendAmplitudeEvent === 'function') {
+          (window as any).sendAmplitudeEvent('catalog_tab_select', { type: activeType });
         }
+      });
+    });
 
-        var visibleCount = 0;
-        cards.forEach(function(card) {
-          var type = card.getAttribute('data-type');
-          var tagsAttr = card.getAttribute('data-tags') || '';
-          var itemTags = tagsAttr.split('|||').filter(Boolean);
+    // Checkboxes Tag Filtering
+    checkboxes.forEach(cb => {
+      cb.addEventListener('change', () => {
+        updateSelectedTags();
+        applyFilters();
+      });
+    });
 
-          var matchesType = activeType === 'all' || type === activeType;
-          var matchesTags = selectedTags.length === 0 || selectedTags.some(function(t) { return itemTags.indexOf(t) !== -1; });
-
-          if (matchesType && matchesTags) {
-            card.style.display = 'flex';
-            visibleCount++;
-          } else {
-            card.style.display = 'none';
-          }
-        });
-
-        if (emptyState) {
-          if (visibleCount === 0) emptyState.classList.remove('hidden');
-          else emptyState.classList.add('hidden');
+    function updateSelectedTags() {
+      selectedTags = [];
+      checkboxes.forEach(cb => {
+        const input = cb as HTMLInputElement;
+        if (input.checked) {
+          selectedTags.push(input.value);
         }
-      }
-
-      typeBtns.forEach(function(btn) {
-        btn.addEventListener('click', function(e) {
-          typeBtns.forEach(function(b) {
-            b.classList.remove('bg-brand-red-soft', 'font-semibold');
-            b.classList.add('text-text-muted', 'font-medium');
-          });
-          var target = e.currentTarget;
-          target.classList.remove('text-text-muted', 'font-medium');
-          target.classList.add('bg-brand-red-soft', 'font-semibold');
-
-          activeType = target.getAttribute('data-type-tab') || 'all';
-          if (typeof window.sendAmplitudeEvent === 'function') {
-            window.sendAmplitudeEvent('catalog_tab_select', { tab_type: activeType });
-          }
-          updateUI();
-        });
       });
-
-      if (togglePopoverBtn) {
-        togglePopoverBtn.addEventListener('click', function() {
-          var isHidden = filterPopover ? filterPopover.classList.toggle('hidden') : true;
-          if (filterChevron) filterChevron.classList.toggle('rotate-180', !isHidden);
-          if (typeof window.sendAmplitudeEvent === 'function') {
-            window.sendAmplitudeEvent('catalog_filter_toggle', { is_open: !isHidden });
-          }
-        });
-      }
-
-      checkboxes.forEach(function(cb) {
-        cb.addEventListener('change', function() {
-          if (cb.checked) {
-            if (selectedTags.indexOf(cb.value) === -1) selectedTags.push(cb.value);
-          } else {
-            selectedTags = selectedTags.filter(function(t) { return t !== cb.value; });
-          }
-          if (typeof window.sendAmplitudeEvent === 'function') {
-            window.sendAmplitudeEvent('catalog_filter_checkbox_change', {
-              tag_name: cb.value,
-              checked: cb.checked,
-              total_active_filters: selectedTags.length
-            });
-          }
-          updateUI();
-        });
-      });
-
-      if (clearAllBtn) {
-        clearAllBtn.addEventListener('click', function() {
-          selectedTags = [];
-          if (typeof window.sendAmplitudeEvent === 'function') {
-            window.sendAmplitudeEvent('catalog_clear_filters', {});
-          }
-          updateUI();
-        });
-      }
-
-      if (resetFiltersBtn) {
-        resetFiltersBtn.addEventListener('click', function() {
-          selectedTags = [];
-          activeType = 'all';
-          updateUI();
-        });
-      }
-
-      updateUI();
+      renderChips();
     }
 
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initCatalogFilter);
-    } else {
-      initCatalogFilter();
+    function renderChips() {
+      if (!chipsContainer) return;
+      chipsContainer.innerHTML = '';
+
+      selectedTags.forEach(tag => {
+        const chip = document.createElement('span');
+        chip.className = 'inline-flex items-center gap-1 px-3 py-1 bg-gray-200 text-text-main text-xs font-semibold rounded-full font-roboto transition-all';
+        chip.innerHTML = `
+          <span>${tag}</span>
+          <button type="button" class="remove-chip-btn hover:text-brand-red font-bold text-sm ml-0.5" data-tag="${tag}">×</button>
+        `;
+        chipsContainer.appendChild(chip);
+      });
+
+      document.querySelectorAll('.remove-chip-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const tag = (e.currentTarget as HTMLElement).getAttribute('data-tag');
+          if (tag) {
+            checkboxes.forEach(cb => {
+              const input = cb as HTMLInputElement;
+              if (input.value === tag) input.checked = false;
+            });
+            updateSelectedTags();
+            applyFilters();
+          }
+        });
+      });
+    }
+
+    clearBtn?.addEventListener('click', resetAll);
+    resetBtn?.addEventListener('click', resetAll);
+
+    function resetAll() {
+      selectedTags = [];
+      checkboxes.forEach(cb => { (cb as HTMLInputElement).checked = false; });
+      updateSelectedTags();
+      applyFilters();
+    }
+
+    function applyFilters() {
+      let visibleCount = 0;
+
+      cardElements.forEach(card => {
+        const itemType = card.getAttribute('data-type') || '';
+        const itemTagsString = card.getAttribute('data-tags') || '';
+        const itemTags = itemTagsString.split('|||');
+
+        const matchesType = (activeType === 'all') || (itemType === activeType);
+        
+        let matchesTags = true;
+        if (selectedTags.length > 0) {
+          matchesTags = selectedTags.every(st => itemTags.includes(st));
+        }
+
+        if (matchesType && matchesTags) {
+          card.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+
+      if (visibleCount === 0) {
+        emptyState?.classList.remove('hidden');
+        cardsGrid?.classList.add('hidden');
+      } else {
+        emptyState?.classList.add('hidden');
+        cardsGrid?.classList.remove('hidden');
+      }
     }
   </script>
 </Layout>
