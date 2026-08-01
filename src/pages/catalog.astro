@@ -181,19 +181,87 @@ const activeCatalogFilterTags = Array.from(
     const checkboxes = document.querySelectorAll('.filter-checkbox');
     const cardElements = document.querySelectorAll('.catalog-item-card');
 
-    // Popover Toggle
+    function togglePopover(show?: boolean) {
+      if (!popover || !toggleBtn) return;
+      const isHidden = show !== undefined ? !show : !popover.classList.contains('hidden');
+      if (isHidden) {
+        popover.classList.add('hidden');
+        chevron?.classList.remove('rotate-180');
+        toggleBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        popover.classList.remove('hidden');
+        chevron?.classList.add('rotate-180');
+        toggleBtn.setAttribute('aria-expanded', 'true');
+      }
+    }
+
     toggleBtn?.addEventListener('click', (e) => {
       e.stopPropagation();
-      popover?.classList.toggle('hidden');
-      chevron?.classList.toggle('rotate-180');
+      togglePopover();
     });
 
     document.addEventListener('click', (e) => {
       if (popover && !popover.contains(e.target as Node) && !toggleBtn?.contains(e.target as Node)) {
-        popover.classList.add('hidden');
-        chevron?.classList.remove('rotate-180');
+        togglePopover(false);
       }
     });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        togglePopover(false);
+      }
+    });
+
+    // Initialize from URL parameters
+    function initFromUrl() {
+      const params = new URLSearchParams(window.location.search);
+      const urlType = params.get('type');
+      const urlTag = params.get('tag');
+
+      if (urlType && ['all', 'business', 'usecase'].includes(urlType)) {
+        activeType = urlType;
+        tabBtns.forEach(t => {
+          const isMatch = t.getAttribute('data-type-tab') === activeType;
+          if (isMatch) {
+            t.classList.add('active', 'bg-brand-red-soft', 'text-text-main', 'shadow-sm');
+            t.classList.remove('text-text-muted');
+          } else {
+            t.classList.remove('active', 'bg-brand-red-soft', 'text-text-main', 'shadow-sm');
+            t.classList.add('text-text-muted');
+          }
+        });
+      }
+
+      if (urlTag) {
+        const tags = urlTag.split(',');
+        checkboxes.forEach(cb => {
+          const input = cb as HTMLInputElement;
+          if (tags.includes(input.value)) {
+            input.checked = true;
+          }
+        });
+        updateSelectedTags();
+      }
+
+      applyFilters();
+    }
+
+    function syncUrl() {
+      const url = new URL(window.location.href);
+      if (activeType !== 'all') {
+        url.searchParams.set('type', activeType);
+      } else {
+        url.searchParams.delete('type');
+      }
+
+      if (selectedTags.length > 0) {
+        url.searchParams.set('tag', selectedTags.join(','));
+      } else {
+        url.searchParams.delete('tag');
+      }
+
+      window.history.replaceState({}, '', url.toString());
+    }
 
     // Type Tabs Filtering
     tabBtns.forEach(btn => {
@@ -209,6 +277,7 @@ const activeCatalogFilterTags = Array.from(
         target.classList.add('active', 'bg-brand-red-soft', 'text-text-main', 'shadow-sm');
         target.classList.remove('text-text-muted');
 
+        syncUrl();
         applyFilters();
 
         if (typeof (window as any).sendAmplitudeEvent === 'function') {
@@ -221,6 +290,7 @@ const activeCatalogFilterTags = Array.from(
     checkboxes.forEach(cb => {
       cb.addEventListener('change', () => {
         updateSelectedTags();
+        syncUrl();
         applyFilters();
       });
     });
@@ -259,6 +329,7 @@ const activeCatalogFilterTags = Array.from(
               if (input.value === tag) input.checked = false;
             });
             updateSelectedTags();
+            syncUrl();
             applyFilters();
           }
         });
@@ -272,6 +343,7 @@ const activeCatalogFilterTags = Array.from(
       selectedTags = [];
       checkboxes.forEach(cb => { (cb as HTMLInputElement).checked = false; });
       updateSelectedTags();
+      syncUrl();
       applyFilters();
     }
 
@@ -306,5 +378,7 @@ const activeCatalogFilterTags = Array.from(
         cardsGrid?.classList.remove('hidden');
       }
     }
+
+    initFromUrl();
   </script>
 </Layout>

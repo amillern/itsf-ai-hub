@@ -382,6 +382,11 @@ const taskPillsWithColors = [
       });
     }
 
+    function prevSlide() {
+      const prev = (currentSlide - 1 + totalSlides) % totalSlides;
+      goToSlide(prev, true);
+    }
+
     function nextSlide() {
       const next = (currentSlide + 1) % totalSlides;
       goToSlide(next, false);
@@ -396,14 +401,36 @@ const taskPillsWithColors = [
       });
     });
 
+    const carouselEl = document.getElementById('promo-carousel');
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (carouselEl) {
+      // Pause auto-sliding on mouse hover or focus
+      carouselEl.addEventListener('mouseenter', () => clearInterval(autoSlideTimer));
+      carouselEl.addEventListener('mouseleave', () => resetAutoSlide());
+
+      // Keyboard navigation (ArrowLeft / ArrowRight)
+      carouselEl.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+          prevSlide();
+          resetAutoSlide();
+        } else if (e.key === 'ArrowRight') {
+          nextSlide();
+          resetAutoSlide();
+        }
+      });
+    }
+
     function resetAutoSlide() {
       clearInterval(autoSlideTimer);
-      autoSlideTimer = setInterval(nextSlide, 5000);
+      if (!prefersReducedMotion) {
+        autoSlideTimer = setInterval(nextSlide, 5000);
+      }
     }
 
     resetAutoSlide();
 
-    // Event Triggers
+    // Event Triggers & GA4 Conversions
     document.getElementById('hero-start-btn')?.addEventListener('click', () => {
       if (typeof (window as any).sendAmplitudeEvent === 'function') {
         (window as any).sendAmplitudeEvent('click_start_discovery', { source: 'hero' });
@@ -413,6 +440,14 @@ const taskPillsWithColors = [
     document.getElementById('get-consultation-btn')?.addEventListener('click', () => {
       if (typeof (window as any).sendAmplitudeEvent === 'function') {
         (window as any).sendAmplitudeEvent('click_get_consultation', { destination: 'linkedin' });
+      }
+      // @ts-ignore
+      if (typeof window.gtag === 'function') {
+        // @ts-ignore
+        window.gtag('event', 'select_content', {
+          content_type: 'consultation_button',
+          destination: 'linkedin'
+        });
       }
     });
   </script>

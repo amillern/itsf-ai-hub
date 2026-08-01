@@ -1,0 +1,6 @@
+# CODEOWNERS for ITSF AI Hub Critical Layout & Brand Components
+
+/src/components/Header.astro @itsmartflex-lead
+/src/components/Footer.astro @itsmartflex-lead
+/src/layouts/Layout.astro @itsmartflex-lead
+/AGENTS.md @itsmartflex-lead

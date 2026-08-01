@@ -343,6 +343,16 @@ import { siteConfig } from '../data/siteConfig';
               fields_filled: 7
             });
           }
+
+          // GA4 Conversion Event
+          // @ts-ignore
+          if (typeof window.gtag === 'function') {
+            // @ts-ignore
+            window.gtag('event', 'generate_lead', {
+              form_id: 'contacts_main'
+            });
+          }
+
           form.reset();
         }
 

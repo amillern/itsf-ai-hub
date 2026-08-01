@@ -6,17 +6,20 @@
     "dev": "astro dev",
     "build": "astro build",
     "check": "astro check",
-    "verify": "npm run check && npm run build",
+    "check:design": "node scripts/check-design-system.mjs",
+    "check:layout": "node scripts/check-layout-snapshots.mjs",
+    "snapshot:update": "node scripts/check-layout-snapshots.mjs --update",
+    "verify": "npm run check && npm run check:design && npm run build && npm run check:layout",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^5.1.5",
     "astro": "^4.16.13",
+    "@astrojs/tailwind": "^5.1.5",
     "tailwindcss": "^3.4.17"
   },
   "devDependencies": {
-    "@astrojs/check": "^0.9.10",
-    "typescript": "^5.9.3"
+    "@astrojs/check": "^0.9.4",
+    "typescript": "^5.7.3"
   }
 }
