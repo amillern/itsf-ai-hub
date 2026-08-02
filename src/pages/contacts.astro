@@ -200,6 +200,7 @@ import { siteConfig } from '../data/siteConfig';
               <!-- Success Alert Message -->
               <div 
                 id="form-success-msg" 
+                role="alert"
                 class="hidden p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-200 text-sm font-medium items-center gap-3"
               >
                 <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -211,12 +212,13 @@ import { siteConfig } from '../data/siteConfig';
               <!-- Error Alert Message -->
               <div 
                 id="form-error-msg" 
+                role="alert"
                 class="hidden p-4 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-200 text-sm font-medium items-center gap-3"
               >
                 <svg class="w-5 h-5 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-                <span>Неможливо надіслати форму. Будь ласка, спробуйте пізніше або напишіть нам на <a href="mailto:contact_us@itsmartflex.com" class="underline">contact_us@itsmartflex.com</a>.</span>
+                <span>Не вдалося надіслати. Напишіть, будь ласка, на <a href="mailto:contact_us@itsmartflex.com" class="underline">contact_us@itsmartflex.com</a>.</span>
               </div>
             </div>
 
@@ -315,10 +317,13 @@ import { siteConfig } from '../data/siteConfig';
               headers: { 'Content-Type': 'text/plain;charset=utf-8' },
               body: JSON.stringify(payload)
             }).then(function(response) {
-              onSuccess();
+              if (response.ok) {
+                onSuccess();
+              } else {
+                onError();
+              }
             }).catch(function() {
-              // Fallback handling
-              onSuccess();
+              onError();
             });
           } else {
             setTimeout(onSuccess, 500);
