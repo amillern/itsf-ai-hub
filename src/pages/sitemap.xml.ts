@@ -2,7 +2,11 @@ import type { APIRoute } from 'astro';
 import { caseStudies } from '../data/cases';
 
 export const GET: APIRoute = async () => {
-  const baseUrl = (import.meta.env.PUBLIC_SITE_URL || 'https://ai.itsmartflex.com').replace(/\/$/, '');
+  const siteUrl = import.meta.env.PUBLIC_SITE_URL;
+  if (!siteUrl) {
+    throw new Error('❌ PUBLIC_SITE_URL is required at build time.');
+  }
+  const baseUrl = siteUrl.replace(/\/$/, '');
 
   const staticPages = [
     '',

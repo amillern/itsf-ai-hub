@@ -13,7 +13,8 @@ const {
   description = "Практичні приклади, кейси та сценарії застосування штучного інтелекту на основі досвіду IT SmartFlex."
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://ai.itsmartflex.com').href;
+const isProd = import.meta.env.PUBLIC_ENV === 'production';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!DOCTYPE html>
@@ -30,6 +31,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://ai.itsma
     <meta name="generator" content={Astro.generator} />
     
     <!-- SEO & Canonical Metadata -->
+    {!isProd && <meta name="robots" content="noindex, nofollow" />}
     <meta name="google-site-verification" content="AI4lwYgK0_677777wFkDAzBBQHgdjSjrpT24xMg" />
     <link rel="canonical" href={canonicalURL} />
     <title>{title}</title>

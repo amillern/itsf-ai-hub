@@ -1,0 +1,13 @@
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '--build-arg'
+      - 'PUBLIC_SITE_URL=${_PUBLIC_SITE_URL}'
+      - '--build-arg'
+      - 'PUBLIC_ENV=${_PUBLIC_ENV}'
+      - '-t'
+      - '${_IMAGE_TAG}'
+      - '.'
+images:
+  - '${_IMAGE_TAG}'
