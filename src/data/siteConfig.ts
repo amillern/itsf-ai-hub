@@ -5,10 +5,8 @@ export interface NavItem {
 
 export interface SiteConfig {
   name: string;
-  title: string;
   tagline: string;
   description: string;
-  siteUrl: string;
   nav: NavItem[];
   company: {
     name: string;
@@ -22,11 +20,9 @@ export interface SiteConfig {
 }
 
 export const siteConfig: SiteConfig = {
-  name: "IT SmartFlex AI Hub",
-  title: "IT SmartFlex AI Hub | Екосистема практичних AI-рішень",
+  name: "AI Hub",
   tagline: "IT SmartFlex",
-  description: "Реальні приклади та сценарії застосування AI на основі практичного досвіду команди фахівців IT SmartFlex",
-  siteUrl: "https://ai.itsmartflex.com",
+  description: "Реальні приклади та сценарії застосування Al на основі практичного досвіду команди фахівців IT SmartFlex",
   nav: [
     { label: "Головна", href: "/" },
     { label: "Каталог AI-рішень", href: "/catalog/" },

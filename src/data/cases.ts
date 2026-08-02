@@ -12,8 +12,8 @@ export interface CaseStudy {
   scope: { uk: string; en: string };
   difficultyWithout: { uk: string; en: string };
   difficultyWith: { uk: string; en: string };
-  tags: { uk: string[]; en: string[] };
-  metrics: Array<{ label: { uk: string; en: string }; value: { uk: string; en: string } }>;
+  tags: string[];
+  metrics: Array<{ label: { uk: string; en: string }; value: string }>;
   keyFeatures: Array<{ title: { uk: string; en: string }; desc: { uk: string; en: string } }>;
   techStack: string[];
 }
@@ -48,14 +48,11 @@ export const caseStudies: CaseStudy[] = [
       uk: "Розроблено мультимовний AI-асистент на базі LLM із синхронізацією з CRM, який розпізнає намір клієнта (Intent Recognition), формує відповіді на основі регламентів компанії та ескалює складні VIP-запити на фахівців.",
       en: "Developed an LLM-based multilingual AI assistant synced with CRM that detects customer intent, answers using company guidelines, and escalates complex VIP requests to specialists."
     },
-    tags: {
-      uk: ["Покращення клієнтського сервісу", "Автоматизація процесів"],
-      en: ["Customer Care Optimization", "Process Automation"]
-    },
+    tags: ["Покращення клієнтського сервісу", "Автоматизація процесів"],
     metrics: [
-      { label: { uk: "Автоматизація запитів", en: "Automated Requests" }, value: { uk: "65%", en: "65%" } },
-      { label: { uk: "Час відповіді клієнту", en: "Avg Response Time" }, value: { uk: "< 15 сек", en: "< 15 sec" } },
-      { label: { uk: "Задоволеність (CSAT)", en: "CSAT Score" }, value: { uk: "4.8 / 5", en: "4.8 / 5" } }
+      { label: { uk: "Автоматизація запитів", en: "Automated Requests" }, value: "65%" },
+      { label: { uk: "Час відповіді клієнту", en: "Avg Response Time" }, value: "< 15 сек" },
+      { label: { uk: "Задоволеність (CSAT)", en: "CSAT Score" }, value: "4.8 / 5" }
     ],
     keyFeatures: [
       {
@@ -103,14 +100,11 @@ export const caseStudies: CaseStudy[] = [
       uk: "Впроваджено інтелектуальний OCR-конвеєр з використанням мультимодальних моделей комп'ютерного бачення для автоматичної валідації печаток, підписів, реквізитів та табличних даних.",
       en: "Deployed an intelligent OCR pipeline utilizing multimodal vision models for automatic verification of stamps, signatures, banking details, and complex data tables."
     },
-    tags: {
-      uk: ["Аналіз та пошук інформації", "Оптимізація витрат"],
-      en: ["Information Extraction & Search", "Cost Optimization"]
-    },
+    tags: ["Аналіз та пошук інформації", "Оптимізація витрат"],
     metrics: [
-      { label: { uk: "Точність розпізнавання", en: "Extraction Accuracy" }, value: { uk: "99.1%", en: "99.1%" } },
-      { label: { uk: "Прискорення обробки", en: "Processing Speedup" }, value: { uk: "10x", en: "10x" } },
-      { label: { uk: "Економія людино-годин", en: "Hours Saved / Month" }, value: { uk: "350+ год", en: "350+ hrs" } }
+      { label: { uk: "Точність розпізнавання", en: "Extraction Accuracy" }, value: "99.1%" },
+      { label: { uk: "Прискорення обробки", en: "Processing Speedup" }, value: "10x" },
+      { label: { uk: "Економія людино-годин", en: "Hours Saved / Month" }, value: "350+ год" }
     ],
     keyFeatures: [
       {
@@ -154,14 +148,11 @@ export const caseStudies: CaseStudy[] = [
       uk: "Створено локальну векторизовану базу знань на основі RAG (Retrieval-Augmented Generation) з рольовою моделлю доступу (RBAC) та точними цитатами сторінок джерел.",
       en: "Built a vectorized RAG engine with Role-Based Access Control (RBAC) and exact page-level source citations."
     },
-    tags: {
-      uk: ["Аналіз та пошук інформації", "Підвищення якості комунікацій"],
-      en: ["Information Extraction & Search", "Communication Quality Boost"]
-    },
+    tags: ["Аналіз та пошук інформації", "Підвищення якості комунікацій"],
     metrics: [
-      { label: { uk: "Скорочення часу пошуку", en: "Search Time Reduction" }, value: { uk: "85%", en: "85%" } },
-      { label: { uk: "Безпека даних", en: "Data Security" }, value: { uk: "100% On-Prem / Hybrid", en: "100% On-Prem / Hybrid" } },
-      { label: { uk: "Точність відповідей", en: "Answer Accuracy" }, value: { uk: "97.4%", en: "97.4%" } }
+      { label: { uk: "Скорочення часу пошуку", en: "Search Time Reduction" }, value: "85%" },
+      { label: { uk: "Безпека даних", en: "Data Security" }, value: "100% On-Prem / Hybrid" },
+      { label: { uk: "Точність відповідей", en: "Answer Accuracy" }, value: "97.4%" }
     ],
     keyFeatures: [
       {
@@ -205,14 +196,11 @@ export const caseStudies: CaseStudy[] = [
       uk: "Налаштовано захищене середовище AI Copilot з генерацією тестів, автодоповненням коду та ботом автоматичної перевірки безпеки у GitLab/GitHub CI/CD.",
       en: "Configured a secure AI Copilot environment featuring automated test generation, code completion, and CI/CD security review bots."
     },
-    tags: {
-      uk: ["Підвищення продуктивності", "Прискорення розробки ПЗ"],
-      en: ["Developer Productivity", "Software Delivery Speedup"]
-    },
+    tags: ["Підвищення продуктивності", "Прискорення розробки ПЗ"],
     metrics: [
-      { label: { uk: "Прискорення кодингу", en: "Coding Velocity" }, value: { uk: "+35%", en: "+35%" } },
-      { label: { uk: "Покриття тестами", en: "Test Coverage" }, value: { uk: "+45%", en: "+45%" } },
-      { label: { uk: "Швидкість Code Review", en: "Review Cycle Speed" }, value: { uk: "3x", en: "3x" } }
+      { label: { uk: "Прискорення кодингу", en: "Coding Velocity" }, value: "+35%" },
+      { label: { uk: "Покриття тестами", en: "Test Coverage" }, value: "+45%" },
+      { label: { uk: "Швидкість Code Review", en: "Review Cycle Speed" }, value: "3x" }
     ],
     keyFeatures: [
       {
@@ -256,14 +244,11 @@ export const caseStudies: CaseStudy[] = [
       uk: "Побудовано моделі машинного навчання для спрогнозування попиту та інтерактивні BI-дашборди з природно-мовним інтерфейсом запитів (Natural Language Query).",
       en: "Built ML forecasting models alongside interactive BI dashboards featuring Natural Language Querying (NLQ)."
     },
-    tags: {
-      uk: ["Скорочення часу виконання задач", "Оптимізація витрат"],
-      en: ["Task Time Reduction", "Cost Optimization"]
-    },
+    tags: ["Скорочення часу виконання задач", "Оптимізація витрат"],
     metrics: [
-      { label: { uk: "Точність прогнозу попиту", en: "Demand Forecast Accuracy" }, value: { uk: "94.2%", en: "94.2%" } },
-      { label: { uk: "Скорочення надлишків", en: "Overstock Reduction" }, value: { uk: "28%", en: "28%" } },
-      { label: { uk: "Швидкість побудови звітів", en: "Reporting Speed" }, value: { uk: "Миттєво", en: "Instant" } }
+      { label: { uk: "Точність прогнозу попиту", en: "Demand Forecast Accuracy" }, value: "94.2%" },
+      { label: { uk: "Скорочення надлишків", en: "Overstock Reduction" }, value: "28%" },
+      { label: { uk: "Швидкість побудови звітів", en: "Reporting Speed" }, value: "Instant" }
     ],
     keyFeatures: [
       {
@@ -303,14 +288,11 @@ export const caseStudies: CaseStudy[] = [
       uk: "Розроблено edge-системи комп'ютерного бачення для миттєвої детекції дефектів на конвеєрі та AI-моделі для автономної орієнтації робототехнічних платформ.",
       en: "Engineered edge computer vision systems for real-time assembly line defect detection and autonomous robotic platform navigation."
     },
-    tags: {
-      uk: ["Автоматизація процесів", "Підвищення якості комунікацій"],
-      en: ["Process Automation", "Communication Quality Boost"]
-    },
+    tags: ["Автоматизація процесів", "Підвищення якості комунікацій"],
     metrics: [
-      { label: { uk: "Детекція дефектів", en: "Defect Detection Rate" }, value: { uk: "99.8%", en: "99.8%" } },
-      { label: { uk: "Затримка обробки (Edge)", en: "Edge Inference Latency" }, value: { uk: "< 10 мс", en: "< 10 ms" } },
-      { label: { uk: "Зниження виробничого браку", en: "Manufacturing Waste Cut" }, value: { uk: "40%", en: "40%" } }
+      { label: { uk: "Детекція дефектів", en: "Defect Detection Rate" }, value: "99.8%" },
+      { label: { uk: "Затримка обробки (Edge)", en: "Edge Inference Latency" }, value: "< 10 мс" },
+      { label: { uk: "Зниження виробничого браку", en: "Manufacturing Waste Cut" }, value: "40%" }
     ],
     keyFeatures: [
       {

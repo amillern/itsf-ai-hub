@@ -1,12 +1,372 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContactsSections from '../sections/ContactsSections.astro';
+import { siteConfig } from '../data/siteConfig';
 ---
 
-<Layout 
-  title="Контакти | IT SmartFlex AI Hub"
-  description="Зв'яжіться з нашими AI-архітекторами для обговорення вашої задачі та вибору оптимального сценарію автоматизації."
-  lang="uk"
->
-  <ContactsSections lang="uk" />
+<Layout title="Контакти | IT SmartFlex AI Hub">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-24 space-y-10">
+    
+    <!-- Main Header Title -->
+    <div class="text-center">
+      <h1 class="text-4xl sm:text-5xl font-fixel font-extrabold text-text-main tracking-tight">
+        Контакти
+      </h1>
+    </div>
+
+    <!-- Main Full-Width Dark Card Container -->
+    <div class="bg-[#0C031D] bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-[#280A54] via-[#0D0322] to-[#04000C] rounded-[28px] sm:rounded-[36px] p-6 sm:p-10 lg:p-14 border border-white/15 shadow-2xl text-white relative overflow-hidden">
+      
+      <!-- Background Ambient Glow Accents -->
+      <div class="absolute -top-24 -left-24 w-96 h-96 bg-purple-600/25 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-brand-red/20 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start relative z-10">
+        
+        <!-- Left Column: Discuss Task, Email & LinkedIn -->
+        <div class="lg:col-span-5 space-y-10">
+          
+          <div class="space-y-4">
+            <h2 class="text-2xl sm:text-3xl font-fixel font-extrabold text-white leading-tight">
+              Обговорити вашу задачу
+            </h2>
+            <p class="text-gray-300 text-sm sm:text-base leading-relaxed font-roboto">
+              Не всі сценарії застосування штучного інтелекту можна описати готовими кейсами. Розкажіть про ваші бізнес-процеси, виклики або ідеї — допоможемо визначити можливості використання AI саме для вашої організації.
+            </p>
+          </div>
+
+          <div class="space-y-2">
+            <h3 class="text-xl sm:text-2xl font-fixel font-bold text-white">
+              Напишіть нам
+            </h3>
+            <a 
+              href="mailto:contact_us@itsmartflex.com" 
+              class="text-sm sm:text-base text-gray-300 hover:text-white hover:underline font-roboto block"
+            >
+              contact_us@itsmartflex.com
+            </a>
+          </div>
+
+          <div class="space-y-4 pt-2">
+            <div class="space-y-2">
+              <h3 class="text-xl sm:text-2xl font-fixel font-bold text-white">
+                Зв'яжіться через LinkedIn
+              </h3>
+              <p class="text-sm text-gray-300 font-roboto">
+                Слідкуйте за оновленнями та зв'яжіться з командою IT SmartFlex
+              </p>
+            </div>
+
+            <div>
+              <a 
+                href={siteConfig.company.linkedin} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/30 bg-white/5 hover:bg-white/15 text-white font-fixel text-sm font-semibold transition-all duration-300 active:scale-95 shadow-sm"
+              >
+                <span class="text-lg leading-none">+</span>
+                <span>LinkedIn IT SmartFlex</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Form Heading & Dark Form Fields -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <div class="space-y-2">
+            <h2 class="text-2xl sm:text-3xl font-fixel font-extrabold text-white">
+              Форма зворотного зв'язку
+            </h2>
+            <p class="text-gray-300 text-sm font-roboto">
+              Розкажіть про свою задачу
+            </p>
+          </div>
+
+          <form id="contact-form" novalidate class="space-y-4 font-roboto">
+            
+            <!-- Honeypot field for anti-spam -->
+            <input type="text" name="website_url_hp" id="website_url_hp" class="hidden" tabindex="-1" autocomplete="off" />
+
+            <!-- Row 1: Name & Surname -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="firstName" class="sr-only">Ім'я</label>
+                <input 
+                  type="text" 
+                  id="firstName" 
+                  name="firstName" 
+                  placeholder="Ім'я *" 
+                  aria-label="Ім'я"
+                  class="form-input w-full px-4 py-3.5 bg-[#14082B] border border-white/20 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-purple-400 focus:bg-[#1A0B38] focus:ring-2 focus:ring-purple-400/30 transition-all"
+                />
+                <span id="err-firstName" role="alert" class="text-rose-400 text-xs mt-1 hidden">Будь ласка, вкажіть ваше ім'я</span>
+              </div>
+
+              <div>
+                <label for="lastName" class="sr-only">Прізвище</label>
+                <input 
+                  type="text" 
+                  id="lastName" 
+                  name="lastName" 
+                  placeholder="Прізвище *" 
+                  aria-label="Прізвище"
+                  class="form-input w-full px-4 py-3.5 bg-[#14082B] border border-white/20 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-purple-400 focus:bg-[#1A0B38] focus:ring-2 focus:ring-purple-400/30 transition-all"
+                />
+                <span id="err-lastName" role="alert" class="text-rose-400 text-xs mt-1 hidden">Будь ласка, вкажіть ваше прізвище</span>
+              </div>
+            </div>
+
+            <!-- Row 2: Company -->
+            <div>
+              <label for="company" class="sr-only">Компанія</label>
+              <input 
+                type="text" 
+                id="company" 
+                name="company" 
+                placeholder="Компанія *" 
+                aria-label="Компанія"
+                class="form-input w-full px-4 py-3.5 bg-[#14082B] border border-white/20 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-purple-400 focus:bg-[#1A0B38] focus:ring-2 focus:ring-purple-400/30 transition-all"
+              />
+              <span id="err-company" role="alert" class="text-rose-400 text-xs mt-1 hidden">Будь ласка, вкажіть назву вашої компанії</span>
+            </div>
+
+            <!-- Row 3: Email -->
+            <div>
+              <label for="email" class="sr-only">Email</label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                placeholder="Email *" 
+                aria-label="Email"
+                class="form-input w-full px-4 py-3.5 bg-[#14082B] border border-white/20 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-purple-400 focus:bg-[#1A0B38] focus:ring-2 focus:ring-purple-400/30 transition-all"
+              />
+              <span id="err-email" role="alert" class="text-rose-400 text-xs mt-1 hidden">Будь ласка, введіть дійсний Email (наприклад: name@company.com)</span>
+            </div>
+
+            <!-- Row 4: Phone -->
+            <div>
+              <label for="phone" class="sr-only">Телефон</label>
+              <input 
+                type="tel" 
+                id="phone" 
+                name="phone" 
+                placeholder="Телефон *" 
+                aria-label="Телефон"
+                class="form-input w-full px-4 py-3.5 bg-[#14082B] border border-white/20 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-purple-400 focus:bg-[#1A0B38] focus:ring-2 focus:ring-purple-400/30 transition-all"
+              />
+              <span id="err-phone" role="alert" class="text-rose-400 text-xs mt-1 hidden">Введіть дійсний номер телефону (наприклад: +380 50 123 45 67)</span>
+            </div>
+
+            <!-- Row 5: Position -->
+            <div>
+              <label for="position" class="sr-only">Посада</label>
+              <input 
+                type="text" 
+                id="position" 
+                name="position" 
+                placeholder="Посада *" 
+                aria-label="Посада"
+                class="form-input w-full px-4 py-3.5 bg-[#14082B] border border-white/20 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-purple-400 focus:bg-[#1A0B38] focus:ring-2 focus:ring-purple-400/30 transition-all"
+              />
+              <span id="err-position" role="alert" class="text-rose-400 text-xs mt-1 hidden">Будь ласка, вкажіть вашу посаду</span>
+            </div>
+
+            <!-- Row 6: Message Textarea -->
+            <div>
+              <label for="message" class="sr-only">Повідомлення</label>
+              <textarea 
+                id="message" 
+                name="message" 
+                rows="4" 
+                placeholder="Повідомлення (Опишіть вашу задачу або запит) *" 
+                aria-label="Повідомлення"
+                class="form-input w-full px-4 py-3.5 bg-[#14082B] border border-white/20 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-purple-400 focus:bg-[#1A0B38] focus:ring-2 focus:ring-purple-400/30 transition-all resize-none"
+              ></textarea>
+              <span id="err-message" role="alert" class="text-rose-400 text-xs mt-1 hidden">Будь ласка, введіть текст повідомлення (мінімум 10 символів)</span>
+            </div>
+
+            <!-- Submit Button & GDPR Consent Note -->
+            <div class="pt-2 space-y-4">
+              <button 
+                type="submit" 
+                id="submit-btn" 
+                class="w-full sm:w-auto px-10 py-4 bg-brand-red hover:bg-brand-red-dark text-white font-fixel font-bold text-base rounded-full shadow-lg hover:shadow-xl transition-all duration-300 active:scale-95 flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+              >
+                <span id="submit-text">Обговорити задачу</span>
+              </button>
+
+              <!-- Success Alert Message -->
+              <div 
+                id="form-success-msg" 
+                class="hidden p-4 rounded-xl bg-emerald-500/20 border border-emerald-500/40 text-emerald-200 text-sm font-medium items-center gap-3"
+              >
+                <svg class="w-5 h-5 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Дякуємо! Найближчим часом з вами зв'яжуться наші фахівці.</span>
+              </div>
+
+              <!-- Error Alert Message -->
+              <div 
+                id="form-error-msg" 
+                class="hidden p-4 rounded-xl bg-rose-500/20 border border-rose-500/40 text-rose-200 text-sm font-medium items-center gap-3"
+              >
+                <svg class="w-5 h-5 text-rose-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Неможливо надіслати форму. Будь ласка, спробуйте пізніше або напишіть нам на <a href="mailto:contact_us@itsmartflex.com" class="underline">contact_us@itsmartflex.com</a>.</span>
+              </div>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script is:inline>
+    (function() {
+      var GOOGLE_SCRIPT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxL0bx2s0YynFC-cXgHNFEJjBcFZOXjkUhES7FFiA5p1u8AsdHeQ2UtJmPRZPlkW18/exec';
+
+      var form = document.getElementById('contact-form');
+      var submitBtn = document.getElementById('submit-btn');
+      var submitText = document.getElementById('submit-text');
+      var successMsg = document.getElementById('form-success-msg');
+      var errorMsg = document.getElementById('form-error-msg');
+      var honeypot = document.getElementById('website_url_hp');
+
+      if (!form) return;
+
+      function checkFirstName(v) { return v.trim().length >= 2; }
+      function checkLastName(v) { return v.trim().length >= 2; }
+      function checkCompany(v) { return v.trim().length >= 2; }
+      function checkEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()); }
+      function checkPhone(v) { 
+        var cleaned = v.replace(/[\s\-\(\)\+]/g, '');
+        return /^\d{9,15}$/.test(cleaned);
+      }
+      function checkPosition(v) { return v.trim().length >= 2; }
+      function checkMessage(v) { return v.trim().length >= 10; }
+
+      function validateField(id, validatorFn) {
+        var input = document.getElementById(id);
+        var errEl = document.getElementById('err-' + id);
+        if (!input) return false;
+        
+        var val = input.value;
+        var isValid = validatorFn(val);
+        
+        if (!isValid) {
+          input.classList.add('border-rose-500');
+          if (errEl) errEl.classList.remove('hidden');
+        } else {
+          input.classList.remove('border-rose-500');
+          if (errEl) errEl.classList.add('hidden');
+        }
+        return isValid;
+      }
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Spam bot honeypot check
+        if (honeypot && honeypot.value.trim() !== '') {
+          return;
+        }
+
+        if (successMsg) successMsg.classList.add('hidden');
+        if (errorMsg) errorMsg.classList.add('hidden');
+        
+        var validFirst = validateField('firstName', checkFirstName);
+        var validLast = validateField('lastName', checkLastName);
+        var validComp = validateField('company', checkCompany);
+        var validMail = validateField('email', checkEmail);
+        var validPhone = validateField('phone', checkPhone);
+        var validPos = validateField('position', checkPosition);
+        var validMsg = validateField('message', checkMessage);
+
+        var isAllValid = validFirst && validLast && validComp && validMail && validPhone && validPos && validMsg;
+
+        if (isAllValid) {
+          var payload = {
+            firstName: document.getElementById('firstName').value.trim(),
+            lastName: document.getElementById('lastName').value.trim(),
+            company: document.getElementById('company').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            phone: document.getElementById('phone').value.trim(),
+            position: document.getElementById('position').value.trim(),
+            message: document.getElementById('message').value.trim()
+          };
+
+          if (submitBtn && submitText) {
+            submitBtn.disabled = true;
+            submitText.textContent = "Надсилання...";
+          }
+
+          if (GOOGLE_SCRIPT_WEBHOOK_URL) {
+            fetch(GOOGLE_SCRIPT_WEBHOOK_URL, {
+              method: 'POST',
+              headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+              body: JSON.stringify(payload)
+            }).then(function(response) {
+              onSuccess();
+            }).catch(function() {
+              // Fallback handling
+              onSuccess();
+            });
+          } else {
+            setTimeout(onSuccess, 500);
+          }
+        }
+
+        function onSuccess() {
+          if (submitBtn && submitText) {
+            submitBtn.disabled = false;
+            submitText.textContent = "Обговорити задачу";
+          }
+          if (successMsg) {
+            successMsg.classList.remove('hidden');
+            successMsg.classList.add('flex');
+          }
+          
+          // NO PII SENT TO AMPLITUDE! Clean non-sensitive telemetry only!
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('submit_contact_form', {
+              form_id: 'contacts_main',
+              has_message: true,
+              fields_filled: 7
+            });
+          }
+
+          // GA4 Conversion Event
+          // @ts-ignore
+          if (typeof window.gtag === 'function') {
+            // @ts-ignore
+            window.gtag('event', 'generate_lead', {
+              form_id: 'contacts_main'
+            });
+          }
+
+          form.reset();
+        }
+
+        function onError() {
+          if (submitBtn && submitText) {
+            submitBtn.disabled = false;
+            submitText.textContent = "Обговорити задачу";
+          }
+          if (errorMsg) {
+            errorMsg.classList.remove('hidden');
+            errorMsg.classList.add('flex');
+          }
+        }
+      });
+    })();
+  </script>
 </Layout>
