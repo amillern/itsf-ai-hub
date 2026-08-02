@@ -1,5 +1,80 @@
 {
-  "headerHash": "a056e5d39bc47984ce20013334a9531a",
-  "footerHash": "d6153c5aa4799c349b5ebcaf3cbbdf63",
-  "updatedAt": "2026-08-02T11:31:16.985Z"
+  "/404.html": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/business-analytics/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/copilot-dev/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/doc-ai/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/rag-knowledge-base/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/robotics/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/support-bot/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/catalog/": {
+    "header": "0cd52155fc9da657",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/contacts/": {
+    "header": "1d7c48035266e65f",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/google2647422844503ef8.html": {
+    "header": null,
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
+  "/": {
+    "header": "88c9653a517b8c7b",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/privacy/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  }
 }

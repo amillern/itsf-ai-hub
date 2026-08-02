@@ -1,0 +1,106 @@
+name: Quality Gate
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Перевірки якості
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Встановити залежності
+        run: npm ci
+
+      # ── 1. Типи ────────────────────────────────────────────────────────────
+      - name: astro check (0 помилок обов'язково)
+        run: npx astro check
+
+      # ── 2. Дизайн-система ──────────────────────────────────────────────────
+      - name: Дизайн-система (hex, класи Tailwind, іконки)
+        run: node scripts/check-design-system.mjs
+
+      # ── 3. Збірка ──────────────────────────────────────────────────────────
+      - name: Збірка
+        run: npm run build
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+          PUBLIC_SITE_URL: https://ai-hub-webpage-358601432150.europe-west1.run.app
+
+      # ── 4. Захищена розмітка ───────────────────────────────────────────────
+      # Падає, якщо змінено хедер/футер/банер згоди/блок аналітики
+      # без свідомого оновлення .snapshots/layout.json.
+      - name: Захищена розмітка (header / footer / consent / analytics)
+        run: node scripts/check-layout-snapshots.mjs
+
+      # ── 5. Санітарні перевірки зібраного HTML ──────────────────────────────
+      - name: Санітарна перевірка dist/
+        run: |
+          set -e
+          fail() { echo "::error::$1"; exit 1; }
+
+          # Незакриті інтерполяції об'єктів
+          if grep -rq "object Object" dist/; then
+            echo "Знайдено [object Object] у:"
+            grep -rl "object Object" dist/
+            fail "Об'єкт відрендерився як текст — перевір доступ до полів"
+          fi
+
+          # <img> без src
+          if grep -rqE '<img(?![^>]*\bsrc=)[^>]*>' -P dist/ 2>/dev/null; then
+            grep -rlE '<img(?![^>]*\bsrc=)[^>]*>' -P dist/ || true
+            fail "Знайдено <img> без атрибута src"
+          fi
+
+          # 404-сторінка має існувати
+          test -f dist/404.html || fail "dist/404.html не згенеровано"
+
+          # Рівно один <h1> на сторінку (ігноруючи системні файли верифікації Google)
+          for f in $(find dist -name '*.html' -not -name 'google*.html'); do
+            c=$(grep -o '<h1' "$f" | wc -l)
+            [ "$c" -eq 1 ] || fail "$f містить $c тегів <h1> (має бути рівно 1)"
+          done
+
+          # Домен у sitemap має збігатися з PUBLIC_SITE_URL
+          if [ -f dist/sitemap.xml ]; then
+            host=$(echo "$PUBLIC_SITE_URL" | sed -E 's#https?://([^/]+).*#\1#')
+            grep -q "$host" dist/sitemap.xml || fail "sitemap.xml не містить $host — домен захардкоджено?"
+          fi
+
+          # canonical на кожній сторінці
+          for f in $(find dist -name '*.html' -not -name 'google*.html'); do
+            grep -q 'rel="canonical"' "$f" || fail "$f без <link rel=\"canonical\">"
+          done
+
+          echo "✓ Санітарні перевірки пройдено"
+        env:
+          PUBLIC_SITE_URL: https://ai-hub-webpage-358601432150.europe-west1.run.app
+
+      # ── 6. Заборона ПД в аналітиці ─────────────────────────────────────────
+      - name: Персональні дані не потрапляють в аналітику
+        run: |
+          set -e
+          if grep -rnE "sendAmplitudeEvent\([^)]*\b(payload|formData|email|phone|firstName|lastName)\b" src/; then
+            echo "::error::Персональні дані передаються в Amplitude. Див. AGENTS.md §12."
+            exit 1
+          fi
+          if grep -rnE "gtag\('event'[^)]*\b(email|phone|firstName|lastName)\b" src/; then
+            echo "::error::Персональні дані передаються в Google Analytics."
+            exit 1
+          fi
+          echo "✓ ПД в аналітику не передаються"
