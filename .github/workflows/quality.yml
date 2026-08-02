@@ -1,0 +1,155 @@
+name: Quality Gate
+
+on:
+  pull_request:
+    branches: [dev, main]
+  push:
+    branches: [dev]
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Перевірки якості
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Встановити залежності
+        run: npm ci
+
+      # ── 1. Типи ────────────────────────────────────────────────────────────
+      # Найважливіший крок. Саме його відсутність пропустила [object Object]
+      # на продакшн: `astro build` типи НЕ перевіряє.
+      - name: astro check (0 помилок обов'язково)
+        run: npx astro check
+
+      # ── 2. Дизайн-система ──────────────────────────────────────────────────
+      - name: Дизайн-система (hex, класи Tailwind, іконки)
+        run: node scripts/check-design-system.mjs
+
+      # ── 3. Збірка ──────────────────────────────────────────────────────────
+      - name: Збірка
+        run: npm run build
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+          PUBLIC_SITE_URL: https://ai-hub-webpage-358601432150.europe-west1.run.app
+
+      # ── 4. Захищена розмітка ───────────────────────────────────────────────
+      # Падає, якщо змінено хедер/футер/банер згоди/блок аналітики
+      # без свідомого оновлення .snapshots/layout.json.
+      - name: Захищена розмітка (header / footer / consent / analytics)
+        run: node scripts/check-layout-snapshots.mjs
+
+      # ── 5. Санітарні перевірки зібраного HTML ──────────────────────────────
+      - name: Санітарна перевірка dist/
+        run: |
+          set -e
+          fail() { echo "::error::$1"; exit 1; }
+
+          # Незакриті інтерполяції об'єктів
+          if grep -rq "object Object" dist/; then
+            echo "Знайдено [object Object] у:"
+            grep -rl "object Object" dist/
+            fail "Об'єкт відрендерився як текст — перевір доступ до полів {uk,en}"
+          fi
+
+          # <img> без src
+          if grep -rqE '<img(?![^>]*\bsrc=)[^>]*>' -P dist/ 2>/dev/null; then
+            grep -rlE '<img(?![^>]*\bsrc=)[^>]*>' -P dist/ || true
+            fail "Знайдено <img> без атрибута src"
+          fi
+
+          # 404-сторінка має існувати (на неї посилається nginx.conf)
+          test -f dist/404.html || fail "dist/404.html не згенеровано, а nginx.conf на нього посилається"
+
+          # Рівно один <h1> на сторінку
+          # (виключаємо verification-файли на кшталт google<code>.html — це не сторінки сайту)
+          for f in $(find dist -name '*.html' -not -name 'google*.html'); do
+            c=$(grep -o '<h1' "$f" | wc -l)
+            [ "$c" -eq 1 ] || fail "$f містить $c тегів <h1> (має бути рівно 1)"
+          done
+
+          # Домен у sitemap має збігатися з PUBLIC_SITE_URL
+          if [ -f dist/sitemap.xml ]; then
+            host=$(echo "$PUBLIC_SITE_URL" | sed -E 's#https?://([^/]+).*#\1#')
+            grep -q "$host" dist/sitemap.xml || fail "sitemap.xml не містить $host — домен захардкоджено?"
+          fi
+
+          # canonical на кожній сторінці
+          # (виключаємо verification-файли на кшталт google<code>.html — це не сторінки сайту)
+          for f in $(find dist -name '*.html' -not -name 'google*.html'); do
+            grep -q 'rel="canonical"' "$f" || fail "$f без <link rel=\"canonical\">"
+          done
+
+          echo "✓ Санітарні перевірки пройдено"
+        env:
+          PUBLIC_SITE_URL: https://ai-hub-webpage-358601432150.europe-west1.run.app
+
+      # ── 6. Заборона ПД в аналітиці ─────────────────────────────────────────
+      # Прямий бар'єр проти повторення P0-3.
+      - name: Персональні дані не потрапляють в аналітику
+        run: |
+          set -e
+          if grep -rnE "sendAmplitudeEvent\([^)]*\b(payload|formData|email|phone|firstName|lastName)\b" src/; then
+            echo "::error::Персональні дані передаються в Amplitude. Див. AGENTS.md §12."
+            exit 1
+          fi
+          if grep -rnE "gtag\('event'[^)]*\b(email|phone|firstName|lastName)\b" src/; then
+            echo "::error::Персональні дані передаються в Google Analytics."
+            exit 1
+          fi
+          echo "✓ ПД в аналітику не передаються"
+
+      # ── 7. Узгодженість інструкцій для агентів ─────────────────────────────
+      - name: AGENTS.md === CLAUDE.md
+        run: |
+          if [ -f CLAUDE.md ]; then
+            diff -q AGENTS.md CLAUDE.md || {
+              echo "::error::AGENTS.md і CLAUDE.md розійшлися. Тримайте їх ідентичними."
+              exit 1
+            }
+          fi
+          echo "✓ Інструкції для агентів узгоджені"
+
+      # ── 8. Розмір дифу ─────────────────────────────────────────────────────
+      # М'яке попередження: великий диф у PR — привід уважно рев'юїти.
+      - name: Розмір дифу
+        if: github.event_name == 'pull_request'
+        run: |
+          git fetch origin ${{ github.base_ref }} --depth=1
+          changed=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | wc -l)
+          echo "Змінено файлів: $changed"
+          if [ "$changed" -gt 15 ]; then
+            echo "::warning::PR змінює $changed файлів. Переконайтесь, що всі зміни стосуються задачі (AGENTS.md §8)."
+          fi
+
+  lighthouse:
+    name: Lighthouse (тільки для PR у main)
+    runs-on: ubuntu-latest
+    if: github.base_ref == 'main'
+    needs: quality
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+        env:
+          ASTRO_TELEMETRY_DISABLED: '1'
+      - name: Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          configPath: ./lighthouserc.json
+          uploadArtifacts: true

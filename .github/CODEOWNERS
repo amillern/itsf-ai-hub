@@ -1,6 +1,35 @@
-# CODEOWNERS for ITSF AI Hub Critical Layout & Brand Components
+# CODEOWNERS — обов'язковий рев'ю людиною для критичних файлів
+#
+# GitHub автоматично призначає рев'юера і блокує merge, поки він не схвалить.
+# Працює тільки якщо в Settings → Branches увімкнено
+# "Require review from Code Owners" для гілок dev і main.
+#
+# @itsmartflex-lead — існуючий реальний акаунт-рев'юер цього репозиторію.
+# Якщо потрібні додаткові рев'юери — замінити/додати реальні GitHub-акаунти.
 
-/src/components/Header.astro @itsmartflex-lead
-/src/components/Footer.astro @itsmartflex-lead
-/src/layouts/Layout.astro @itsmartflex-lead
-/AGENTS.md @itsmartflex-lead
+# Дефолт — усі зміни бачить власник репозиторію
+*                                     @itsmartflex-lead
+
+# ── Заморожені файли (AGENTS.md §1) ──────────────────────────────────────────
+/src/components/Header.astro         @itsmartflex-lead
+/src/components/Footer.astro         @itsmartflex-lead
+/src/layouts/Layout.astro            @itsmartflex-lead
+/src/design/                         @itsmartflex-lead
+/tailwind.config.mjs                 @itsmartflex-lead
+/nginx.conf                          @itsmartflex-lead
+/Dockerfile                          @itsmartflex-lead
+
+# ── Еталони розмітки ──────────────────────────────────────────────────────────
+/.snapshots/                         @itsmartflex-lead
+
+# ── Правила для агентів ───────────────────────────────────────────────────────
+/AGENTS.md                           @itsmartflex-lead
+/CLAUDE.md                           @itsmartflex-lead
+/.github/                            @itsmartflex-lead
+
+# ── Інфраструктура і деплой ───────────────────────────────────────────────────
+/astro.config.mjs                    @itsmartflex-lead
+/package.json                        @itsmartflex-lead
+
+# ── Приватність і юридичні тексти ─────────────────────────────────────────────
+/src/pages/privacy.astro             @itsmartflex-lead
