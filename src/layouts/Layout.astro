@@ -13,7 +13,7 @@ const {
   description = "Практичні приклади, кейси та сценарії застосування штучного інтелекту на основі досвіду IT SmartFlex."
 } = Astro.props;
 
-const canonicalURL = Astro.url.href;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <!DOCTYPE html>
