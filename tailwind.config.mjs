@@ -29,11 +29,14 @@ export default {
           'business-text': '#4A3E85',
         },
         status: {
-          grey: '#F3F4F6',
+          grey: '#4B5563',
+          'grey-bg': '#F3F4F6',
           'grey-text': '#4B5563',
-          brown: '#FEF3C7',
+          brown: '#92400E',
+          'brown-bg': '#FEF3C7',
           'brown-text': '#92400E',
-          green: '#D1FAE5',
+          green: '#065F46',
+          'green-bg': '#D1FAE5',
           'green-text': '#065F46',
         }
       },

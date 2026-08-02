@@ -22,7 +22,7 @@ export interface SiteConfig {
 export const siteConfig: SiteConfig = {
   name: "AI Hub",
   tagline: "IT SmartFlex",
-  description: "Реальні приклади та сценарії застосування Al на основі практичного досвіду команди фахівців IT SmartFlex",
+  description: "Реальні приклади та сценарії застосування AI на основі практичного досвіду команди фахівців IT SmartFlex",
   nav: [
     { label: "Головна", href: "/" },
     { label: "Каталог AI-рішень", href: "/catalog/" },
