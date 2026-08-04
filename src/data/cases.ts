@@ -19,10 +19,11 @@ export interface CaseStudy {
 }
 
 export const caseStudies: CaseStudy[] = [
+  // ==================== 5 CASE STUDIES (type: "business") ====================
   {
     id: "case-copilot-dev",
     slug: "copilot-dev",
-    type: "usecase",
+    type: "business",
     badge: { uk: "Розробка ПЗ", en: "Software Engineering" },
     title: { 
       uk: "Програма підвищення продуктивності інженерних команд за допомогою ШІ-асистентів розробки", 
@@ -74,7 +75,7 @@ export const caseStudies: CaseStudy[] = [
   {
     id: "case-support-bot",
     slug: "support-bot",
-    type: "usecase",
+    type: "business",
     badge: { uk: "Клієнтський сервіс", en: "Customer Service" },
     title: { 
       uk: "ШІ-асистент автоматичного опрацювання звернень та прийому скарг клієнтів", 
@@ -136,7 +137,7 @@ export const caseStudies: CaseStudy[] = [
       uk: "Безшовно вбудоване в B2B CRM рішення для автоматичного виправлення, стилізації та покращення ділових текстів працівників. Інструмент працює на базі повністю автономних локальних мовних моделей. Це дозволяє безпечно обробляти конфіденційні клієнтські дані, не передаючи їх у зовнішні хмари.", 
       en: "Embedded CRM assistant refining B2B communication on autonomous local LLMs without external cloud data leaks." 
     },
-    bannerImage: "/assets/cards/doc-ai.jpg",
+    bannerImage: "/assets/cards/b2b-crm-assistant.jpg",
     scope: { uk: "Продажі, Корпоративні комунікації, Клієнтський сервіс", en: "B2B Sales, Corporate Comms & Support" },
     difficultyWithout: { uk: "Середня (3/5)", en: "Medium (3/5)" },
     difficultyWith: { uk: "Низька (1/5)", en: "Low (1/5)" },
@@ -188,7 +189,7 @@ export const caseStudies: CaseStudy[] = [
       uk: "Спеціалізований бот, який з'єднує корпоративний месенджер із CRM-системою для миттєвого затвердження та верифікації комерційних умов у B2B-сегменті. Дозволяє менеджерам та керівникам оперативно керувати угодами без необхідності постійно заходити у важкі інтерфейси систем.", 
       en: "Specialized chatbot linking MS Teams with CRM for instant approval and verification of B2B commercial terms." 
     },
-    bannerImage: "/assets/cards/rag-ai.jpg",
+    bannerImage: "/assets/cards/commercial-approval-bot.jpg",
     scope: { uk: "Продажі, Юридичний напрям, Бек-офіс, Корпоративні комунікації", en: "Sales, Legal, Back-Office & Corporate Comms" },
     difficultyWithout: { uk: "Середня (3/5)", en: "Medium (3/5)" },
     difficultyWith: { uk: "Низька (1/5)", en: "Low (1/5)" },
@@ -279,6 +280,7 @@ export const caseStudies: CaseStudy[] = [
     techStack: ["Python", "SQL", "Azure OpenAI", "Microsoft Teams", "Dify"]
   },
 
+  // ==================== 5 USE CASES (type: "usecase") ====================
   {
     id: "case-ui-generation",
     slug: "ui-component-generation",
@@ -340,7 +342,7 @@ export const caseStudies: CaseStudy[] = [
       uk: "AI-аналіз розподілених системних логів для виявлення прихованих багів та аномалій у складних мікросервісах.", 
       en: "Distributed log tracing with AI for instant cross-service anomaly detection." 
     },
-    bannerImage: "/assets/cards/support-bot.jpg",
+    bannerImage: "/assets/cards/trace-log-analysis.jpg",
     scope: { uk: "Операційна діяльність, Інфраструктура та експлуатація", en: "Operations & DevOps" },
     difficultyWithout: { uk: "48 год / інцидент", en: "48 hrs / incident" },
     difficultyWith: { uk: "16 год / інцидент", en: "16 hrs / incident" },
@@ -353,7 +355,7 @@ export const caseStudies: CaseStudy[] = [
       en: "Microservice integration troubleshooting across teams consumes days of manual log dumping and correlation."
     },
     solution: {
-      uk: "Усі залежні проєкти об'єднуються в один робочий простір. На основі початкового TraceID робиться зліпок (снепшот) логів, який завантажується в контекст ШІ разом зі схемами процес-флоу. Модель проводити глибокий перехресний аудит та підсвічує логічні розбіжності.",
+      uk: "Усі залежні проєкти об'єднуються в один робочий простір. На основі початкового TraceID робиться зліпок (снепшот) логів, який завантажується в контекст ШІ разом зі схемами процес-флоу. Модель проводить глибокий перехресний аудит та підсвічує логічні розбіжності.",
       en: "TraceID snapshots are loaded into AI context alongside process flow diagrams for automated cross-system audit."
     },
     tags: ["Аналіз та пошук інформації", "Підтримка прийняття рішень", "Скорочення часу виконання задач"],
@@ -388,7 +390,7 @@ export const caseStudies: CaseStudy[] = [
       uk: "ШІ-агенти для автоматичного написання, запуску та самостійного виправлення коду автотестів без участі людини.", 
       en: "Autonomous AI agents generating, running, and self-healing test automation code." 
     },
-    bannerImage: "/assets/cards/copilot-dev.jpg",
+    bannerImage: "/assets/cards/self-healing-qa.jpg",
     scope: { uk: "Тестування ПЗ, Розробка ПЗ, QA Automation", en: "QA Automation & Software Testing" },
     difficultyWithout: { uk: "32 год / фреймворк", en: "32 hrs / framework" },
     difficultyWith: { uk: "16 год / фреймворк", en: "16 hrs / framework" },
@@ -436,7 +438,7 @@ export const caseStudies: CaseStudy[] = [
       uk: "Двовекторне ШІ-проектування системної архітектури з мінімізацією витрат токенів та підготовкою аргументованої документації.", 
       en: "Two-stage AI architecture modeling delivering rigorous technical documentation at optimal token cost." 
     },
-    bannerImage: "/assets/cards/doc-ai.jpg",
+    bannerImage: "/assets/cards/architecture-design-ai.jpg",
     scope: { uk: "Розробка ПЗ, Інфраструктура та експлуатація, Enterprise Architecture", en: "Enterprise Architecture & R&D" },
     difficultyWithout: { uk: "24 год / дослідження", en: "24 hrs / study" },
     difficultyWith: { uk: "4 год / дослідження", en: "4 hrs / study" },
