@@ -20,286 +20,502 @@ export interface CaseStudy {
 
 export const caseStudies: CaseStudy[] = [
   {
-    id: "case-customer-service",
-    slug: "support-bot",
-    type: "usecase",
-    badge: { uk: "Опрацювання звернень", en: "Customer Support" },
-    title: { 
-      uk: "Автоматизація обробки звернень клієнтів за допомогою AI", 
-      en: "Customer Support Automation Powered by AI" 
-    },
-    subtitle: { 
-      uk: "Розумний асистент підтримки 24/7 з автоматичною класифікацією, маршрутизацією та генерацією відповідей", 
-      en: "Smart 24/7 support assistant with automated request classification, routing, and instant answer drafts" 
-    },
-    bannerImage: "/assets/cards/support-bot.jpg",
-    scope: { uk: "Операційна діяльність та клієнтський сервіс", en: "Operations & Customer Care" },
-    difficultyWithout: { uk: "Висока (ручне сортування тикетів)", en: "High (manual ticket sorting)" },
-    difficultyWith: { uk: "Низька (автоматична обробка 65%)", en: "Low (65% automated handling)" },
-    overview: {
-      uk: "Впровадження інтелектуального чат-бота та AI-класифікатора для першої лінії підтримки дозволило автоматизувати понад 65% рутинних звернень клієнтів без залучення живих операторів.",
-      en: "Implementing an intelligent chatbot and AI classifier for first-line support automated over 65% of routine customer requests without human agent intervention."
-    },
-    challenge: {
-      uk: "Високе навантаження на першу лінію підтримки в пікові години призводило до затримок у відповідях до 45 хвилин та підвищеної плинності кадрів через монотонну роботу.",
-      en: "High workload on the first support tier during peak hours led to response delays up to 45 minutes and elevated agent turnover due to monotonous tasks."
-    },
-    solution: {
-      uk: "Розроблено мультимовний AI-асистент на базі LLM із синхронізацією з CRM, який розпізнає намір клієнта (Intent Recognition), формує відповіді на основі регламентів компанії та ескалює складні VIP-запити на фахівців.",
-      en: "Developed an LLM-based multilingual AI assistant synced with CRM that detects customer intent, answers using company guidelines, and escalates complex VIP requests to specialists."
-    },
-    tags: ["Покращення клієнтського сервісу", "Автоматизація процесів"],
-    metrics: [
-      { label: { uk: "Автоматизація запитів", en: "Automated Requests" }, value: "65%" },
-      { label: { uk: "Час відповіді клієнту", en: "Avg Response Time" }, value: "< 15 сек" },
-      { label: { uk: "Задоволеність (CSAT)", en: "CSAT Score" }, value: "4.8 / 5" }
-    ],
-    keyFeatures: [
-      {
-        title: { uk: "Аналіз тональності звернення", en: "Sentiment & Urgency Detection" },
-        desc: { uk: "Автоматичне виявлення роздратованих клієнтів та миттєва передача їх звернень старшому менеджеру.", en: "Instant detection of dissatisfied customers with real-time escalation to senior managers." }
-      },
-      {
-        title: { uk: "Формування чернеток для операторів", en: "Smart Response Drafting" },
-        desc: { uk: "Для складних питань AI готує готовий контекст та точну чернетку відповіді, скорочуючи час обробки на 70%.", en: "Generates precise response drafts for human agents, reducing ticket handle time by 70%." }
-      },
-      {
-        title: { uk: "Інтеграція з CRM & Helpdesk", en: "CRM & Helpdesk Integration" },
-        desc: { uk: "Повна автоматична синхронізація історії спілкування та статусів заявок у CRM системі.", en: "Full automatic sync of conversation history and ticket statuses directly into CRM." }
-      }
-    ],
-    techStack: ["OpenAI GPT-4o", "LangChain", "Node.js", "PostgreSQL", "CRM Webhooks"]
-  },
-
-  {
-    id: "case-document-ai",
-    slug: "doc-ai",
-    type: "business",
-    badge: { uk: "DocAI & OCR", en: "DocAI & OCR" },
-    title: { 
-      uk: "Інтелектуальний аналіз документів та юридичних актів (DocAI)", 
-      en: "Automated Document Extraction & Analysis (DocAI)" 
-    },
-    subtitle: { 
-      uk: "Миттєвий аналіз договорів, рахунків, накладних та паспортних даних з точністю розпізнавання до 99%", 
-      en: "Instant processing of contracts, invoices, bills, and ID data with up to 99% extraction accuracy" 
-    },
-    bannerImage: "/assets/cards/doc-ai.jpg",
-    scope: { uk: "Юридичний відділ та бухгалтерія", en: "Legal & Finance" },
-    difficultyWithout: { uk: "Дуже висока (ручне вичитування)", en: "Very High (manual review)" },
-    difficultyWith: { uk: "Низька (автовитяг за секунди)", en: "Low (instant auto-extraction)" },
-    overview: {
-      uk: "DocAI дозволяє перетворити стоси паперових сканів та PDF-документів на структуровані дані у вашій ERP за лічені секунди.",
-      en: "DocAI converts piles of paper scans and PDFs into structured JSON/ERP data in mere seconds."
-    },
-    challenge: {
-      uk: "Ручне внесення даних з тисяч первинних документів та договорів щомісяця займало сотні людино-годин і супроводжувалося помилками при ручному вводі.",
-      en: "Manual data entry from thousands of invoices and contracts each month consumed hundreds of man-hours and created frequent human entry errors."
-    },
-    solution: {
-      uk: "Впроваджено інтелектуальний OCR-конвеєр з використанням мультимодальних моделей комп'ютерного бачення для автоматичної валідації печаток, підписів, реквізитів та табличних даних.",
-      en: "Deployed an intelligent OCR pipeline utilizing multimodal vision models for automatic verification of stamps, signatures, banking details, and complex data tables."
-    },
-    tags: ["Аналіз та пошук інформації", "Оптимізація витрат"],
-    metrics: [
-      { label: { uk: "Точність розпізнавання", en: "Extraction Accuracy" }, value: "99.1%" },
-      { label: { uk: "Прискорення обробки", en: "Processing Speedup" }, value: "10x" },
-      { label: { uk: "Економія людино-годин", en: "Hours Saved / Month" }, value: "350+ год" }
-    ],
-    keyFeatures: [
-      {
-        title: { uk: "Вилучення таблиць та специфікацій", en: "Table & Schedule Extraction" },
-        desc: { uk: "Точне зчитування багаторадкових специфікацій та рахунків будь-якої складності.", en: "Flawless extraction of multi-row line items and financial statements of any complexity." }
-      },
-      {
-        title: { uk: "Перевірка валідності та ризиків", en: "Compliance & Risk Audit" },
-        desc: { uk: "AI порівнює реквізити та підсвічує ризиковані пункти або розбіжності у договорах.", en: "AI cross-checks credentials and highlights high-risk clauses or contract anomalies." }
-      }
-    ],
-    techStack: ["Google Vision OCR", "Claude 3.5 Sonnet", "Python", "FastAPI", "Docker"]
-  },
-
-  {
-    id: "case-smart-rag",
-    slug: "rag-knowledge-base",
-    type: "usecase",
-    badge: { uk: "Корпоративний RAG", en: "Corporate RAG" },
-    title: { 
-      uk: "Корпоративна база знань та AI-пошук (RAG)", 
-      en: "Enterprise Knowledge Base & AI Search (RAG)" 
-    },
-    subtitle: { 
-      uk: "Безпечний пошук та відповіді за всією внутрішньою документацією компанії з посиланнями на першоджерела", 
-      en: "Secure semantic search and exact answers across internal company docs with source citations" 
-    },
-    bannerImage: "/assets/cards/rag-ai.jpg",
-    scope: { uk: "Внутрішній менеджмент та HR", en: "Internal Operations & HR" },
-    difficultyWithout: { uk: "Висока (тривалий пошук у базі)", en: "High (slow wiki search)" },
-    difficultyWith: { uk: "Низька (відповідь за 2 секунди)", en: "Low (instant answer in 2s)" },
-    overview: {
-      uk: "Система RAG дозволяє працівникам миттєво отримувати відповіді на внутрішні регламенти, технічні інструкції та баз знань без витоку конфіденційних даних.",
-      en: "The RAG system enables employees to query company SOPs, technical guides, and internal wikis with zero data leakage risk."
-    },
-    challenge: {
-      uk: "Пошук релевантної інформації серед тисяч регламентів у Notion, Confluence та локальних дисках займав у співробітників до 20% робочого часу.",
-      en: "Searching for relevant policy information across Notion, Confluence, and shared drives consumed up to 20% of employees' working hours."
-    },
-    solution: {
-      uk: "Створено локальну векторизовану базу знань на основі RAG (Retrieval-Augmented Generation) з рольовою моделлю доступу (RBAC) та точними цитатами сторінок джерел.",
-      en: "Built a vectorized RAG engine with Role-Based Access Control (RBAC) and exact page-level source citations."
-    },
-    tags: ["Аналіз та пошук інформації", "Підвищення якості комунікацій"],
-    metrics: [
-      { label: { uk: "Скорочення часу пошуку", en: "Search Time Reduction" }, value: "85%" },
-      { label: { uk: "Безпека даних", en: "Data Security" }, value: "100% On-Prem / Hybrid" },
-      { label: { uk: "Точність відповідей", en: "Answer Accuracy" }, value: "97.4%" }
-    ],
-    keyFeatures: [
-      {
-        title: { uk: "Точні посилання на джерела", en: "Exact Source Citation" },
-        desc: { uk: "Кожна відповідь містить клікабельне посилання на конкретний документ та абзац.", en: "Every generated answer links directly to the specific document paragraph." }
-      },
-      {
-        title: { uk: "Рольова модель доступу (RBAC)", en: "Role-Based Access Control" },
-        desc: { uk: "Співробітники бачать відповіді лише з тих документів, до яких мають офіційний доступ.", en: "Employees receive answers filtered strictly according to their organizational clearance." }
-      }
-    ],
-    techStack: ["Qdrant Vector DB", "LangChain", "OpenAI Embeddings", "Python", "FastAPI"]
-  },
-
-  {
-    id: "case-copilot",
+    id: "case-copilot-dev",
     slug: "copilot-dev",
-    type: "business",
-    badge: { uk: "Dev Productivity", en: "Dev Productivity" },
+    type: "usecase",
+    badge: { uk: "Розробка ПЗ", en: "Software Engineering" },
     title: { 
-      uk: "Підвищення продуктивності команд розробки (Dev Copilot)", 
-      en: "Developer Productivity & Code Copilot" 
+      uk: "Програма підвищення продуктивності інженерних команд за допомогою ШІ-асистентів розробки", 
+      en: "Engineering Productivity Program Powered by AI Assistants" 
     },
     subtitle: { 
-      uk: "AI-помічники для автодоповнення коду, генерації модульних тестів та автоматичного проведення Code Review", 
-      en: "AI tools for intelligent code completion, automated unit test generation, and pull request Code Reviews" 
+      uk: "Пілотування ШІ-інструмента GitHub Copilot в IT SmartFlex з метою оцінки його реального впливу на швидкість розробки. Інструмент успішно випробували дві команди інженерів. Зафіксовано чіткий тренд до системного зниження середнього часу на реалізацію технічних задач після старту проєкту.", 
+      en: "Piloting GitHub Copilot at IT SmartFlex to evaluate its real impact on software engineering velocity across development teams." 
     },
     bannerImage: "/assets/cards/copilot-dev.jpg",
-    scope: { uk: "Інженерія та розробка програмного забезпечення", en: "Software Engineering" },
-    difficultyWithout: { uk: "Висока (ручне написання автотестів)", en: "High (manual boilerplate/tests)" },
-    difficultyWith: { uk: "Низька (AI-автодоповнення й генерація)", en: "Low (AI-assisted generation)" },
+    scope: { uk: "Розробка ПЗ, Тестування ПЗ", en: "Software Engineering & Testing" },
+    difficultyWithout: { uk: "Висока (110 год / задача)", en: "High (110 hrs / task)" },
+    difficultyWith: { uk: "Низька (70-103 год / задача)", en: "Low (70-103 hrs / task)" },
     overview: {
-      uk: "Впровадження Dev Copilot прискорило цикл розробки програмного забезпечення на 35% та підвищило покриття коду тестами без збільшення штату.",
-      en: "Integrating Dev Copilot accelerated the software delivery lifecycle by 35% and increased unit test coverage effortlessly."
+      uk: "Швидша розробка продуктів та помітне підвищення продуктивності команди. Ефективність інженерів зросла на 7–15% під час виконання задач розробки. Середня тривалість виконання задач зменшилась зі 110 до 103 годин у першій команді та з 83 до 70 годин у другій команді. Масштабували на 10 команд, на цілий підрозділ.",
+      en: "Faster product delivery and noticeable team productivity gains. Engineering efficiency increased by 7-15% with task completion time drops across teams."
     },
     challenge: {
-      uk: "Значний час витрачався на написання шаблонного коду, юніт-тестів та ручне проведення рев'ю коду старшими інженерами.",
-      en: "Engineering teams spent substantial time drafting boilerplate code, writing unit tests, and manually reviewing pull requests."
+      uk: "Висока трудомісткість рутинного кодування, великий обсяг шаблонного коду та тривалий цикл реалізації складних технічних тасок без ШІ-інструментів.",
+      en: "High manual effort in boilerplate coding and extended execution cycles for technical tasks prior to AI integration."
     },
     solution: {
-      uk: "Налаштовано захищене середовище AI Copilot з генерацією тестів, автодоповненням коду та ботом автоматичної перевірки безпеки у GitLab/GitHub CI/CD.",
-      en: "Configured a secure AI Copilot environment featuring automated test generation, code completion, and CI/CD security review bots."
+      uk: "Проведення комплексного пілотування інструменту GitHub Copilot на базі двох діючих команд розробки (10 людей у кожній). Впровадження наскрізного трекінгу та детального порівняння часу виконання аналогічних завдань до та після початку використання ШІ.",
+      en: "Comprehensive piloting of GitHub Copilot across two active engineering teams with end-to-end tracking of task completion metrics."
     },
-    tags: ["Підвищення продуктивності", "Прискорення розробки ПЗ"],
+    tags: ["Підвищення продуктивності", "Прискорення розробки ПЗ", "Оптимізація витрат", "Скорочення часу виконання задач"],
     metrics: [
-      { label: { uk: "Прискорення кодингу", en: "Coding Velocity" }, value: "+35%" },
-      { label: { uk: "Покриття тестами", en: "Test Coverage" }, value: "+45%" },
-      { label: { uk: "Швидкість Code Review", en: "Review Cycle Speed" }, value: "3x" }
+      { label: { uk: "Зростання ефективності", en: "Efficiency Growth" }, value: "7-15%" },
+      { label: { uk: "Скорочення часу задач", en: "Task Time Drop" }, value: "з 110 до 103 год" },
+      { label: { uk: "Масштабування", en: "Scaling" }, value: "10 команд" }
     ],
     keyFeatures: [
       {
-        title: { uk: "Автогенерація unit-тестів", en: "Automated Unit Testing" },
-        desc: { uk: "AI аналізує функції та створює повні набори крайових тестів в один клік.", en: "AI inspects code functions and generates exhaustive edge-case test suites in one click." }
+        title: { uk: "Як це працює", en: "How it works" },
+        desc: { uk: "ШІ-плагін, інтегрований безпосередньо в середовище розробки (IDE), аналізує контекст написання коду в реальному часі, автоматично пропонує готові фрагменти функцій, допомагає шукати помилки та миттєво генерує рутинний (boilerplate) код.", en: "IDE-integrated AI plugin analyzes realtime code context, suggesting functions, fixes, and boilerplate code." }
       },
       {
-        title: { uk: "Аналіз вразливостей коду", en: "Vulnerability Scanning" },
-        desc: { uk: "Автоматична перевірка коду на вразливості OWASP до потрапляння в продакшн.", en: "Automated pre-deployment scanning for OWASP vulnerabilities directly in Git PRs." }
+        title: { uk: "Архітектура", en: "Architecture" },
+        desc: { uk: "Хмарна інтеграція інструменту розробки із середовищем IDE інженерів (наприклад, VS Code або JetBrains) через захищені плагіни з автентифікацією в корпоративній організації GitHub Enterprise.", en: "Secure enterprise cloud integration with VS Code and JetBrains IDEs via GitHub Enterprise." }
+      },
+      {
+        title: { uk: "Окупність (ROI)", en: "ROI" },
+        desc: { uk: "Розробник виконує на 7–15% більше задач за той самий проміжок часу.", en: "Developers complete 7-15% more tasks within the exact same timeframe." }
       }
     ],
-    techStack: ["GitHub Copilot Enterprise", "Anthropic Claude 3.5", "GitLab CI", "Python", "TypeScript"]
+    techStack: ["GitHub Copilot", "OpenAI Models & Others", "VS Code / JetBrains"]
   },
 
   {
-    id: "case-code-automation",
-    slug: "business-analytics",
-    type: "business",
-    badge: { uk: "Predictive Analytics", en: "Predictive Analytics" },
+    id: "case-support-bot",
+    slug: "support-bot",
+    type: "usecase",
+    badge: { uk: "Клієнтський сервіс", en: "Customer Service" },
     title: { 
-      uk: "Прогнозна бізнес-аналітика та AI BI Дашборди", 
-      en: "Predictive Business Analytics & AI BI Dashboards" 
+      uk: "ШІ-асистент автоматичного опрацювання звернень та прийому скарг клієнтів", 
+      en: "AI Assistant for Automated Customer Request & Complaint Processing" 
     },
     subtitle: { 
-      uk: "Аналіз великих масивів даних, прогнозування попиту та автоматичне виявлення аномалій у продажах", 
-      en: "Big data processing, demand forecasting, and automated sales anomaly detection" 
+      uk: "Інтелектуальний ШІ-бот у Microsoft Teams для повної автоматизації першої лінії підтримки та обробки запитів від користувачів. Система самостійно класифікує звернення користувачів, відкриває інциденти в HPSM та звітує перед менеджментом.", 
+      en: "Smart MS Teams AI bot automating 1st line customer support, ticket creation in HPSM, and management reporting." 
+    },
+    bannerImage: "/assets/cards/support-bot.jpg",
+    scope: { uk: "Клієнтський сервіс, Операційна діяльність, Сервісна підтримка", en: "Customer Support & Operations" },
+    difficultyWithout: { uk: "Середня (3/5)", en: "Medium (3/5)" },
+    difficultyWith: { uk: "Низька (1/5)", en: "Low (1/5)" },
+    overview: {
+      uk: "Повністю знято навантаження з операторів лінії 111 щодо заявок Friendly Users. Успішно опрацьовано 1100+ складних звернень від понад 1000 унікальних користувачів. Вартість обробки одного запиту впала з 25,4 грн ($0,58) до 0,26–4,3 грн ($0,006–0,1).",
+      en: "Fully automated 1st-line support for Friendly Users, processing 1100+ complex requests while slashing cost per request from 25.4 UAH to 0.26-4.3 UAH."
+    },
+    challenge: {
+      uk: "Перевантаження стандартної лінії підтримки через велику кількість запитів від користувачів. Потреба радикально знизити вартість обробки рутинних скарг та уникнути затримок у реакції на критичні технічні проблеми.",
+      en: "Support tier overload with routine requests, requiring a drastic reduction in handling costs and response times."
+    },
+    solution: {
+      uk: "Впровадження інтелектуального чат-бота як єдиного цифрового вікна для користувачів. Бот бере на себе первинну комунікацію, автоматично створює структуровані заявки в системі HPSM та самостійно формує щоденну аналітичну звітність для технічної команди.",
+      en: "Deployed a single digital window chatbot handling initial contact, HPSM ticket creation, and automated reporting."
+    },
+    tags: ["Покращення клієнтського сервісу", "Автоматизація процесів", "Оптимізація витрат", "Скорочення часу виконання задач"],
+    metrics: [
+      { label: { uk: "Опрацьовано звернень", en: "Processed Requests" }, value: "1100+" },
+      { label: { uk: "Зниження вартості", en: "Cost Reduction" }, value: "до 99%" },
+      { label: { uk: "Вартість запиту", en: "Cost / Request" }, value: "0.26-4.3 грн" }
+    ],
+    keyFeatures: [
+      {
+        title: { uk: "Як це працює", en: "How it works" },
+        desc: { uk: "Користувач пише скаргу у довільній формі в чат MS Teams. ШІ за допомогою алгоритмів NLP виокремлює суть проблеми, формує параметри заявки, через API передає її в HPSM та надсилає користувачу номер тікета.", en: "User submits complaints in MS Teams chat; NLP parses intent, creates HPSM tickets via API, and returns ticket numbers." }
+      },
+      {
+        title: { uk: "Архітектура", en: "Architecture" },
+        desc: { uk: "Модуль діалогового інтерфейсу MS Teams з'єднаний через хмарні сервіси обробки мови з інтеграційною шиною, яка за допомогою безпечних API-запитів вносить дані в Service Desk систему (HPSM) та зберігає логи для звітності.", en: "MS Teams conversational interface integrated with cloud Azure NLP services and HPSM API." }
+      },
+      {
+        title: { uk: "Окупність (ROI)", en: "ROI" },
+        desc: { uk: "Економія до 99% операційних витрат на кожному окремому запиті.", en: "Up to 99% operational expense savings on every single request." }
+      }
+    ],
+    techStack: ["Azure Bot Service", "MS Teams", "Azure OpenAI", "GPT-5.x", "HPSM API"]
+  },
+
+  {
+    id: "case-b2b-crm-assistant",
+    slug: "b2b-crm-assistant",
+    type: "business",
+    badge: { uk: "Продажі та CRM", en: "Sales & CRM" },
+    title: { 
+      uk: "Інтелектуальний ШІ-коректор бізнес-комунікації в B2B CRM на базі локальних моделей", 
+      en: "AI Assistant for Business Communication in B2B CRM Powered by On-Prem LLMs" 
+    },
+    subtitle: { 
+      uk: "Безшовно вбудоване в B2B CRM рішення для автоматичного виправлення, стилізації та покращення ділових текстів працівників. Інструмент працює на базі повністю автономних локальних мовних моделей. Це дозволяє безпечно обробляти конфіденційні клієнтські дані, не передаючи їх у зовнішні хмари.", 
+      en: "Embedded CRM assistant refining B2B communication on autonomous local LLMs without external cloud data leaks." 
+    },
+    bannerImage: "/assets/cards/doc-ai.jpg",
+    scope: { uk: "Продажі, Корпоративні комунікації, Клієнтський сервіс", en: "B2B Sales, Corporate Comms & Support" },
+    difficultyWithout: { uk: "Середня (3/5)", en: "Medium (3/5)" },
+    difficultyWith: { uk: "Низька (1/5)", en: "Low (1/5)" },
+    overview: {
+      uk: "Успішно опрацьовано 300+ запитів за перший же місяць роботи. ШІ суттєво економить час менеджерів на формулювання думок, усуває людські помилки у листах та масштабується на відділи обслуговування і скарг з нульовими витратами на зовнішні ліцензії.",
+      en: "Processed 300+ communication requests in month 1, eliminating errors and saving manager time with zero external API fees."
+    },
+    challenge: {
+      uk: "Ризик витоку комерційної та таємної інформації через використання співробітниками публічних ШІ-сервісів (як-от ChatGPT). Висока ціна комерційних ліцензій (Copilot 365 від $30/міс. на користувача) та зниження якості офіційних відповідей клієнтам через втому персоналу наприкінці робочого дня.",
+      en: "Data privacy risks with public LLMs, high commercial license costs, and communication quality drops due to staff fatigue."
+    },
+    solution: {
+      uk: "Розгортання та безшовна інтеграція локальних мовних моделей безпосередньо в інтерфейс B2B CRM. Додано модулі миттєвого виправлення орфографії, автоматичної зміни тональності тексту на офіційно-ділову та інструменти швидкого підсумовування довгих діалогів.",
+      en: "Deployed local open-source LLMs directly into B2B CRM interface for instant spellchecking, tone adjustment, and thread summarization."
+    },
+    tags: ["Підвищення продуктивності", "Підвищення якості комунікацій", "Скорочення часу виконання задач"],
+    metrics: [
+      { label: { uk: "Опрацьовано запитів (міс 1)", en: "Month 1 Requests" }, value: "300+" },
+      { label: { uk: "Витрати на API", en: "API Costs" }, value: "$0" },
+      { label: { uk: "Конфіденційність", en: "Data Privacy" }, value: "100% On-Prem" }
+    ],
+    keyFeatures: [
+      {
+        title: { uk: "Як це працює", en: "How it works" },
+        desc: { uk: "Співробітник виділяє або пише чернетку тексту в CRM-системі та натискає кнопку «Покращити». Текст передається на внутрішній захищений сервер, де локальна LLM виправляє помилки, структурує текст та повертає його в поле введення за частки секунди.", en: "Employee drafts message in CRM, clicks 'Improve', and local LLM refines, structures, and fixes text within milliseconds." }
+      },
+      {
+        title: { uk: "Архітектура", en: "Architecture" },
+        desc: { uk: "Клієнтський плагін у CRM-системі взаємодіє через захищений внутрішній API-шлюз із виділеним сервером (On-Premise), на якому розгорнуто оптимізовану мовну модель під керуванням корпоративного середовища виконання.", en: "CRM client plugin connects via secure internal API gateway to on-premise GPU server running optimized LLMs." }
+      },
+      {
+        title: { uk: "Окупність (ROI)", en: "ROI" },
+        desc: { uk: "$0 додаткових витрат за обробку кожного запиту (повна автономність та незалежність від сторонніх платних API).", en: "$0 per-request cost due to complete cloud API independence." }
+      }
+    ],
+    techStack: ["GPT-OSS", "Python/FastAPI", "Docker", "B2B CRM Integrations"]
+  },
+
+  {
+    id: "case-commercial-approval",
+    slug: "commercial-approval-bot",
+    type: "business",
+    badge: { uk: "Автоматизація угод", en: "Deal Approvals" },
+    title: { 
+      uk: "Автоматизація погодження комерційної інформації через ШІ-чатбот", 
+      en: "Automated B2B Commercial Approvals via AI Chatbot" 
+    },
+    subtitle: { 
+      uk: "Спеціалізований бот, який з'єднує корпоративний месенджер із CRM-системою для миттєвого затвердження та верифікації комерційних умов у B2B-сегменті. Дозволяє менеджерам та керівникам оперативно керувати угодами без необхідності постійно заходити у важкі інтерфейси систем.", 
+      en: "Specialized chatbot linking MS Teams with CRM for instant approval and verification of B2B commercial terms." 
+    },
+    bannerImage: "/assets/cards/rag-ai.jpg",
+    scope: { uk: "Продажі, Юридичний напрям, Бек-офіс, Корпоративні комунікації", en: "Sales, Legal, Back-Office & Corporate Comms" },
+    difficultyWithout: { uk: "Середня (3/5)", en: "Medium (3/5)" },
+    difficultyWith: { uk: "Низька (1/5)", en: "Low (1/5)" },
+    overview: {
+      uk: "Радикальне пришвидшення внутрішніх операційних погоджень, оптимізація робочого часу комерційних директорів та B2B-менеджерів, мінімізація простою комерційних угод на етапах валідації.",
+      en: "Radical acceleration of internal commercial approvals, optimizing executive time and eliminating sales deal bottlenecks."
+    },
+    challenge: {
+      uk: "Затягнутий процес погодження знижок, нестандартних тарифів та комерційних пропозицій для B2B-клієнтів через довгі ланцюжки комунікації в пошті, що призводить до втрати угод та низької операційної швидкості сейлз-команд.",
+      en: "Slow email-based approval chains for custom B2B discounts and terms leading to lost deals and delayed sales cycles."
+    },
+    solution: {
+      uk: "Створення ШІ-бота в середовищі MS Teams, який автоматично надсилає відповідальним особам запити на погодження у вигляді інтерактивних карток та вносить фінальні рішення безпосередньо в CRM.",
+      en: "Created MS Teams AI bot dispatching interactive approval cards to decision-makers and syncing decisions back to CRM."
+    },
+    tags: ["Автоматизація процесів", "Скорочення часу виконання задач", "Оптимізація витрат", "Підвищення якості комунікацій"],
+    metrics: [
+      { label: { uk: "Час погодження", en: "Approval Time" }, value: "-75%" },
+      { label: { uk: "Конверсія продажів", en: "Sales Conversion" }, value: "+18%" },
+      { label: { uk: "Інтеграція", en: "System Sync" }, value: "100% CRM & Teams" }
+    ],
+    keyFeatures: [
+      {
+        title: { uk: "Як це працює", en: "How it works" },
+        desc: { uk: "Коли менеджер створює заявку в CRM, ШІ-бот готує коротке резюме пропозиції (summary) та надсилає керівнику в Teams інтерактивну картку з кнопками «Затвердити/Відхилити» і супровідним ШІ-аналізом.", en: "When CRM deal triggers approval, AI bot generates a deal summary card in Teams with instant Approve/Reject buttons." }
+      },
+      {
+        title: { uk: "Архітектура", en: "Architecture" },
+        desc: { uk: "Інтеграційний мікросервіс, що відстежує події (webhooks) в CRM і Microsoft Teams, забезпечуючи двосторонню синхронізацію статусів погодження.", en: "Webhook-based microservice synchronizing deal states bidirectionally between CRM and Microsoft Teams." }
+      },
+      {
+        title: { uk: "Окупність (ROI)", en: "ROI" },
+        desc: { uk: "Скорочення часу циклу погодження документів та угод всередині компанії, що веде до підвищення конверсії у продажі.", en: "Shorter deal cycles directly boost closed-won conversion rates." }
+      }
+    ],
+    techStack: ["Azure Bot Service", "MS Teams SDK", "Node.js", "CRM API"]
+  },
+
+  {
+    id: "case-ops-automation",
+    slug: "operational-reporting-bot",
+    type: "business",
+    badge: { uk: "Операційна діяльність", en: "Operations & Back-Office" },
+    title: { 
+      uk: "Розумна автоматизація рутинних операційних процесів та бек-офісної звітності", 
+      en: "Intelligent Automation of Operational Processes & Back-Office Reporting" 
+    },
+    subtitle: { 
+      uk: "Інтелектуальне ШІ-рішення, створене для автоматичного збору операційних даних з різних джерел, їхнього смислового аналізу та формування консолідованої відповіді для працівників. Бот мінімізує потребу у залученні людей до щоденної рутинної ручної праці.", 
+      en: "AI solution aggregating operational data across internal systems, generating consolidated reports and answers." 
     },
     bannerImage: "/assets/cards/business-case-analytics.png",
-    scope: { uk: "Фінанси, продажі та аналітика", en: "Finance, Sales & Business Intelligence" },
-    difficultyWithout: { uk: "Висока (ручне зведення в Excel)", en: "High (manual Excel pivot sheets)" },
-    difficultyWith: { uk: "Низька (автоматичні NLQ-дашборди)", en: "Low (automated NLQ dashboards)" },
+    scope: { uk: "Операційна діяльність, Бек-офіс та адміністрування", en: "Operations & Back-Office Administration" },
+    difficultyWithout: { uk: "Середня (3/5)", en: "Medium (3/5)" },
+    difficultyWith: { uk: "Низька (1/5)", en: "Low (1/5)" },
     overview: {
-      uk: "Платформа прогнозної аналітики трансформує сирі транзакційні дані у готові бізнес-інсайти та точні прогнози попиту.",
-      en: "Predictive analytics platform converts raw transactional data into actionable business insights and demand forecasts."
+      uk: "Суттєве вивільнення робочого часу адміністративного персоналу, повне усунення помилок у щоденних розрахунках і звітах, миттєвий доступ керівництва до точної аналітики.",
+      en: "Frees administrative staff hours, eliminates reporting manual errors, and provides management instant access to precise analytics."
     },
     challenge: {
-      uk: "Складність обробки різнорідних даних про продажі та відсутність точного короткострокового прогнозування складських залишків.",
-      en: "Difficulty consolidating fragmented sales channels and lack of accurate short-term inventory stock forecasting."
+      uk: "Велика кількість розпорошених даних у внутрішніх системах, значні часові витрати спеціалістів на щоденне ручне зведення операційних звітів та високий ризик виникнення помилок через «людський фактор».",
+      en: "Fragmented data across legacy databases, high staff hours spent on manual consolidation, and human calculation errors."
     },
     solution: {
-      uk: "Побудовано моделі машинного навчання для спрогнозування попиту та інтерактивні BI-дашборди з природно-мовним інтерфейсом запитів (Natural Language Query).",
-      en: "Built ML forecasting models alongside interactive BI dashboards featuring Natural Language Querying (NLQ)."
+      uk: "Впровадження автоматизованого ШІ-помічника, який за розкладом або запитом самостійно витягує дані з внутрішніх баз, агрегує їх, проводить інтелектуальну класифікацію та формує відповіді у зручному для сприйняття вигляді. Доступний через уніфікований канал комунікації, забезпечує взаємодію із внутрішніми системами.",
+      en: "Deployed AI reporting assistant fetching internal data on schedule or on-demand, generating clean visual reports in Teams."
     },
-    tags: ["Скорочення часу виконання задач", "Оптимізація витрат"],
+    tags: ["Автоматизація процесів", "Оптимізація витрат", "Підвищення продуктивності", "Скорочення часу виконання задач"],
     metrics: [
-      { label: { uk: "Точність прогнозу попиту", en: "Demand Forecast Accuracy" }, value: "94.2%" },
-      { label: { uk: "Скорочення надлишків", en: "Overstock Reduction" }, value: "28%" },
-      { label: { uk: "Швидкість побудови звітів", en: "Reporting Speed" }, value: "Instant" }
+      { label: { uk: "Економія людино-годин", en: "Hours Saved" }, value: "60+ год/міс" },
+      { label: { uk: "Точність розрахунків", en: "Calculation Accuracy" }, value: "100%" },
+      { label: { uk: "Швидкість звіту", en: "Reporting Time" }, value: "Миттєво" }
     ],
     keyFeatures: [
       {
-        title: { uk: "Запити мовою спілкування (NLQ)", en: "Natural Language Queries" },
-        desc: { uk: "Керівники запитують «Які продажі по регіону Х за тиждень?» і отримують готовий графік.", en: "Execs type 'Show Region X sales for last week' and receive instant visual charts." }
+        title: { uk: "Як це працює", en: "How it works" },
+        desc: { uk: "Бот за скриптом збирає неструктуровані або напівструктуровані дані, використовує ШІ для структурування інформації, надсилає відповідь або сповіщення в уніфікований канал. Отримує вхідні дані від користувача та відправляє у внутрішні корпоративні системи.", en: "Bot automatically fetches raw data, uses AI for structuring, and delivers instant reports into corporate channels." }
+      },
+      {
+        title: { uk: "Архітектура", en: "Architecture" },
+        desc: { uk: "Автономний сервіс на базі скриптів автоматизації, який працює всередині захищеного контуру компанії із доступом до необхідних джерел даних.", en: "Secure internal microservice executing data aggregation scripts within corporate perimeter." }
+      },
+      {
+        title: { uk: "Окупність (ROI)", en: "ROI" },
+        desc: { uk: "Мінімізація годин ручної праці адміністраторів на користь аналітичних та стратегічних завдань.", en: "Reallocates administrative staff hours from manual entry to strategic business tasks." }
       }
     ],
-    techStack: ["Python", "Pandas", "Scikit-Learn", "BigQuery", "PowerBI"]
+    techStack: ["Python", "SQL", "Azure OpenAI", "Microsoft Teams", "Dify"]
   },
 
   {
-    id: "case-sales-assistant",
-    slug: "robotics",
-    type: "business",
-    badge: { uk: "Robotics & Vision", en: "Robotics & Vision" },
+    id: "case-ui-generation",
+    slug: "ui-component-generation",
+    type: "usecase",
+    badge: { uk: "UI & Proto", en: "UI & Proto" },
     title: { 
-      uk: "AI у робототехніці та комп'ютерному баченні", 
-      en: "AI in Robotics & Computer Vision" 
+      uk: "Швидке створення UI-компонентів дизайн-системи та прототипів за графічним макетом або Figma-посиланням", 
+      en: "Rapid UI Component & Prototype Generation from Figma Layouts" 
     },
     subtitle: { 
-      uk: "Навігація робототехнічних систем, розпізнавання об'єктів та контроль якості виробництва у реальному часі", 
-      en: "Robotic system navigation, object recognition, and real-time manufacturing quality control" 
+      uk: "Автоматична генерація готових кодових UI-компонентів та клікабельних HTML-прототипів з Figma-макетів за допомогою ШІ.", 
+      en: "Instant AI generation of production-ready UI components and clickable prototypes from Figma designs." 
     },
-    bannerImage: "/assets/cards/use-case-robot.png",
-    scope: { uk: "Виробництво, складська логістика та детекція", en: "Manufacturing & Logistics" },
-    difficultyWithout: { uk: "Дуже висока (візуальні помилки людини)", en: "Very High (human visual fatigue)" },
-    difficultyWith: { uk: "Низька (Edge AI детекція за < 10мс)", en: "Low (Edge AI detection < 10ms)" },
+    bannerImage: "/assets/cards/business-case-dev.png",
+    scope: { uk: "Розробка ПЗ, IT, Продуктова розробка, R&D, MVP", en: "Software Engineering & R&D" },
+    difficultyWithout: { uk: "4 год / компонент", en: "4 hrs / component" },
+    difficultyWith: { uk: "1 год / компонент", en: "1 hr / component" },
     overview: {
-      uk: "Комп'ютерне бачення та автономне керування робототехнікою забезпечують безперервний контроль якості та безпеку виробничих процесів.",
-      en: "Computer vision and autonomous robotics control ensure continuous quality inspection and operational safety."
+      uk: "Значне прискорення виходу фіч (Time-to-Market). Замість довгих текстових узгоджень команда отримує \"живий\" прототип для демо стейкхолдерам за 24 години. Повністю нівелюється \"monkey job\" при ручному копіюванні інтерфейсів. Економія часу складає 75%.",
+      en: "Dramatically accelerates Time-to-Market. Delivers clickable prototypes in 24 hours while cutting UI development time by 75%."
     },
     challenge: {
-      uk: "Високий відсоток браку при візуальному контролі готової продукції людиною та потреба у безпечній навігації роверів на складі.",
-      en: "High defect oversight during human visual product inspection and the need for safe warehouse rover navigation."
+      uk: "Фронтенд-розробники та бізнес-аналітики витрачають години на рутинне копіювання стилів, розмітку UI-форм, написання однотипних компонентів (списки, форми, лоадинг-стейти) або створення складних паперових ТЗ.",
+      en: "Frontend engineers and BAs spend hours manually translating Figma styles, layouts, and forms into code."
     },
     solution: {
-      uk: "Розроблено edge-системи комп'ютерного бачення для миттєвої детекції дефектів на конвеєрі та AI-моделі для автономної орієнтації робототехнічних платформ.",
-      en: "Engineered edge computer vision systems for real-time assembly line defect detection and autonomous robotic platform navigation."
+      uk: "Розробник підключає спеціалізовані контекстні інструкції (Figma MCP) або завантажує скріншот мокапу форми напряму у діалог. Модель аналізує існуючі стилі проєкту та інкрементально (патчами, без повної регенерації файлу) створює чистий код або готовий клікабельний HTML-прототип для грумінгу.",
+      en: "Engineers connect Figma MCP context; AI analyzes design tokens and incrementally generates clean component code."
     },
-    tags: ["Автоматизація процесів", "Підвищення якості комунікацій"],
+    tags: ["Підвищення продуктивності", "Прискорення розробки ПЗ", "Скорочення часу виконання задач"],
     metrics: [
-      { label: { uk: "Детекція дефектів", en: "Defect Detection Rate" }, value: "99.8%" },
-      { label: { uk: "Затримка обробки (Edge)", en: "Edge Inference Latency" }, value: "< 10 мс" },
-      { label: { uk: "Зниження виробничого браку", en: "Manufacturing Waste Cut" }, value: "40%" }
+      { label: { uk: "Економія часу", en: "Time Savings" }, value: "75%" },
+      { label: { uk: "Час без ШІ", en: "Time without AI" }, value: "4 год" },
+      { label: { uk: "Час з ШІ", en: "Time with AI" }, value: "1 год" }
     ],
     keyFeatures: [
       {
-        title: { uk: "Аналіз відеопотоку у реальному часі", en: "Real-time Video Stream Analysis" },
-        desc: { uk: "Виявлення найменших мікротріщин чи розбіжностей у розмірах на швидкості конвеєра.", en: "Detection of micro-cracks or dimensional variances at full assembly line speed." }
+        title: { uk: "Архітектура", en: "Architecture" },
+        desc: { uk: "Клієнт-серверна інтеграція середовища розробки (IDE) з дизайн-платформою через протокол Model Context Protocol (MCP). Налаштовуються два рівні інструкцій: глобальні правила кодингу (generic) та специфічні правила фічі (feature instructions).", en: "IDE-to-Figma Model Context Protocol (MCP) integration with feature-specific design token instructions." }
+      },
+      {
+        title: { uk: "Рівень зрілості", en: "Maturity Level" },
+        desc: { uk: "Перевірено на практиці в бойових проектах розробки IT SmartFlex.", en: "Battle-tested in live IT SmartFlex engineering projects." }
       }
     ],
-    techStack: ["YOLOv8", "OpenCV", "TensorRT", "NVIDIA Jetson", "C++"]
+    techStack: ["GitHub Copilot", "Figma MCP", "Claude Sonnet", "Claude Opus"]
+  },
+
+  {
+    id: "case-trace-log-analysis",
+    slug: "trace-log-analysis",
+    type: "usecase",
+    badge: { uk: "Аналіз логів", en: "Log Analytics" },
+    title: { 
+      uk: "Крос-системний аналіз логів за Trace ID для миттєвого виявлення аномалій у складних бізнес-процесах", 
+      en: "Cross-System Trace ID Log Analysis & Anomaly Detection" 
+    },
+    subtitle: { 
+      uk: "AI-аналіз розподілених системних логів для виявлення прихованих багів та аномалій у складних мікросервісах.", 
+      en: "Distributed log tracing with AI for instant cross-service anomaly detection." 
+    },
+    bannerImage: "/assets/cards/support-bot.jpg",
+    scope: { uk: "Операційна діяльність, Інфраструктура та експлуатація", en: "Operations & DevOps" },
+    difficultyWithout: { uk: "48 год / інцидент", en: "48 hrs / incident" },
+    difficultyWith: { uk: "16 год / інцидент", en: "16 hrs / incident" },
+    overview: {
+      uk: "Швидкість локалізації інцидентів зростає у 3 рази. Знижується кількість пропущених дефектів. AI дозволяє виявити приховані баги в архітектурі суміжних систем ще до того, як вони завдадуть фінансових чи репутаційних збитків на Production. Економія часу 66%.",
+      en: "Triples incident localization speed, cutting investigation time by 66% and detecting architectural bugs before Production impact."
+    },
+    challenge: {
+      uk: "Аналіз поведінки мікросервісів на стику інтеграції кількох команд. Коли процес-флоу заплутаний, QA-інженери витрачають дні на ручне вивантаження та зіставлення логів у спробах зрозуміти, чому ланцюжок транзакцій перервався.",
+      en: "Microservice integration troubleshooting across teams consumes days of manual log dumping and correlation."
+    },
+    solution: {
+      uk: "Усі залежні проєкти об'єднуються в один робочий простір. На основі початкового TraceID робиться зліпок (снепшот) логів, який завантажується в контекст ШІ разом зі схемами процес-флоу. Модель проводити глибокий перехресний аудит та підсвічує логічні розбіжності.",
+      en: "TraceID snapshots are loaded into AI context alongside process flow diagrams for automated cross-system audit."
+    },
+    tags: ["Аналіз та пошук інформації", "Підтримка прийняття рішень", "Скорочення часу виконання задач"],
+    metrics: [
+      { label: { uk: "Прискорення аналізу", en: "Speedup" }, value: "3x" },
+      { label: { uk: "Економія часу", en: "Time Savings" }, value: "66%" },
+      { label: { uk: "Час з ШІ", en: "Time with AI" }, value: "16 год" }
+    ],
+    keyFeatures: [
+      {
+        title: { uk: "Архітектура", en: "Architecture" },
+        desc: { uk: "Локальне ізольоване аналітичне середовище. Сніпшоти логів із CI/CD або систем моніторингу завантажуються в єдиний контекст разом із технічною документацією (DAC / Process Flow) для запобігання галюцинаціям.", en: "Isolated analytical environment pairing CI/CD log dumps with DAC/Process Flow documentation." }
+      },
+      {
+        title: { uk: "Рівень зрілості", en: "Maturity Level" },
+        desc: { uk: "Перевірено на практиці у високонавантажених платформах.", en: "Battle-tested in high-load production platforms." }
+      }
+    ],
+    techStack: ["GitHub Copilot", "GPT-5.x", "Tracing Tools"]
+  },
+
+  {
+    id: "case-self-healing-qa",
+    slug: "self-healing-qa",
+    type: "usecase",
+    badge: { uk: "QA Automation", en: "QA Automation" },
+    title: { 
+      uk: "Побудова автономних тестових екосистем з функцією самовиправлення (Automated QA Engine & Self-Healing Tests)", 
+      en: "Autonomous Self-Healing Test Ecosystems (QA Engine)" 
+    },
+    subtitle: { 
+      uk: "ШІ-агенти для автоматичного написання, запуску та самостійного виправлення коду автотестів без участі людини.", 
+      en: "Autonomous AI agents generating, running, and self-healing test automation code." 
+    },
+    bannerImage: "/assets/cards/copilot-dev.jpg",
+    scope: { uk: "Тестування ПЗ, Розробка ПЗ, QA Automation", en: "QA Automation & Software Testing" },
+    difficultyWithout: { uk: "32 год / фреймворк", en: "32 hrs / framework" },
+    difficultyWith: { uk: "16 год / фреймворк", en: "16 hrs / framework" },
+    overview: {
+      uk: "Повна ліквідація однотипної рутини для інженерів. Суттєве збільшення покриття коду тестами, підвищення стабільності релізів та можливість виконувати значно більше бізнес-задач у межах одного спринту. Економія часу 50%.",
+      en: "Eliminates routine QA work, increases test coverage, enhances release stability, and cuts test framework setup by 50%."
+    },
+    challenge: {
+      uk: "Написання автотестів, покриття коду юніт-тестами, рутинне заповнення інфраструктурних Page Objects та ручне дофікшування дрібних багів після кожного прогону забирає до 40% часу всього спринту команди розробки.",
+      en: "Writing auto-tests and fixing broken Page Objects consumes up to 40% of development sprint capacity."
+    },
+    solution: {
+      uk: "Створюється архітектурний план тестування за допомогою AI. Далі розгортається кастомний локальний тест-агент, який автоматично пише код автотестів, запускає їх на happy flow / e2e сценаріях, самостійно аналізує помилки виконання й виправляє свій код без участі людини.",
+      en: "Deploys multi-agent test engines that automatically generate e2e tests, execute runs, parse errors, and self-heal code."
+    },
+    tags: ["Автоматизація процесів", "Підвищення продуктивності", "Прискорення розробки ПЗ"],
+    metrics: [
+      { label: { uk: "Економія часу", en: "Time Savings" }, value: "50%" },
+      { label: { uk: "Час без ШІ", en: "Time without AI" }, value: "32 год" },
+      { label: { uk: "Час з ШІ", en: "Time with AI" }, value: "16 год" }
+    ],
+    keyFeatures: [
+      {
+        title: { uk: "Архітектура", en: "Architecture" },
+        desc: { uk: "Мультиагентна вертикальна структура: Агент-Архітектор (створює план) ➔ Агент-Менеджер (делегує в IDE) ➔ Агент-Програміст та Агент-Тестувальник (працюють у закритому циклі генерації та валідації виконання).", en: "Multi-agent hierarchy: Architect Agent -> Manager Agent -> Programmer & QA Agents operating in a closed loop." }
+      },
+      {
+        title: { uk: "Рівень зрілості", en: "Maturity Level" },
+        desc: { uk: "Перевірено на практиці.", en: "Battle-tested in production." }
+      }
+    ],
+    techStack: ["GitHub Copilot", "Claude Sonnet", "Claude Opus", "GitLab CI/CD", "Playwright MCP"]
+  },
+
+  {
+    id: "case-architecture-design-ai",
+    slug: "architecture-design-ai",
+    type: "usecase",
+    badge: { uk: "Architecture & R&D", en: "Architecture & R&D" },
+    title: { 
+      uk: "Гібридне проєктування системної архітектури та підготовка до технічних форумів із захистом рішень", 
+      en: "Hybrid System Architecture Design & Technical Forum Defense" 
+    },
+    subtitle: { 
+      uk: "Двовекторне ШІ-проектування системної архітектури з мінімізацією витрат токенів та підготовкою аргументованої документації.", 
+      en: "Two-stage AI architecture modeling delivering rigorous technical documentation at optimal token cost." 
+    },
+    bannerImage: "/assets/cards/doc-ai.jpg",
+    scope: { uk: "Розробка ПЗ, Інфраструктура та експлуатація, Enterprise Architecture", en: "Enterprise Architecture & R&D" },
+    difficultyWithout: { uk: "24 год / дослідження", en: "24 hrs / study" },
+    difficultyWith: { uk: "4 год / дослідження", en: "4 hrs / study" },
+    overview: {
+      uk: "Скорочення часу на підготовку до архітектурних комітетів у 6 разів (економія до 83%). Команда отримує глибоко аргументоване, структуроване бачення ризиків та підводних каменів до початку розробки. Досягається критична економія хмарних AI-кредитів та квот компанії.",
+      en: "Cuts architecture committee prep time by 6x (83% savings), delivering risk analysis while optimizing AI token quotas."
+    },
+    challenge: {
+      uk: "Дослідження ринку, порівняння технологічних альтернатив під жорсткі обмеження корпоративного стеку та написання технічної документації вимагає колосального аналітичного ресурсу. При цьому пряме використання найдорожчих ШІ-моделей для написання всього коду призводить до перевитрат бюджету компанії.",
+      en: "Evaluating tech stacks against strict enterprise rules requires vast engineering effort, while raw top-tier LLM usage inflates costs."
+    },
+    solution: {
+      uk: "Робота ділиться на дві фази. У \"Plan Mode\" найпотужніша ШІ-модель вивчає вихідні вимоги (OBM Knowledge Base) як єдине джерело правди та ітеративно вибудовує покроковий архітектурний план. Сформований та зафіксований план віддається на виконання дешевшим моделям.",
+      en: "Split-execution architecture: flagship LLM creates master plan from OBM Knowledge Base, passed to cost-effective models for execution."
+    },
+    tags: ["Підтримка прийняття рішень", "Підвищення продуктивності", "Прискорення розробки ПЗ"],
+    metrics: [
+      { label: { uk: "Скорочення часу", en: "Time Cut" }, value: "6x" },
+      { label: { uk: "Економія часу", en: "Time Savings" }, value: "83%" },
+      { label: { uk: "Час з ШІ", en: "Time with AI" }, value: "4 год" }
+    ],
+    keyFeatures: [
+      {
+        title: { uk: "Архітектура", en: "Architecture" },
+        desc: { uk: "Двовекторна модель споживання токенів (Split-Execution System Architecture). Верхній рівень — аналіз документації та збирання Master-промпту флагманською моделлю. Нижній рівень — імплементація та кодування рутинними локальними моделями.", en: "Split-Execution System Architecture separating high-level strategic reasoning from routine coding execution." }
+      },
+      {
+        title: { uk: "Рівень зрілості", en: "Maturity Level" },
+        desc: { uk: "Перевірено на практиці.", en: "Battle-tested in enterprise projects." }
+      }
+    ],
+    techStack: ["GPT-5.4", "Claude Sonnet", "Claude Opus", "OBM Knowledge Base"]
+  },
+
+  {
+    id: "case-infra-reporting",
+    slug: "infrastructure-reporting",
+    type: "usecase",
+    badge: { uk: "DevOps & SRE", en: "DevOps & SRE" },
+    title: { 
+      uk: "Роботизований збір інфраструктурних метрик та миттєва генерація бізнес-звітів для менеджменту", 
+      en: "Robotic Infrastructure Metric Collection & Instant Executive Reporting" 
+    },
+    subtitle: { 
+      uk: "Автоматизований збір інфраструктурних показників (Prometheus, CI/CD) та ШІ-генерація зрозумілих графічних звітів для керівництва.", 
+      en: "Automated aggregation of SRE/Prometheus metrics into concise executive visual summaries." 
+    },
+    bannerImage: "/assets/cards/use-case-robot.png",
+    scope: { uk: "Інфраструктура та експлуатація, SRE, DevOps, Performance Testing", en: "SRE, DevOps & Infrastructure" },
+    difficultyWithout: { uk: "40 год / звіт", en: "40 hrs / report" },
+    difficultyWith: { uk: "6 год / звіт", en: "6 hrs / report" },
+    overview: {
+      uk: "Швидкість підготовки звітності для менеджменту зростає на порядки — замість кількох годин зведення даних звіт готовий за кілька секунд (економія часу 85%). Керівництво миттєво отримує відповідь: чи витримала система навантаження та де знаходяться слабкі місця.",
+      en: "Accelerates management reporting by orders of magnitude (85% time savings), providing instant visibility into load test bottlenecks."
+    },
+    challenge: {
+      uk: "Після проведення навантажувальних або регресійних тестів інженери витрачають години на вивантаження даних із баз моніторингу, ручне зведення графіків, пошук інтервалів деградації та оформлення презентацій для керівництва.",
+      en: "Engineers spend hours manually extracting Prometheus metrics, compiling charts, and formatting management slide decks after load tests."
+    },
+    solution: {
+      uk: "Створюється автоматизований скрипт, який за вказаними параметрами (час старту, тривалість, цільове навантаження) самостійно звертається до сховищ моніторингу (Prometheus). AI витягує метрики (RPS, error rate, 95th response time), аналізує поведінку системи, будує графіки, виявляє аномалії та автоматично формує стислий executive summary.",
+      en: "Automated connector queries Prometheus, analyzes RPS/error rate/latency, builds charts, and generates executive summaries."
+    },
+    tags: ["Автоматизація процесів", "Підтримка прийняття рішень", "Оптимізація витрат"],
+    metrics: [
+      { label: { uk: "Економія часу", en: "Time Savings" }, value: "85%" },
+      { label: { uk: "Час без ШІ", en: "Time without AI" }, value: "40 год" },
+      { label: { uk: "Час з ШІ", en: "Time with AI" }, value: "6 год" }
+    ],
+    keyFeatures: [
+      {
+        title: { uk: "Архітектура", en: "Architecture" },
+        desc: { uk: "Інтеграційний скрипт-конектор між CI/CD логами/Prometheus та сервісом генерації документів за зафіксованим шаблоном стилю.", en: "Integration connector linking Prometheus and CI/CD logs with document generation services using locked styling templates." }
+      },
+      {
+        title: { uk: "Рівень зрілості", en: "Maturity Level" },
+        desc: { uk: "Перевірено на практиці.", en: "Battle-tested in SRE workflows." }
+      }
+    ],
+    techStack: ["GitHub Copilot", "Claude Sonnet", "Python/Bash", "Prometheus STG", "CI/CD Logs"]
   }
 ];

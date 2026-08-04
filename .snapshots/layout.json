@@ -5,7 +5,19 @@
     "cookieConsent": "61b0c19278c14f8c",
     "analytics": "97743fb7a62329da"
   },
-  "/cases/business-analytics/": {
+  "/cases/architecture-design-ai/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/b2b-crm-assistant/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/commercial-approval-bot/": {
     "header": "b50b4e19d596931a",
     "footer": "3cd52e2186e3f250",
     "cookieConsent": "61b0c19278c14f8c",
@@ -17,31 +29,43 @@
     "cookieConsent": "61b0c19278c14f8c",
     "analytics": "97743fb7a62329da"
   },
-  "/cases/doc-ai/": {
-    "header": "b50b4e19d596931a",
-    "footer": "3cd52e2186e3f250",
-    "cookieConsent": "61b0c19278c14f8c",
-    "analytics": "97743fb7a62329da"
-  },
   "/cases/": {
     "header": "b50b4e19d596931a",
     "footer": "3cd52e2186e3f250",
     "cookieConsent": "61b0c19278c14f8c",
     "analytics": "97743fb7a62329da"
   },
-  "/cases/rag-knowledge-base/": {
+  "/cases/infrastructure-reporting/": {
     "header": "b50b4e19d596931a",
     "footer": "3cd52e2186e3f250",
     "cookieConsent": "61b0c19278c14f8c",
     "analytics": "97743fb7a62329da"
   },
-  "/cases/robotics/": {
+  "/cases/operational-reporting-bot/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/self-healing-qa/": {
     "header": "b50b4e19d596931a",
     "footer": "3cd52e2186e3f250",
     "cookieConsent": "61b0c19278c14f8c",
     "analytics": "97743fb7a62329da"
   },
   "/cases/support-bot/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/trace-log-analysis/": {
+    "header": "b50b4e19d596931a",
+    "footer": "3cd52e2186e3f250",
+    "cookieConsent": "61b0c19278c14f8c",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cases/ui-component-generation/": {
     "header": "b50b4e19d596931a",
     "footer": "3cd52e2186e3f250",
     "cookieConsent": "61b0c19278c14f8c",
