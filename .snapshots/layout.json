@@ -1,85 +1,91 @@
 {
   "/404.html": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/architecture-design-ai/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/b2b-crm-assistant/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/commercial-approval-bot/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/copilot-dev/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/infrastructure-reporting/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/operational-reporting-bot/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/self-healing-qa/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/support-bot/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/trace-log-analysis/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/cases/ui-component-generation/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/catalog/": {
     "header": "0cd52155fc9da657",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/contacts/": {
     "header": "1d7c48035266e65f",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
+    "cookieConsent": "2be18890ed0e758d",
+    "analytics": "97743fb7a62329da"
+  },
+  "/cookies/": {
+    "header": "b50b4e19d596931a",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
@@ -91,13 +97,13 @@
   },
   "/": {
     "header": "88c9653a517b8c7b",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
   "/privacy/": {
     "header": "b50b4e19d596931a",
-    "footer": "17935c239c2a7ac0",
+    "footer": "f4a941a31294966a",
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   }
