@@ -187,7 +187,7 @@ import { siteConfig } from '../data/siteConfig';
                 id="message" 
                 name="message" 
                 rows="4" 
-                placeholder="Повідомлення (Опишіть вашу задачу або запит) *" 
+                placeholder="Повідомлення (Опишіть вашу задачу або запит)" 
                 aria-label="Повідомлення"
                 class="form-input w-full px-4 py-3.5 bg-[#14082B] border border-white/20 rounded-xl text-white placeholder:text-gray-400 focus:outline-none focus:border-purple-400 focus:bg-[#1A0B38] focus:ring-2 focus:ring-purple-400/30 transition-all resize-none"
               ></textarea>
@@ -261,7 +261,7 @@ import { siteConfig } from '../data/siteConfig';
         return /^\d{9,15}$/.test(cleaned);
       }
       function checkPosition(v) { return v.trim().length >= 2; }
-      function checkMessage(v) { return v.trim().length >= 10; }
+      function checkMessage(_v) { return true; }
 
       function validateField(id, validatorFn) {
         var input = document.getElementById(id);
