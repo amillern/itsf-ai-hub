@@ -22,7 +22,7 @@
         <a href="/" class="hover:text-white transition-colors">Головна</a>
         <a href="/catalog/" class="hover:text-white transition-colors">AI-рішення</a>
         <a href="/contacts/" class="hover:text-white transition-colors">Контакти</a>
-        <a href="https://itsmartflex.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Головний сайт</a>
+        <a id="footer-main-site-btn" href="https://itsmartflex.com/" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">Головний сайт</a>
       </nav>
     </div>
 
@@ -44,6 +44,7 @@
       <div class="lg:col-span-3 flex items-center justify-start lg:justify-end gap-3.5">
         <!-- Email Icon Button -->
         <a
+          id="footer-email-btn"
           href="mailto:contact_us@itsmartflex.com"
           title="Написати нам на пошту"
           class="w-11 h-11 rounded-full bg-white text-[#161616] shadow-md flex items-center justify-center hover:bg-gray-200 hover:scale-105 transition-all"
@@ -55,6 +56,7 @@
 
         <!-- LinkedIn Icon Button -->
         <a
+          id="footer-linkedin-btn"
           href="https://www.linkedin.com/company/it-smartflex"
           target="_blank"
           rel="noopener noreferrer"
@@ -68,6 +70,7 @@
 
         <!-- Instagram Icon Button -->
         <a
+          id="footer-instagram-btn"
           href="https://www.instagram.com/itsmartflex"
           target="_blank"
           rel="noopener noreferrer"
@@ -98,4 +101,24 @@
     </div>
 
   </div>
+
+  <script is:inline>
+    (function() {
+      function trackClick(id, eventName, props) {
+        var el = document.getElementById(id);
+        if (el) {
+          el.addEventListener('click', function() {
+            if (typeof window.sendAmplitudeEvent === 'function') {
+              window.sendAmplitudeEvent(eventName, props || {});
+            }
+          });
+        }
+      }
+
+      trackClick('footer-main-site-btn', 'click_main_site_link', { source: 'footer' });
+      trackClick('footer-email-btn', 'click_footer_social', { type: 'email' });
+      trackClick('footer-linkedin-btn', 'click_footer_social', { type: 'linkedin' });
+      trackClick('footer-instagram-btn', 'click_footer_social', { type: 'instagram' });
+    })();
+  </script>
 </footer>

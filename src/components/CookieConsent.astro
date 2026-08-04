@@ -82,6 +82,9 @@
               'analytics_storage': 'granted'
             });
           }
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('cookie_consent_accept');
+          }
           hideBanner();
         };
       }
@@ -97,6 +100,9 @@
             window.gtag('consent', 'update', {
               'analytics_storage': 'denied'
             });
+          }
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('cookie_consent_reject');
           }
           hideBanner();
         };

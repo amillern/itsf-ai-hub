@@ -435,16 +435,26 @@ const taskPillsWithColors = [
 
     document.getElementById('get-consultation-btn')?.addEventListener('click', () => {
       if (typeof (window as any).sendAmplitudeEvent === 'function') {
-        (window as any).sendAmplitudeEvent('click_get_consultation', { destination: 'linkedin' });
+        (window as any).sendAmplitudeEvent('click_get_consultation', { destination: 'contacts' });
       }
       // @ts-ignore
       if (typeof window.gtag === 'function') {
         // @ts-ignore
         window.gtag('event', 'select_content', {
           content_type: 'consultation_button',
-          destination: 'linkedin'
+          destination: 'contacts'
         });
       }
+    });
+
+    document.querySelectorAll('.task-pill-badge').forEach(pill => {
+      pill.addEventListener('click', (e) => {
+        const target = e.currentTarget as HTMLElement;
+        const taskName = target.getAttribute('data-task-name') || '';
+        if (typeof (window as any).sendAmplitudeEvent === 'function') {
+          (window as any).sendAmplitudeEvent('click_task_pill', { task_name: taskName });
+        }
+      });
     });
   </script>
 

@@ -288,10 +288,27 @@ const activeCatalogFilterTags = Array.from(
 
     // Checkboxes Tag Filtering
     checkboxes.forEach(cb => {
-      cb.addEventListener('change', () => {
+      cb.addEventListener('change', (e) => {
+        const input = e.target as HTMLInputElement;
         updateSelectedTags();
         syncUrl();
         applyFilters();
+
+        if (typeof (window as any).sendAmplitudeEvent === 'function') {
+          (window as any).sendAmplitudeEvent('catalog_tag_select', { tag: input.value, checked: input.checked });
+        }
+      });
+    });
+
+    // Card Clicks Amplitude Tracking
+    cardElements.forEach(card => {
+      card.addEventListener('click', (_e) => {
+        const title = card.querySelector('h3')?.textContent?.trim() || '';
+        const type = card.getAttribute('data-type') || '';
+        const href = card.getAttribute('href') || '';
+        if (typeof (window as any).sendAmplitudeEvent === 'function') {
+          (window as any).sendAmplitudeEvent('click_case_card', { title, type, href });
+        }
       });
     });
 

@@ -190,4 +190,17 @@ const { caseStudy } = Astro.props;
     </div>
 
   </div>
+
+  <script is:inline data-slug={caseStudy.slug} data-title={caseStudy.title.uk} data-type={caseStudy.type}>
+    (function() {
+      var scriptEl = document.currentScript;
+      if (!scriptEl) return;
+      var slug = scriptEl.getAttribute('data-slug');
+      var title = scriptEl.getAttribute('data-title');
+      var type = scriptEl.getAttribute('data-type');
+      if (typeof window.sendAmplitudeEvent === 'function') {
+        window.sendAmplitudeEvent('view_case_detail', { slug: slug, title: title, type: type });
+      }
+    })();
+  </script>
 </Layout>
