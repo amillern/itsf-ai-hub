@@ -21,10 +21,12 @@ const siteUrl = (import.meta.env.PUBLIC_SITE_URL || 'https://ai.itsmartflex.com'
 const isProd = import.meta.env.PUBLIC_ENV === 'prod' || import.meta.env.PUBLIC_ENV === 'production';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || siteUrl).href;
 const ogImageURL = image.startsWith('http') ? image : `${siteUrl}${image.startsWith('/') ? '' : '/'}${image}`;
+const isJpeg = ogImageURL.endsWith('.jpg') || ogImageURL.endsWith('.jpeg');
+const mimeType = isJpeg ? 'image/jpeg' : (ogImageURL.endsWith('.png') ? 'image/png' : 'image/jpeg');
 ---
 
 <!DOCTYPE html>
-<html lang="uk" class="scroll-smooth overflow-x-hidden w-full">
+<html lang="uk" prefix="og: http://ogp.me/ns#" class="scroll-smooth overflow-x-hidden w-full">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
@@ -37,19 +39,21 @@ const ogImageURL = image.startsWith('http') ? image : `${siteUrl}${image.startsW
     <meta name="generator" content={Astro.generator} />
     
     <!-- SEO & Canonical Metadata -->
-    {isProd ? <meta name="robots" content="index, follow" /> : <meta name="robots" content="noindex, nofollow" />}
+    {isProd ? <meta name="robots" content="index, follow" /> : <meta name="robots" content="index, follow, noarchive" />}
     <meta name="google-site-verification" content="AI4lwYgK0_677777wFkDAzBBQHgdjSjrpT24xMg" />
     <link rel="canonical" href={canonicalURL} />
     <title>{title}</title>
     <meta name="description" content={description} />
 
-    <!-- Open Graph / Facebook / LinkedIn / Slack / iMessage -->
+    <!-- Open Graph / Facebook / LinkedIn / Slack / iMessage / Telegram -->
     <meta property="og:site_name" content="IT SmartFlex AI Hub" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content={type} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:secure_url" content={ogImageURL} />
+    <meta property="og:image:type" content={mimeType} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content={title} />
