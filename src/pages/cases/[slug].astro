@@ -95,7 +95,7 @@ const canonicalURL = `${siteUrl}/cases/${caseStudy.slug}/`;
           </div>
         </div>
 
-        <!-- Share Action Toolbar (Round Design System Icon Buttons) -->
+        <!-- Share Action Toolbar (Exact Red Outline Circular Buttons from buttons to be.png) -->
         <div class="p-5 rounded-2xl bg-white border border-gray-100 shadow-card space-y-3.5 no-print">
           <div class="flex items-center justify-between">
             <h4 class="text-xs font-bold text-text-main uppercase tracking-wider font-fixel flex items-center gap-2">
@@ -106,64 +106,58 @@ const canonicalURL = `${siteUrl}/cases/${caseStudy.slug}/`;
             </h4>
           </div>
 
-          <div class="flex items-center gap-5 sm:gap-6 pt-1">
-            <!-- 1. Copy Link Round Button -->
-            <div class="flex flex-col items-center gap-1.5">
-              <button 
-                id="share-copy-btn"
-                type="button" 
-                title="Скопіювати посилання"
-                aria-label="Скопіювати посилання"
-                class="w-12 h-12 rounded-full border border-gray-200 bg-white hover:bg-gray-100 text-text-main shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-              >
-                <svg class="w-5 h-5 text-gray-700 group-hover:text-brand-red transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
-                </svg>
-              </button>
-              <span class="text-[11px] font-bold text-text-muted font-roboto">Скопіювати</span>
-            </div>
+          <div class="flex items-center gap-4 pt-1">
+            <!-- 1. PDF Download Button (Red Circle) -->
+            <button 
+              id="share-pdf-btn"
+              type="button" 
+              title="Скачати PDF"
+              aria-label="Скачати PDF"
+              class="w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group"
+            >
+              <svg class="w-6 h-6 transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 8v11a2 2 0 002 2h11" stroke-linecap="round"/>
+                <rect x="7" y="3" width="13" height="15" rx="2" stroke-width="1.8"/>
+                <text x="13.5" y="13.5" text-anchor="middle" font-size="6" font-weight="900" fill="currentColor" stroke="none" font-family="sans-serif">PDF</text>
+              </svg>
+            </button>
 
-            <!-- 2. Share to LinkedIn Round Button -->
-            <div class="flex flex-col items-center gap-1.5">
-              <a 
-                id="share-linkedin-btn"
-                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalURL)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Поділитись в LinkedIn"
-                aria-label="Поділитись в LinkedIn"
-                class="w-12 h-12 rounded-full bg-[#0A66C2] hover:bg-[#084e96] text-white shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all"
-              >
-                <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
-                  <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.6a1.49 1.49 0 0 0-1.49 1.49c0 .82.67 1.49 1.49 1.49a1.49 1.49 0 0 0 1.49-1.49c0-.82-.67-1.49-1.49-1.49Z" />
-                </svg>
-              </a>
-              <span class="text-[11px] font-bold text-text-muted font-roboto">LinkedIn</span>
-            </div>
+            <!-- 2. Copy Link Button (Red Circle) -->
+            <button 
+              id="share-copy-btn"
+              type="button" 
+              title="Скопіювати посилання"
+              aria-label="Скопіювати посилання"
+              class="w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group"
+            >
+              <svg class="w-6 h-6 transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                <rect x="7" y="7" width="13" height="13" rx="2"/>
+              </svg>
+            </button>
 
-            <!-- 3. Download PDF Round Button -->
-            <div class="flex flex-col items-center gap-1.5">
-              <button 
-                id="share-pdf-btn"
-                type="button"
-                title="Скачати PDF"
-                aria-label="Скачати PDF"
-                class="w-12 h-12 rounded-full bg-brand-red hover:bg-brand-red-dark text-white shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all cursor-pointer group"
-              >
-                <svg class="w-5 h-5 text-white group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-              </button>
-              <span class="text-[11px] font-bold text-text-muted font-roboto">Скачати PDF</span>
-            </div>
+            <!-- 3. LinkedIn Button (Red Circle) -->
+            <a 
+              id="share-linkedin-btn"
+              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonicalURL)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Поділитись в LinkedIn"
+              aria-label="Поділитись в LinkedIn"
+              class="w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 group"
+            >
+              <svg class="w-6 h-6 fill-current transition-colors duration-200" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.6a1.49 1.49 0 0 0-1.49 1.49c0 .82.67 1.49 1.49 1.49a1.49 1.49 0 0 0 1.49-1.49c0-.82-.67-1.49-1.49-1.49Z"/>
+              </svg>
+            </a>
           </div>
 
-          <!-- Toast Feedback -->
+          <!-- Subtle Toast Notification (Shows briefly when copying) -->
           <div id="share-copy-toast" class="hidden text-xs text-emerald-600 font-semibold pt-1 flex items-center gap-1.5">
             <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
             </svg>
-            <span>Посилання успішно скопійовано в буфер обміну!</span>
+            <span>Посилання скопійовано в буфер обміну!</span>
           </div>
         </div>
 
@@ -270,14 +264,41 @@ const canonicalURL = `${siteUrl}/cases/${caseStudy.slug}/`;
 
   </div>
 
-  <script is:inline data-slug={caseStudy.slug} data-title={caseStudy.title.uk} data-type={caseStudy.type} data-canonical={canonicalURL}>
+  <script 
+    is:inline 
+    data-slug={caseStudy.slug} 
+    data-title={caseStudy.title.uk} 
+    data-subtitle={caseStudy.subtitle.uk}
+    data-badge={caseStudy.badge.uk}
+    data-scope={caseStudy.scope.uk}
+    data-overview={caseStudy.overview.uk}
+    data-challenge={caseStudy.challenge.uk}
+    data-solution={caseStudy.solution.uk}
+    data-metrics={caseStudy.metrics.map(m => `${m.label.uk}: ${m.value}`).join('. ')}
+    data-tech={caseStudy.techStack.join(', ')}
+    data-image={caseStudy.bannerImage}
+    data-type={caseStudy.type} 
+    data-canonical={canonicalURL}
+    data-site={siteUrl}
+  >
     (function() {
       var scriptEl = document.currentScript;
       if (!scriptEl) return;
+
       var slug = scriptEl.getAttribute('data-slug');
       var title = scriptEl.getAttribute('data-title');
+      var subtitle = scriptEl.getAttribute('data-subtitle');
+      var badge = scriptEl.getAttribute('data-badge');
+      var scope = scriptEl.getAttribute('data-scope');
+      var overview = scriptEl.getAttribute('data-overview');
+      var challenge = scriptEl.getAttribute('data-challenge');
+      var solution = scriptEl.getAttribute('data-solution');
+      var metrics = scriptEl.getAttribute('data-metrics');
+      var tech = scriptEl.getAttribute('data-tech');
+      var image = scriptEl.getAttribute('data-image');
       var type = scriptEl.getAttribute('data-type');
       var canonical = scriptEl.getAttribute('data-canonical');
+      var site = scriptEl.getAttribute('data-site');
 
       if (typeof window.sendAmplitudeEvent === 'function') {
         window.sendAmplitudeEvent('view_case_detail', { slug: slug, title: title, type: type });
@@ -309,7 +330,7 @@ const canonicalURL = `${siteUrl}/cases/${caseStudy.slug}/`;
         };
       }
 
-      // 2. Share to LinkedIn Handler
+      // 2. LinkedIn Share Handler
       var linkedinBtn = document.getElementById('share-linkedin-btn');
       if (linkedinBtn) {
         var pageUrl = encodeURIComponent(canonical || window.location.href);
@@ -321,7 +342,7 @@ const canonicalURL = `${siteUrl}/cases/${caseStudy.slug}/`;
         };
       }
 
-      // 3. Direct PDF Download Handler via html2pdf.js
+      // 3. High-Quality A4 PDF Generator via html2pdf.js
       var pdfBtn = document.getElementById('share-pdf-btn');
       if (pdfBtn) {
         pdfBtn.onclick = function() {
@@ -332,28 +353,92 @@ const canonicalURL = `${siteUrl}/cases/${caseStudy.slug}/`;
           pdfBtn.setAttribute('disabled', 'true');
           pdfBtn.style.opacity = '0.5';
 
-          function doGeneratePDF() {
-            var caseElement = document.getElementById('case-study-content');
-            if (!caseElement) return;
+          function generateCleanA4PDF() {
+            // Build dedicated A4 document container
+            var pdfDiv = document.createElement('div');
+            pdfDiv.style.position = 'absolute';
+            pdfDiv.style.left = '-9999px';
+            pdfDiv.style.top = '0';
+            pdfDiv.style.width = '750px';
+            pdfDiv.style.background = '#ffffff';
+            pdfDiv.style.color = '#1f2937';
+            pdfDiv.style.padding = '32px';
+            pdfDiv.style.boxSizing = 'border-box';
+            pdfDiv.style.fontFamily = "system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif";
+
+            var fullImgUrl = image.startsWith('http') ? image : (site + (image.startsWith('/') ? '' : '/') + image);
+
+            pdfDiv.innerHTML = 
+              '<div style="border-bottom: 2px solid #e30613; padding-bottom: 14px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center;">' +
+                '<div style="font-size: 20px; font-weight: 900; color: #e30613; letter-spacing: -0.5px;">IT SmartFlex AI Hub</div>' +
+                '<div style="font-size: 12px; color: #6b7280; font-weight: 600;">Кейс-стаді</div>' +
+              '</div>' +
+
+              '<div style="margin-bottom: 20px;">' +
+                '<span style="display: inline-block; padding: 4px 12px; background: #fee2e2; color: #991b1b; font-size: 11px; font-weight: 700; border-radius: 9999px; margin-bottom: 10px;">' + badge + '</span>' +
+                '<h1 style="font-size: 24px; font-weight: 800; color: #111827; margin: 0 0 8px 0; line-height: 1.25;">' + title + '</h1>' +
+                '<p style="font-size: 14px; color: #4b5563; margin: 0; line-height: 1.5;">' + subtitle + '</p>' +
+              '</div>' +
+
+              '<div style="margin-bottom: 20px; border-radius: 12px; overflow: hidden; border: 1px solid #e5e7eb;">' +
+                '<img src="' + fullImgUrl + '" style="width: 100%; height: 250px; object-fit: cover; display: block;" />' +
+              '</div>' +
+
+              '<div style="background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 12px; padding: 18px; margin-bottom: 20px;">' +
+                '<div style="font-size: 14px; font-weight: 700; color: #e30613; margin-bottom: 6px;">Огляд рішення:</div>' +
+                '<div style="font-size: 13px; color: #374151; line-height: 1.6;">' + overview + '</div>' +
+              '</div>' +
+
+              '<table style="width: 100%; border-collapse: separate; border-spacing: 12px; margin-left: -12px; margin-right: -12px; margin-bottom: 16px;">' +
+                '<tr>' +
+                  '<td style="width: 50%; vertical-align: top; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px;">' +
+                    '<div style="font-size: 12px; font-weight: 700; color: #111827; margin-bottom: 4px;">⚡ Бізнес виклик:</div>' +
+                    '<div style="font-size: 11px; color: #4b5563; line-height: 1.5;">' + challenge + '</div>' +
+                  '</td>' +
+                  '<td style="width: 50%; vertical-align: top; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px;">' +
+                    '<div style="font-size: 12px; font-weight: 700; color: #111827; margin-bottom: 4px;">🎯 Рішення:</div>' +
+                    '<div style="font-size: 11px; color: #4b5563; line-height: 1.5;">' + solution + '</div>' +
+                  '</td>' +
+                '</tr>' +
+                '<tr>' +
+                  '<td style="width: 50%; vertical-align: top; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px;">' +
+                    '<div style="font-size: 12px; font-weight: 700; color: #111827; margin-bottom: 4px;">📊 Цінність для бізнесу:</div>' +
+                    '<div style="font-size: 11px; color: #4b5563; line-height: 1.5;">' + metrics + '</div>' +
+                  '</td>' +
+                  '<td style="width: 50%; vertical-align: top; background: #ffffff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 14px;">' +
+                    '<div style="font-size: 12px; font-weight: 700; color: #111827; margin-bottom: 4px;">💻 Технологічний стек:</div>' +
+                    '<div style="font-size: 11px; color: #4b5563; line-height: 1.5;">' + tech + '</div>' +
+                  '</td>' +
+                '</tr>' +
+              '</table>' +
+
+              '<div style="border-top: 1px solid #e5e7eb; padding-top: 12px; text-align: center; font-size: 10px; color: #9ca3af;">' +
+                '© IT SmartFlex | AI Hub — ' + site +
+              '</div>';
+
+            document.body.appendChild(pdfDiv);
 
             var opt = {
-              margin:       [10, 10, 10, 10],
+              margin:       [8, 8, 8, 8],
               filename:     (slug || 'case-study') + '.pdf',
               image:        { type: 'jpeg', quality: 0.98 },
-              html2canvas:  { scale: 2, useCORS: true, logging: false },
+              html2canvas:  { scale: 2, useCORS: true, logging: false, width: 750 },
               jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
 
             if (window.html2pdf) {
-              window.html2pdf().set(opt).from(caseElement).save().then(function() {
+              window.html2pdf().set(opt).from(pdfDiv).save().then(function() {
+                document.body.removeChild(pdfDiv);
                 pdfBtn.removeAttribute('disabled');
                 pdfBtn.style.opacity = '1';
               }).catch(function() {
+                document.body.removeChild(pdfDiv);
                 window.print();
                 pdfBtn.removeAttribute('disabled');
                 pdfBtn.style.opacity = '1';
               });
             } else {
+              document.body.removeChild(pdfDiv);
               window.print();
               pdfBtn.removeAttribute('disabled');
               pdfBtn.style.opacity = '1';
@@ -363,7 +448,7 @@ const canonicalURL = `${siteUrl}/cases/${caseStudy.slug}/`;
           if (typeof window.html2pdf === 'undefined') {
             var script = document.createElement('script');
             script.src = 'https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js';
-            script.onload = doGeneratePDF;
+            script.onload = generateCleanA4PDF;
             script.onerror = function() {
               window.print();
               pdfBtn.removeAttribute('disabled');
@@ -371,7 +456,7 @@ const canonicalURL = `${siteUrl}/cases/${caseStudy.slug}/`;
             };
             document.head.appendChild(script);
           } else {
-            doGeneratePDF();
+            generateCleanA4PDF();
           }
         };
       }
