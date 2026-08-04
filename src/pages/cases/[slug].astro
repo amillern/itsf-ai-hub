@@ -13,11 +13,11 @@ export async function getStaticPaths() {
 const { caseStudy } = Astro.props;
 ---
 
-<Layout title={`${caseStudy.title.uk} | IT SmartFlex AI Hub`}>
+<Layout title={`${caseStudy.title.uk} | IT SmartFlex AI Hub`} description={caseStudy.overview.uk} image={caseStudy.bannerImage} type="article">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-24 space-y-8 sm:space-y-12">
     
     <!-- Breadcrumbs -->
-    <nav class="flex flex-wrap items-center text-xs text-[#515151] gap-1.5 sm:gap-2 font-roboto">
+    <nav class="flex flex-wrap items-center text-xs text-[#515151] gap-1.5 sm:gap-2 font-roboto no-print">
       <a href="/" class="hover:text-brand-red font-medium">Головна</a>
       <span>/</span>
       <a href="/cases/" class="hover:text-brand-red font-medium">Case Studies</a>
@@ -28,7 +28,7 @@ const { caseStudy } = Astro.props;
     <!-- Main Grid Section -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
       
-      <!-- Left Column: Case Meta, Title, Business Tasks & Applications -->
+      <!-- Left Column: Case Meta, Title, Business Tasks & Share Toolbar -->
       <div class="lg:col-span-5 space-y-6 sm:space-y-8">
         
         <div>
@@ -85,6 +85,66 @@ const { caseStudy } = Astro.props;
               <span class="text-emerald-700 block text-[11px]">З ШІ</span>
               <span class="font-bold text-emerald-800">{caseStudy.difficultyWith.uk}</span>
             </div>
+          </div>
+        </div>
+
+        <!-- Share Action Toolbar -->
+        <div class="p-5 rounded-2xl bg-white border border-gray-100 shadow-card space-y-3.5 no-print">
+          <div class="flex items-center justify-between">
+            <h4 class="text-xs font-bold text-text-main uppercase tracking-wider font-fixel flex items-center gap-2">
+              <svg class="w-4 h-4 text-brand-red shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+              </svg>
+              <span>Поділитись кейсом</span>
+            </h4>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <!-- 1. Copy Link Button -->
+            <button 
+              id="share-copy-btn"
+              type="button" 
+              class="w-full px-3 py-2.5 rounded-xl bg-gray-100 hover:bg-gray-200 text-text-main text-xs font-bold font-fixel transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-95 cursor-pointer"
+            >
+              <svg class="w-4 h-4 text-gray-700 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3" />
+              </svg>
+              <span>Скопіювати</span>
+            </button>
+
+            <!-- 2. Share to LinkedIn Button -->
+            <a 
+              id="share-linkedin-btn"
+              href="#" 
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full px-3 py-2.5 rounded-xl bg-[#0A66C2] hover:bg-[#084e96] text-white text-xs font-bold font-fixel transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm active:scale-95"
+            >
+              <svg class="w-4 h-4 fill-current shrink-0" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.6a1.49 1.49 0 0 0-1.49 1.49c0 .82.67 1.49 1.49 1.49a1.49 1.49 0 0 0 1.49-1.49c0-.82-.67-1.49-1.49-1.49Z" />
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+
+            <!-- 3. Download PDF Button -->
+            <button 
+              id="share-pdf-btn"
+              type="button"
+              class="w-full px-3 py-2.5 rounded-xl bg-brand-red hover:bg-brand-red-dark text-white text-xs font-bold font-fixel transition-all duration-200 flex items-center justify-center gap-1.5 shadow-sm active:scale-95 cursor-pointer"
+            >
+              <svg class="w-4 h-4 text-white shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              <span>Скачати PDF</span>
+            </button>
+          </div>
+
+          <!-- Toast Feedback -->
+          <div id="share-copy-toast" class="hidden text-xs text-emerald-600 font-semibold pt-1 flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>Посилання успішно скопійовано в буфер обміну!</span>
           </div>
         </div>
 
@@ -198,8 +258,58 @@ const { caseStudy } = Astro.props;
       var slug = scriptEl.getAttribute('data-slug');
       var title = scriptEl.getAttribute('data-title');
       var type = scriptEl.getAttribute('data-type');
+
       if (typeof window.sendAmplitudeEvent === 'function') {
         window.sendAmplitudeEvent('view_case_detail', { slug: slug, title: title, type: type });
+      }
+
+      // 1. Copy Link Handler
+      var copyBtn = document.getElementById('share-copy-btn');
+      var toast = document.getElementById('share-copy-toast');
+      if (copyBtn) {
+        copyBtn.onclick = function() {
+          var currentUrl = window.location.href;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(currentUrl);
+          } else {
+            var tempInput = document.createElement('input');
+            tempInput.value = currentUrl;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+          }
+          if (toast) {
+            toast.classList.remove('hidden');
+            setTimeout(function() { toast.classList.add('hidden'); }, 3000);
+          }
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('share_copy_link', { slug: slug, title: title });
+          }
+        };
+      }
+
+      // 2. Share to LinkedIn Handler
+      var linkedinBtn = document.getElementById('share-linkedin-btn');
+      if (linkedinBtn) {
+        var pageUrl = encodeURIComponent(window.location.href);
+        linkedinBtn.href = 'https://www.linkedin.com/sharing/share-offsite/?url=' + pageUrl;
+        linkedinBtn.onclick = function() {
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('share_linkedin', { slug: slug, title: title });
+          }
+        };
+      }
+
+      // 3. Download PDF Handler
+      var pdfBtn = document.getElementById('share-pdf-btn');
+      if (pdfBtn) {
+        pdfBtn.onclick = function() {
+          if (typeof window.sendAmplitudeEvent === 'function') {
+            window.sendAmplitudeEvent('share_download_pdf', { slug: slug, title: title });
+          }
+          window.print();
+        };
       }
     })();
   </script>
