@@ -30,16 +30,16 @@ export const caseStudies: CaseStudy[] = [
       en: "Engineering Productivity Program Powered by AI Assistants" 
     },
     subtitle: { 
-      uk: "Пілотування ШІ-інструмента GitHub Copilot в IT SmartFlex з метою оцінки його реального впливу на швидкість розробки. Інструмент успішно випробували дві команди інженерів. Зафіксовано чіткий тренд до системного зниження середнього часу на реалізацію технічних задач після старту проєкту.", 
-      en: "Piloting GitHub Copilot at IT SmartFlex to evaluate its real impact on software engineering velocity across development teams." 
+      uk: "Пілотування ШІ-інструмента GitHub Copilot в IT-підрозділі великого телеком-оператора з метою оцінки його реального впливу на швидкість розробки. Інструмент успішно випробували дві команди інженерів. Зафіксовано чіткий тренд до системного зниження середнього часу на реалізацію технічних задач після старту проєкту.", 
+      en: "Piloting GitHub Copilot at a major telecom operator's IT division to evaluate its real impact on software engineering velocity across development teams." 
     },
     bannerImage: "/assets/cards/copilot-dev.jpg",
     scope: { uk: "Розробка ПЗ, Тестування ПЗ", en: "Software Engineering & Testing" },
-    difficultyWithout: { uk: "Висока (110 год / задача)", en: "High (110 hrs / task)" },
-    difficultyWith: { uk: "Низька (70-103 год / задача)", en: "Low (70-103 hrs / task)" },
+    difficultyWithout: { uk: "Висока (без ШІ)", en: "High (without AI)" },
+    difficultyWith: { uk: "Низька (з ШІ)", en: "Low (with AI)" },
     overview: {
-      uk: "Швидша розробка продуктів та помітне підвищення продуктивності команди. Ефективність інженерів зросла на 7–15% під час виконання задач розробки. Середня тривалість виконання задач зменшилась зі 110 до 103 годин у першій команді та з 83 до 70 годин у другій команді. Масштабували на 10 команд, на цілий підрозділ.",
-      en: "Faster product delivery and noticeable team productivity gains. Engineering efficiency increased by 7-15% with task completion time drops across teams."
+      uk: "Швидша розробка продуктів та помітне підвищення продуктивності команди. Ефективність інженерів зросла на 7–15% під час виконання задач розробки. Середня тривалість виконання задач зменшилась у першій команді та на 15% у другій. Рішення успішно масштабовано на весь інженерний підрозділ.",
+      en: "Faster product delivery and noticeable team productivity gains. Engineering efficiency increased by 7-15% with task completion time drops. Solution successfully scaled to the entire engineering department."
     },
     challenge: {
       uk: "Висока трудомісткість рутинного кодування, великий обсяг шаблонного коду та тривалий цикл реалізації складних технічних тасок без ШІ-інструментів.",
@@ -52,8 +52,8 @@ export const caseStudies: CaseStudy[] = [
     tags: ["Підвищення продуктивності", "Прискорення розробки ПЗ", "Оптимізація витрат", "Скорочення часу виконання задач"],
     metrics: [
       { label: { uk: "Зростання ефективності", en: "Efficiency Growth" }, value: "7-15%" },
-      { label: { uk: "Скорочення часу задач", en: "Task Time Drop" }, value: "з 110 до 103 год" },
-      { label: { uk: "Масштабування", en: "Scaling" }, value: "10 команд" }
+      { label: { uk: "Скорочення часу задач", en: "Task Time Drop" }, value: "до -15%" },
+      { label: { uk: "Масштабування", en: "Scaling" }, value: "весь підрозділ" }
     ],
     keyFeatures: [
       {
@@ -82,46 +82,46 @@ export const caseStudies: CaseStudy[] = [
       en: "AI Assistant for Automated Customer Request & Complaint Processing" 
     },
     subtitle: { 
-      uk: "Інтелектуальний ШІ-бот у Microsoft Teams для повної автоматизації першої лінії підтримки та обробки запитів від користувачів. Система самостійно класифікує звернення користувачів, відкриває інциденти в HPSM та звітує перед менеджментом.", 
-      en: "Smart MS Teams AI bot automating 1st line customer support, ticket creation in HPSM, and management reporting." 
+      uk: "Інтелектуальний ШІ-бот у Microsoft Teams для повної автоматизації першої лінії підтримки та обробки запитів від користувачів. Система самостійно класифікує звернення користувачів, відкриває інциденти в корпоративній Service Desk системі та звітує перед менеджментом.", 
+      en: "Smart MS Teams AI bot automating 1st line customer support, ticket creation in enterprise Service Desk system, and management reporting." 
     },
     bannerImage: "/assets/cards/support-bot.jpg",
     scope: { uk: "Клієнтський сервіс, Операційна діяльність, Сервісна підтримка", en: "Customer Support & Operations" },
     difficultyWithout: { uk: "Середня (3/5)", en: "Medium (3/5)" },
     difficultyWith: { uk: "Низька (1/5)", en: "Low (1/5)" },
     overview: {
-      uk: "Повністю знято навантаження з операторів лінії 111 щодо заявок Friendly Users. Успішно опрацьовано 1100+ складних звернень від понад 1000 унікальних користувачів. Вартість обробки одного запиту впала з 25,4 грн ($0,58) до 0,26–4,3 грн ($0,006–0,1).",
-      en: "Fully automated 1st-line support for Friendly Users, processing 1100+ complex requests while slashing cost per request from 25.4 UAH to 0.26-4.3 UAH."
+      uk: "Повністю знято навантаження з операторів першої лінії підтримки щодо заявок бета-тестувальників (пілотної групи). Успішно опрацьовано 1100+ складних звернень від понад 1000 унікальних користувачів. Вартість обробки одного запиту знизилася у 6–90 разів (економія до 99%).",
+      en: "Fully automated 1st-line support for pilot beta testers, processing 1100+ complex requests while slashing cost per request by 6-90x (up to 99% savings)."
     },
     challenge: {
       uk: "Перевантаження стандартної лінії підтримки через велику кількість запитів від користувачів. Потреба радикально знизити вартість обробки рутинних скарг та уникнути затримок у реакції на критичні технічні проблеми.",
       en: "Support tier overload with routine requests, requiring a drastic reduction in handling costs and response times."
     },
     solution: {
-      uk: "Впровадження інтелектуального чат-бота як єдиного цифрового вікна для користувачів. Бот бере на себе первинну комунікацію, автоматично створює структуровані заявки в системі HPSM та самостійно формує щоденну аналітичну звітність для технічної команди.",
-      en: "Deployed a single digital window chatbot handling initial contact, HPSM ticket creation, and automated reporting."
+      uk: "Впровадження інтелектуального чат-бота як єдиного цифрового вікна для користувачів. Бот бере на себе первинну комунікацію, автоматично створює структуровані заявки в корпоративній Service Desk системі та самостійно формує щоденну аналітичну звітність для технічної команди.",
+      en: "Deployed a single digital window chatbot handling initial contact, enterprise Service Desk ticket creation, and automated reporting."
     },
     tags: ["Покращення клієнтського сервісу", "Автоматизація процесів", "Оптимізація витрат", "Скорочення часу виконання задач"],
     metrics: [
       { label: { uk: "Опрацьовано звернень", en: "Processed Requests" }, value: "1100+" },
       { label: { uk: "Зниження вартості", en: "Cost Reduction" }, value: "до 99%" },
-      { label: { uk: "Вартість запиту", en: "Cost / Request" }, value: "0.26-4.3 грн" }
+      { label: { uk: "Зниження вартості запиту", en: "Cost Reduction / Req" }, value: "у 6–90 разів" }
     ],
     keyFeatures: [
       {
         title: { uk: "Як це працює", en: "How it works" },
-        desc: { uk: "Користувач пише скаргу у довільній формі в чат MS Teams. ШІ за допомогою алгоритмів NLP виокремлює суть проблеми, формує параметри заявки, через API передає її в HPSM та надсилає користувачу номер тікета.", en: "User submits complaints in MS Teams chat; NLP parses intent, creates HPSM tickets via API, and returns ticket numbers." }
+        desc: { uk: "Користувач пише скаргу у довільній формі в чат MS Teams. ШІ за допомогою алгоритмів NLP виокремлює суть проблеми, формує параметри заявки, через API передає її в корпоративну Service Desk систему та надсилає користувачу номер тікета.", en: "User submits complaints in MS Teams chat; NLP parses intent, creates enterprise Service Desk tickets via API, and returns ticket numbers." }
       },
       {
         title: { uk: "Архітектура", en: "Architecture" },
-        desc: { uk: "Модуль діалогового інтерфейсу MS Teams з'єднаний через хмарні сервіси обробки мови з інтеграційною шиною, яка за допомогою безпечних API-запитів вносить дані в Service Desk систему (HPSM) та зберігає логи для звітності.", en: "MS Teams conversational interface integrated with cloud Azure NLP services and HPSM API." }
+        desc: { uk: "Модуль діалогового інтерфейсу MS Teams з'єднаний через хмарні сервіси обробки мови з інтеграційною шиною, яка за допомогою безпечних API-запитів вносить дані в корпоративну Service Desk систему та зберігає логи для звітності.", en: "MS Teams conversational interface integrated with cloud Azure NLP services and enterprise Service Desk API." }
       },
       {
         title: { uk: "Окупність (ROI)", en: "ROI" },
         desc: { uk: "Економія до 99% операційних витрат на кожному окремому запиті.", en: "Up to 99% operational expense savings on every single request." }
       }
     ],
-    techStack: ["Azure Bot Service", "MS Teams", "Azure OpenAI", "GPT-5.x", "HPSM API"]
+    techStack: ["Azure Bot Service", "MS Teams", "Azure OpenAI", "GPT Models", "Service Desk API"]
   },
 
   {
@@ -146,8 +146,8 @@ export const caseStudies: CaseStudy[] = [
       en: "Processed 300+ communication requests in month 1, eliminating errors and saving manager time with zero external API fees."
     },
     challenge: {
-      uk: "Ризик витоку комерційної та таємної інформації через використання співробітниками публічних ШІ-сервісів (як-от ChatGPT). Висока ціна комерційних ліцензій (Copilot 365 від $30/міс. на користувача) та зниження якості офіційних відповідей клієнтам через втому персоналу наприкінці робочого дня.",
-      en: "Data privacy risks with public LLMs, high commercial license costs, and communication quality drops due to staff fatigue."
+      uk: "Ризик витоку комерційної та таємної інформації через використання співробітниками публічних ШІ-сервісів (як-от ChatGPT). Висока ціна комерційних ліцензій (комерційні хмарні ШІ-асистенти від $30/міс. за користувача) та зниження якості офіційних відповідей клієнтам через втому персоналу наприкінці робочого дня.",
+      en: "Data privacy risks with public LLMs, high commercial license costs (commercial cloud AI assistants from $30/mo per user), and communication quality drops due to staff fatigue."
     },
     solution: {
       uk: "Розгортання та безшовна інтеграція локальних мовних моделей безпосередньо в інтерфейс B2B CRM. Додано модулі миттєвого виправлення орфографії, автоматичної зміни тональності тексту на офіційно-ділову та інструменти швидкого підсумовування довгих діалогів.",
@@ -173,7 +173,7 @@ export const caseStudies: CaseStudy[] = [
         desc: { uk: "$0 додаткових витрат за обробку кожного запиту (повна автономність та незалежність від сторонніх платних API).", en: "$0 per-request cost due to complete cloud API independence." }
       }
     ],
-    techStack: ["GPT-OSS", "Python/FastAPI", "Docker", "B2B CRM Integrations"]
+    techStack: ["Open-Source LLM (локальна мовна модель)", "Python/FastAPI", "Docker", "B2B CRM Integrations"]
   },
 
   {
@@ -323,7 +323,7 @@ export const caseStudies: CaseStudy[] = [
       },
       {
         title: { uk: "Рівень зрілості", en: "Maturity Level" },
-        desc: { uk: "Перевірено на практиці в бойових проектах розробки IT SmartFlex.", en: "Battle-tested in live IT SmartFlex engineering projects." }
+        desc: { uk: "Перевірено на практиці в бойових проектах розробки.", en: "Battle-tested in live production engineering projects." }
       }
     ],
     techStack: ["GitHub Copilot", "Figma MCP", "Claude Sonnet", "Claude Opus"]
@@ -355,7 +355,7 @@ export const caseStudies: CaseStudy[] = [
       en: "Microservice integration troubleshooting across teams consumes days of manual log dumping and correlation."
     },
     solution: {
-      uk: "Усі залежні проєкти об'єднуються в один робочий простір. На основі початкового TraceID робиться зліпок (снепшот) логів, який завантажується в контекст ШІ разом зі схемами процес-флоу. Модель проводить глибокий перехресний аудит та підсвічує логічні розбіжності.",
+      uk: "Усі залежні проєкти об'єднуються в один робочий простір. На основі початкового TraceID робиться зліпок (снепшот) логів, який завантажується в контекст ШІ разом зі схемами процес-флоу. Модель проводити глибокий перехресний аудит та підсвічує логічні розбіжності.",
       en: "TraceID snapshots are loaded into AI context alongside process flow diagrams for automated cross-system audit."
     },
     tags: ["Аналіз та пошук інформації", "Підтримка прийняття рішень", "Скорочення часу виконання задач"],
@@ -367,14 +367,14 @@ export const caseStudies: CaseStudy[] = [
     keyFeatures: [
       {
         title: { uk: "Архітектура", en: "Architecture" },
-        desc: { uk: "Локальне ізольоване аналітичне середовище. Сніпшоти логів із CI/CD або систем моніторингу завантажуються в єдиний контекст разом із технічною документацією (DAC / Process Flow) для запобігання галюцинаціям.", en: "Isolated analytical environment pairing CI/CD log dumps with DAC/Process Flow documentation." }
+        desc: { uk: "Локальне ізольоване аналітичне середовище. Сніпшоти логів із CI/CD або систем моніторингу завантажуються в єдиний контекст разом із технічною документацією (системна документація / Process Flow) для запобігання галюцинаціям.", en: "Isolated analytical environment pairing CI/CD log dumps with system documentation and Process Flow diagrams." }
       },
       {
         title: { uk: "Рівень зрілості", en: "Maturity Level" },
         desc: { uk: "Перевірено на практиці у високонавантажених платформах.", en: "Battle-tested in high-load production platforms." }
       }
     ],
-    techStack: ["GitHub Copilot", "GPT-5.x", "Tracing Tools"]
+    techStack: ["GitHub Copilot", "GPT Models", "Tracing Tools"]
   },
 
   {
@@ -451,8 +451,8 @@ export const caseStudies: CaseStudy[] = [
       en: "Evaluating tech stacks against strict enterprise rules requires vast engineering effort, while raw top-tier LLM usage inflates costs."
     },
     solution: {
-      uk: "Робота ділиться на дві фази. У \"Plan Mode\" найпотужніша ШІ-модель вивчає вихідні вимоги (OBM Knowledge Base) як єдине джерело правди та ітеративно вибудовує покроковий архітектурний план. Сформований та зафіксований план віддається на виконання дешевшим моделям.",
-      en: "Split-execution architecture: flagship LLM creates master plan from OBM Knowledge Base, passed to cost-effective models for execution."
+      uk: "Робота ділиться на дві фази. У \"Plan Mode\" найпотужніша ШІ-модель вивчає вихідні вимоги (корпоративна база знань / Knowledge Base) як єдине джерело правди та ітеративно вибудовує покроковий архітектурний план. Сформований та зафіксований план віддається на виконання дешевшим моделям.",
+      en: "Split-execution architecture: flagship LLM creates master plan from enterprise Knowledge Base, passed to cost-effective models for execution."
     },
     tags: ["Підтримка прийняття рішень", "Підвищення продуктивності", "Прискорення розробки ПЗ"],
     metrics: [
@@ -463,14 +463,14 @@ export const caseStudies: CaseStudy[] = [
     keyFeatures: [
       {
         title: { uk: "Архітектура", en: "Architecture" },
-        desc: { uk: "Двовекторна модель споживання токенів (Split-Execution System Architecture). Верхній рівень — аналіз документації та збирання Master-промпту флагманською моделлю. Нижній рівень — імплементація та кодування рутинними локальними моделями.", en: "Split-Execution System Architecture separating high-level strategic reasoning from routine coding execution." }
+        desc: { uk: "Двовекторна модель споживання токенів (Split-Execution System Architecture). Верхній рівень — аналіз документації та збирання Master-промпту флагманською моделлю на основі корпоративної бази знань. Нижній рівень — імплементація та кодування рутинними локальними моделями.", en: "Split-Execution System Architecture separating high-level strategic reasoning based on Knowledge Base from routine coding execution." }
       },
       {
         title: { uk: "Рівень зрілості", en: "Maturity Level" },
         desc: { uk: "Перевірено на практиці.", en: "Battle-tested in enterprise projects." }
       }
     ],
-    techStack: ["GPT-5.4", "Claude Sonnet", "Claude Opus", "OBM Knowledge Base"]
+    techStack: ["LLM Models", "Claude Sonnet", "Claude Opus", "Knowledge Base"]
   },
 
   {
@@ -511,13 +511,13 @@ export const caseStudies: CaseStudy[] = [
     keyFeatures: [
       {
         title: { uk: "Архітектура", en: "Architecture" },
-        desc: { uk: "Інтеграційний скрипт-конектор між CI/CD логами/Prometheus та сервісом генерації документів за зафіксованим шаблоном стилю.", en: "Integration connector linking Prometheus and CI/CD logs with document generation services using locked styling templates." }
+        desc: { uk: "Інтеграційний скрипт-конектор між CI/CD логами/Prometheus та сервісом генерації документів за зафіксованим корпоративним шаблоном звітності.", en: "Integration connector linking Prometheus and CI/CD logs with document generation services using locked enterprise reporting templates." }
       },
       {
         title: { uk: "Рівень зрілості", en: "Maturity Level" },
         desc: { uk: "Перевірено на практиці.", en: "Battle-tested in SRE workflows." }
       }
     ],
-    techStack: ["GitHub Copilot", "Claude Sonnet", "Python/Bash", "Prometheus STG", "CI/CD Logs"]
+    techStack: ["GitHub Copilot", "Claude Sonnet", "Python/Bash", "Prometheus (системи моніторингу)", "CI/CD Logs"]
   }
 ];
