@@ -6,7 +6,7 @@ export const GET: APIRoute = async () => {
     throw new Error('❌ PUBLIC_SITE_URL is required at build time.');
   }
   const baseUrl = siteUrl.replace(/\/$/, '');
-  const isProd = import.meta.env.PUBLIC_ENV === 'production';
+  const isProd = import.meta.env.PUBLIC_ENV === 'prod' || import.meta.env.PUBLIC_ENV === 'production';
 
   const content = isProd
     ? `User-agent: *\nAllow: /\n\nSitemap: ${baseUrl}/sitemap.xml\n`
