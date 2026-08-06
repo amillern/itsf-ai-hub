@@ -101,6 +101,66 @@
     "cookieConsent": "2be18890ed0e758d",
     "analytics": "97743fb7a62329da"
   },
+  "/pdf/architecture-design-ai/": {
+    "header": "2efa053d36ecf40f",
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
+  "/pdf/b2b-crm-assistant/": {
+    "header": "2efa053d36ecf40f",
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
+  "/pdf/commercial-approval-bot/": {
+    "header": "2efa053d36ecf40f",
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
+  "/pdf/copilot-dev/": {
+    "header": "2efa053d36ecf40f",
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
+  "/pdf/infrastructure-reporting/": {
+    "header": "2efa053d36ecf40f",
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
+  "/pdf/operational-reporting-bot/": {
+    "header": "2efa053d36ecf40f",
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
+  "/pdf/self-healing-qa/": {
+    "header": "2efa053d36ecf40f",
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
+  "/pdf/support-bot/": {
+    "header": "2efa053d36ecf40f",
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
+  "/pdf/trace-log-analysis/": {
+    "header": "2efa053d36ecf40f",
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
+  "/pdf/ui-component-generation/": {
+    "header": "2efa053d36ecf40f",
+    "footer": null,
+    "cookieConsent": null,
+    "analytics": null
+  },
   "/privacy/": {
     "header": "b50b4e19d596931a",
     "footer": "3985f327f2dc671c",

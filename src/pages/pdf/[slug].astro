@@ -1,0 +1,234 @@
+---
+/**
+ * Standalone A4 document used ONLY as the source for build-time PDF generation.
+ *
+ * Rendered to dist/cases/<slug>.pdf by scripts/generate-pdfs.mjs (Chromium via
+ * playwright-core), after which the HTML output of this route is removed from
+ * dist/ so it is never shipped or indexed.
+ *
+ * Hard rules for this file — breaking any of them reintroduces overlapping text:
+ *   1. No position: fixed / absolute anywhere. Everything stays in normal flow.
+ *   2. No Layout.astro (no header, footer, nav, cookie banner, analytics).
+ *   3. Page margins come from page.pdf() in the script, never from CSS.
+ *   4. Every block that must not be split carries `break-inside-avoid`.
+ */
+import { caseStudies } from '../../data/cases';
+
+export function getStaticPaths() {
+  return caseStudies.map((caseStudy) => ({
+    params: { slug: caseStudy.slug },
+    props: { caseStudy },
+  }));
+}
+
+const { caseStudy } = Astro.props;
+
+const siteUrl = (import.meta.env.PUBLIC_SITE_URL || 'https://ai.itsmartflex.com').replace(/\/$/, '');
+const caseUrl = `${siteUrl}/cases/${caseStudy.slug}/`;
+const bannerUrl = caseStudy.bannerImage;
+---
+
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>{caseStudy.title.uk}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style is:global>
+      /*
+       * Margins are supplied by page.pdf({ margin }) in the generator so that the
+       * running header/footer template and the content share one source of truth.
+       * Declaring them here as well would double them.
+       */
+      @page {
+        size: A4;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+      }
+
+      /* Keep card backgrounds, badges and the brand rule in the exported PDF. */
+      * {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      /* Orphan/widow control so paragraphs never leave a single dangling line. */
+      p,
+      li {
+        orphans: 3;
+        widows: 3;
+      }
+
+      /* A heading must never be the last thing on a page. */
+      h1,
+      h2,
+      h3 {
+        break-after: avoid;
+        page-break-after: avoid;
+      }
+
+      img {
+        max-width: 100%;
+      }
+    </style>
+  </head>
+
+  <body class="font-roboto text-text-main bg-white">
+    <!--
+      Верхній рівень навмисно у звичайному блочному потоці (space-y), а не flex.
+      Chromium фрагментує по сторінках блочний потік передбачувано, а flex/grid —
+      ні: саме там break-inside/break-after починають ігноруватись.
+    -->
+    <main class="space-y-5">
+      <!-- Running title block -->
+      <header class="flex items-start justify-between gap-6 border-b-2 border-brand-red pb-3 break-inside-avoid">
+        <span class="text-lg font-bold text-brand-red font-fixel leading-tight">
+          IT SmartFlex AI Hub
+        </span>
+        <span class="text-right text-[9px] uppercase tracking-wider text-text-light leading-snug">
+          Case study
+          <span class="block normal-case tracking-normal">{siteUrl.replace('https://', '')}</span>
+        </span>
+      </header>
+
+      <!-- Title -->
+      <section class="space-y-2 break-inside-avoid">
+        <span class="self-start rounded-full bg-brand-red-soft px-3 py-1 text-[10px] font-bold text-brand-red-dark">
+          {caseStudy.badge.uk}
+        </span>
+        <h1 class="text-xl font-bold leading-snug font-fixel text-text-main">
+          {caseStudy.title.uk}
+        </h1>
+        <p class="text-[11px] leading-relaxed text-text-muted">
+          {caseStudy.subtitle.uk}
+        </p>
+      </section>
+
+      <!-- Banner -->
+      <section class="break-inside-avoid overflow-hidden rounded-xl border border-surface-border">
+        <img
+          src={bannerUrl}
+          alt={caseStudy.title.uk}
+          class="block h-[62mm] w-full object-cover"
+        />
+      </section>
+
+      <!-- Overview -->
+      <section class="break-inside-avoid rounded-xl border border-surface-border bg-surface-variant p-4">
+        <h2 class="mb-1.5 text-[11px] font-bold uppercase tracking-wide text-brand-red font-fixel">
+          Огляд рішення
+        </h2>
+        <p class="text-[11px] leading-relaxed text-text-main">
+          {caseStudy.overview.uk}
+        </p>
+      </section>
+
+      <!-- Challenge / Solution -->
+      <section class="grid grid-cols-2 gap-4 break-inside-avoid">
+        <div class="break-inside-avoid rounded-xl border border-surface-border p-4">
+          <h3 class="mb-1.5 text-[11px] font-bold text-text-main font-fixel">Бізнес-виклик</h3>
+          <p class="text-[10px] leading-relaxed text-text-muted">{caseStudy.challenge.uk}</p>
+        </div>
+        <div class="break-inside-avoid rounded-xl border border-surface-border p-4">
+          <h3 class="mb-1.5 text-[11px] font-bold text-text-main font-fixel">Рішення</h3>
+          <p class="text-[10px] leading-relaxed text-text-muted">{caseStudy.solution.uk}</p>
+        </div>
+      </section>
+
+      <!-- Metrics -->
+      <section class="break-inside-avoid rounded-xl border border-surface-border p-4">
+        <h2 class="mb-2.5 text-[11px] font-bold uppercase tracking-wide text-brand-red font-fixel">
+          Цінність для бізнесу
+        </h2>
+        <div class="grid grid-cols-3 gap-3">
+          {caseStudy.metrics.map((metric) => (
+            <div class="rounded-lg bg-surface-variant p-3">
+              <span class="block text-base font-bold leading-tight text-brand-red font-fixel">
+                {metric.value}
+              </span>
+              <span class="mt-1 block text-[9px] leading-snug text-text-muted">
+                {metric.label.uk}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <!-- Key features -->
+      <section class="space-y-3">
+        <h2 class="text-[11px] font-bold uppercase tracking-wide text-brand-red font-fixel">
+          Як це влаштовано
+        </h2>
+        {caseStudy.keyFeatures.map((feature) => (
+          <div class="break-inside-avoid rounded-xl border border-surface-border p-4">
+            <h3 class="mb-1.5 text-[11px] font-bold text-text-main font-fixel">
+              {feature.title.uk}
+            </h3>
+            <p class="text-[10px] leading-relaxed text-text-muted">{feature.desc.uk}</p>
+          </div>
+        ))}
+      </section>
+
+      <!-- Scope, difficulty, stack -->
+      <section class="break-inside-avoid rounded-xl border border-surface-border p-4">
+        <div class="grid grid-cols-3 gap-4">
+          <div>
+            <span class="block text-[9px] font-bold uppercase tracking-wide text-text-light">
+              Сфера застосування
+            </span>
+            <span class="mt-1 block text-[10px] leading-snug text-text-main">
+              {caseStudy.scope.uk}
+            </span>
+          </div>
+          <div>
+            <span class="block text-[9px] font-bold uppercase tracking-wide text-text-light">
+              Складність без ШІ
+            </span>
+            <span class="mt-1 block text-[10px] leading-snug text-text-main">
+              {caseStudy.difficultyWithout.uk}
+            </span>
+          </div>
+          <div>
+            <span class="block text-[9px] font-bold uppercase tracking-wide text-text-light">
+              Складність з ШІ
+            </span>
+            <span class="mt-1 block text-[10px] leading-snug text-text-main">
+              {caseStudy.difficultyWith.uk}
+            </span>
+          </div>
+        </div>
+
+        <div class="mt-4 border-t border-surface-border pt-3">
+          <span class="block text-[9px] font-bold uppercase tracking-wide text-text-light">
+            Технологічний стек
+          </span>
+          <div class="mt-2 flex flex-wrap gap-1.5">
+            {caseStudy.techStack.map((tech) => (
+              <span class="rounded bg-surface-variant px-2 py-1 text-[9px] font-medium text-text-main">
+                {tech}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Source link -->
+      <section class="break-inside-avoid border-t border-surface-border pt-3 text-[9px] text-text-light">
+        Повна версія кейсу: <span class="text-brand-red">{caseUrl}</span>
+      </section>
+    </main>
+  </body>
+</html>

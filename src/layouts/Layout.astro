@@ -122,8 +122,17 @@ const mimeType = isJpeg ? 'image/jpeg' : (ogImageURL.endsWith('.png') ? 'image/p
       };
     </script>
 
-    <!-- Print Styles for High Quality PDF Export -->
+    <!--
+      Print styles (Ctrl+P).
+      Завантаження PDF кнопкою НЕ використовує цей шлях — там віддається файл,
+      згенерований на збірці (scripts/generate-pdfs.mjs). Ці правила потрібні
+      лише щоб ручний друк сторінки не виглядав зламаним.
+    -->
     <style is:global>
+      @page {
+        size: A4;
+        margin: 14mm;
+      }
       @media print {
         header, footer, #cookie-consent-banner, .no-print, nav {
           display: none !important;
@@ -131,6 +140,11 @@ const mimeType = isJpeg ? 'image/jpeg' : (ogImageURL.endsWith('.png') ? 'image/p
         body {
           background: #ffffff !important;
           color: #000000 !important;
+        }
+        /* Фони карток і бренд-акценти інакше відкидаються браузером. */
+        * {
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
         }
         .max-w-7xl, .max-w-4xl {
           max-width: 100% !important;
@@ -140,6 +154,21 @@ const mimeType = isJpeg ? 'image/jpeg' : (ogImageURL.endsWith('.png') ? 'image/p
         .shadow-card, .shadow-sm, .shadow-2xl, .shadow-lg {
           box-shadow: none !important;
           border: 1px solid #e5e7eb !important;
+        }
+        /* Картки й секції не мають рватись між сторінками. */
+        section, article, figure, img, .shadow-card {
+          break-inside: avoid;
+        }
+        h1, h2, h3, h4 {
+          break-after: avoid;
+        }
+        p, li {
+          orphans: 3;
+          widows: 3;
+        }
+        /* Жодних фіксованих шарів у друці — саме вони давали накладання тексту. */
+        .fixed, .sticky {
+          position: static !important;
         }
       }
     </style>
