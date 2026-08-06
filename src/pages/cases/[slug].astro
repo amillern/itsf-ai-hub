@@ -115,17 +115,16 @@ const linkedInShareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=$
           </div>
         </div>
 
-        <!-- Share Action Toolbar (Centered Circular Red Outline Buttons, No Title/Labels) -->
-        <div class="p-4 rounded-2xl bg-white border border-gray-100 shadow-card flex flex-col items-center justify-center gap-2.5 no-print">
+        <!-- Share Action Toolbar (Desktop: in Left Column) -->
+        <div class="p-4 rounded-2xl bg-white border border-gray-100 shadow-card hidden lg:flex flex-col items-center justify-center gap-2.5 no-print">
           <div class="flex items-center justify-center gap-5 sm:gap-6">
-            <!-- 1. PDF Download (pre-rendered at build time — see scripts/generate-pdfs.mjs) -->
+            <!-- 1. PDF Download -->
             <a
-              id="share-pdf-btn"
               href={`/cases/${caseStudy.slug}.pdf`}
               download={`ITSmartFlex-AI-Hub-${caseStudy.slug}.pdf`}
               title="Завантажити PDF"
               aria-label="Завантажити PDF"
-              class="w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group"
+              class="share-pdf-btn w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group"
             >
               <svg class="w-6 h-6 transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
                 <path d="M4 8v11a2 2 0 002 2h11" stroke-linecap="round"/>
@@ -134,13 +133,12 @@ const linkedInShareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=$
               </svg>
             </a>
 
-            <!-- 2. Copy Link Button (Red Circle) -->
+            <!-- 2. Copy Link Button -->
             <button 
-              id="share-copy-btn"
               type="button" 
               title="Скопіювати посилання"
               aria-label="Скопіювати посилання"
-              class="w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group"
+              class="share-copy-btn w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group"
             >
               <svg class="w-6 h-6 transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
@@ -148,15 +146,14 @@ const linkedInShareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=$
               </svg>
             </button>
 
-            <!-- 3. LinkedIn Button (Red Circle) -->
+            <!-- 3. LinkedIn Button -->
             <a 
-              id="share-linkedin-btn"
               href={linkedInShareUrl}
               target="_blank"
               rel="noopener noreferrer"
               title="Поділитись в LinkedIn"
               aria-label="Поділитись в LinkedIn"
-              class="w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 group"
+              class="share-linkedin-btn w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 group"
             >
               <svg class="w-6 h-6 fill-current transition-colors duration-200" viewBox="0 0 24 24">
                 <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.6a1.49 1.49 0 0 0-1.49 1.49c0 .82.67 1.49 1.49 1.49a1.49 1.49 0 0 0 1.49-1.49c0-.82-.67-1.49-1.49-1.49Z"/>
@@ -164,8 +161,7 @@ const linkedInShareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=$
             </a>
           </div>
 
-          <!-- Subtle Toast Notification (Shows briefly when copying) -->
-          <div id="share-copy-toast" class="hidden text-xs text-emerald-600 font-semibold pt-0.5 flex items-center gap-1.5">
+          <div class="share-copy-toast hidden text-xs text-emerald-600 font-semibold pt-0.5 flex items-center gap-1.5">
             <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
             </svg>
@@ -270,6 +266,61 @@ const linkedInShareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=$
 
         </div>
 
+        <!-- Share Action Toolbar (Mobile: at Bottom of Case Study Body) -->
+        <div class="p-5 rounded-2xl bg-white border border-gray-100 shadow-card flex lg:hidden flex-col items-center justify-center gap-3 no-print mt-6 sm:mt-8">
+          <span class="text-xs font-bold text-text-muted uppercase tracking-wider font-fixel">Поділитись кейсом</span>
+          <div class="flex items-center justify-center gap-6">
+            <!-- 1. PDF Download -->
+            <a
+              href={`/cases/${caseStudy.slug}.pdf`}
+              download={`ITSmartFlex-AI-Hub-${caseStudy.slug}.pdf`}
+              title="Завантажити PDF"
+              aria-label="Завантажити PDF"
+              class="share-pdf-btn w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group"
+            >
+              <svg class="w-6 h-6 transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M4 8v11a2 2 0 002 2h11" stroke-linecap="round"/>
+                <rect x="7" y="3" width="13" height="15" rx="2" stroke-width="1.8"/>
+                <text x="13.5" y="13.5" text-anchor="middle" font-size="6" font-weight="900" fill="currentColor" stroke="none" font-family="sans-serif">PDF</text>
+              </svg>
+            </a>
+
+            <!-- 2. Copy Link Button -->
+            <button 
+              type="button" 
+              title="Скопіювати посилання"
+              aria-label="Скопіювати посилання"
+              class="share-copy-btn w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 cursor-pointer group"
+            >
+              <svg class="w-6 h-6 transition-colors duration-200" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/>
+                <rect x="7" y="7" width="13" height="13" rx="2"/>
+              </svg>
+            </button>
+
+            <!-- 3. LinkedIn Button -->
+            <a 
+              href={linkedInShareUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Поділитись в LinkedIn"
+              aria-label="Поділитись в LinkedIn"
+              class="share-linkedin-btn w-12 h-12 rounded-full border-2 border-brand-red bg-white hover:bg-brand-red hover:text-white text-brand-red shadow-sm flex items-center justify-center hover:scale-105 active:scale-95 transition-all duration-200 group"
+            >
+              <svg class="w-6 h-6 fill-current transition-colors duration-200" viewBox="0 0 24 24">
+                <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.6a1.49 1.49 0 0 0-1.49 1.49c0 .82.67 1.49 1.49 1.49a1.49 1.49 0 0 0 1.49-1.49c0-.82-.67-1.49-1.49-1.49Z"/>
+              </svg>
+            </a>
+          </div>
+
+          <div class="share-copy-toast hidden text-xs text-emerald-600 font-semibold pt-0.5 flex items-center gap-1.5">
+            <svg class="w-4 h-4 text-emerald-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+            <span>Посилання скопійовано в буфер обміну!</span>
+          </div>
+        </div>
+
       </div>
 
     </div>
@@ -296,10 +347,8 @@ const linkedInShareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=$
         window.sendAmplitudeEvent('view_case_detail', { slug: slug, title: title, type: type });
       }
 
-      // 1. Copy Link Handler
-      var copyBtn = document.getElementById('share-copy-btn');
-      var toast = document.getElementById('share-copy-toast');
-      if (copyBtn) {
+      // 1. Copy Link Handler (binds to both desktop & mobile buttons)
+      document.querySelectorAll('.share-copy-btn').forEach(function(copyBtn) {
         copyBtn.onclick = function() {
           var targetUrl = canonical || window.location.href;
           if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -312,35 +361,33 @@ const linkedInShareUrl = `https://www.linkedin.com/feed/?shareActive=true&text=$
             document.execCommand('copy');
             document.body.removeChild(tempInput);
           }
-          if (toast) {
+          document.querySelectorAll('.share-copy-toast').forEach(function(toast) {
             toast.classList.remove('hidden');
             setTimeout(function() { toast.classList.add('hidden'); }, 3000);
-          }
+          });
           if (typeof window.sendAmplitudeEvent === 'function') {
             window.sendAmplitudeEvent('share_copy_link', { slug: slug, title: title });
           }
         };
-      }
+      });
 
-      // LinkedIn: тільки аналітика. href формується на збірці — не чіпаємо.
-      var linkedinBtn = document.getElementById('share-linkedin-btn');
-      if (linkedinBtn) {
+      // 2. LinkedIn Handler
+      document.querySelectorAll('.share-linkedin-btn').forEach(function(linkedinBtn) {
         linkedinBtn.addEventListener('click', function() {
           if (typeof window.sendAmplitudeEvent === 'function') {
             window.sendAmplitudeEvent('share_linkedin', { slug: slug, title: title });
           }
         });
-      }
+      });
 
-      // PDF: тільки аналітика. Файл згенеровано на збірці, кнопка — звичайний <a download>.
-      var pdfBtn = document.getElementById('share-pdf-btn');
-      if (pdfBtn) {
+      // 3. PDF Download Handler
+      document.querySelectorAll('.share-pdf-btn').forEach(function(pdfBtn) {
         pdfBtn.addEventListener('click', function() {
           if (typeof window.sendAmplitudeEvent === 'function') {
             window.sendAmplitudeEvent('share_download_pdf', { slug: slug, title: title });
           }
         });
-      }
+      });
     })();
   </script>
 </Layout>
