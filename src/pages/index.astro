@@ -1,49 +1,28 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import { techLogos } from '../data/techLogos';
+import { caseStudies } from '../data/cases';
 
-const promoSlides = [
-  {
-    id: "slide-1",
-    badge1: "Інфраструктура та експлуатація",
-    badge2: "Операційна діяльність",
-    label: "Останні додані",
-    title: "Автоматична генерація звітів з інфраструктури",
-    subtitle: "Роботизований збір інфраструктурних метрик та миттєва генерація бізнес-звітів для менеджменту.",
-    description: "Після проведення навантажувальних або регресійних тестів інженери витрачають години на вивантаження даних із баз моніторингу, ручне зведення графіків, пошук інтервалів деградації та оформлення презентацій для керівництва.",
-    link: "/cases/business-analytics/"
-  },
-  {
-    id: "slide-2",
-    badge1: "Прискорення розробки ПЗ",
-    badge2: "Операційна діяльність",
-    label: "Популярний кейс",
-    title: "Підвищення продуктивності команд розробки",
-    subtitle: "Пілотування ШІ-інструмента GitHub Copilot в IT SmartFlex з метою оцінки його реального впливу на швидкість розробки.",
-    description: "Вимірювання приросту ефективності інженерів при написанні коду, автоматичній генерації автотестів та рефакторингу за допомогою ШІ-копайлотів.",
-    link: "/cases/copilot-dev/"
-  },
-  {
-    id: "slide-3",
-    badge1: "Аналіз та пошук інформації",
-    badge2: "Оптимізація витрат",
-    label: "Корпоративні рішення",
-    title: "Інтелектуальний аналіз документів та юридичних актів",
-    subtitle: "DocAI система для автоматичного витягу сутностей з первинної документації та договорів.",
-    description: "Автоматичне виявлення ризикових пунктів у договорах, автоматичне структурування вхідних актів та прискорення роботи юридичного відділу в 10 разів.",
-    link: "/cases/doc-ai/"
-  },
-  {
-    id: "slide-4",
-    badge1: "Аналіз та пошук інформації",
-    badge2: "Підвищення якості комунікацій",
-    label: "База знань",
-    title: "Корпоративна база знань з ШІ-пошуком (RAG)",
-    subtitle: "Внутрішня пошукова система для співробітників за регламентами, інструкціями та базою коду.",
-    description: "Миттєві точні відповіді з посиланнями на першоджерела у закритій базі Confluence, Notion та корпоративних документах компанії.",
-    link: "/cases/rag-knowledge-base/"
-  }
+const featuredSlugs = [
+  { slug: 'infrastructure-reporting', label: 'Останні додані' },
+  { slug: 'copilot-dev', label: 'Популярний кейс' },
+  { slug: 'support-bot', label: 'Корпоративні рішення' },
+  { slug: 'b2b-crm-assistant', label: 'База знань' }
 ];
+
+const promoSlides = featuredSlugs.map((item, idx) => {
+  const caseItem = caseStudies.find(c => c.slug === item.slug) || caseStudies[idx];
+  return {
+    id: `slide-${idx + 1}`,
+    badge1: caseItem.badge.uk,
+    badge2: caseItem.tags[0] || 'Операційна діяльність',
+    label: item.label,
+    title: caseItem.title.uk,
+    subtitle: caseItem.subtitle.uk,
+    description: caseItem.overview.uk,
+    link: `/cases/${caseItem.slug}/`
+  };
+});
 
 const taskPillsWithColors = [
   { label: "Підвищення продуктивності", borderColor: "border-brand-red text-text-main" },

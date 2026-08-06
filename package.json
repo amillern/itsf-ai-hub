@@ -7,9 +7,10 @@
     "build": "astro build",
     "check": "astro check",
     "check:design": "node scripts/check-design-system.mjs",
+    "check:links": "node scripts/check-case-links.mjs",
     "check:layout": "node scripts/check-layout-snapshots.mjs",
     "snapshot:update": "node scripts/check-layout-snapshots.mjs --update",
-    "verify": "npm run check && npm run check:design && npm run build && npm run check:layout",
+    "verify": "npm run check && npm run check:design && npm run check:links && npm run build && npm run check:layout",
     "preview": "astro preview",
     "astro": "astro"
   },
